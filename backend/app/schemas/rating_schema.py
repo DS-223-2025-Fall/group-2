@@ -1,0 +1,12 @@
+from pydantic import BaseModel
+
+class RatingCreate(BaseModel):
+    bookId: str
+    rating: int
+    comment: str
+
+class RatingResponse(BaseModel):
+    bookId: str
+    user_email: str
+    rating: int
+    comment: str
