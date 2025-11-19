@@ -1,4 +1,5 @@
 .venv
+.DS_Store
 backend/app/__pycache__/
 backend/app/core/__pycache__/
 backend/app/routers/__pycache__/
