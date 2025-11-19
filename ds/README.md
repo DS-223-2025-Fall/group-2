@@ -2,6 +2,7 @@
 
 A small Python project that allows to search for classic books **by title or by meaning** using SentenceTransformer embeddings.  
 Users can type a book name or a theme (e.g., “dystopian future”) and the model finds the closest match semantically.
+This is initial exploration of what we can do to solve the problem of searching for the users.
 
 ---
 
@@ -11,8 +12,6 @@ Users can type a book name or a theme (e.g., “dystopian future”) and the mod
 project/
 │
 ├── books.py               # Main semantic search application
-├── books_jsonl.py         # Script that generates books.jsonl
-├── books.jsonl            # Data file (generated automatically)
 ├── requirements.txt       # Python dependencies (optional)
 └── README.md              # Documentation
 ```
@@ -22,23 +21,7 @@ project/
 | File             | Purpose                                                                 |
 |------------------|-------------------------------------------------------------------------|
 | `books.py`       | Loads SentenceTransformer, reads the JSONL books, performs title-based and meaning-based search. |
-| `books_jsonl.py` | Generates the `books.jsonl` dataset from a Python dictionary. Run once to create/update the file. |
-| `books.jsonl`    | JSONL dataset containing book title → description pairs. Auto-generated. |
 | `requirements.txt` | Optional list of dependencies. |
-
----
-
-# 📄 Data Format (`books.jsonl`)
-
-Each line contains a single key-value pair:
-
-```
-{"The Great Gatsby": "A tragic love story set in the 1920s..."}
-{"1984": "Dystopian masterpiece about a totalitarian regime..."}
-{"Pride and Prejudice": "Witty romance between Elizabeth Bennet and Mr. Darcy..."}
-```
-
-This format is required by `books.py`.
 
 ---
 
@@ -57,22 +40,6 @@ venv/Scripts/activate
 
 ```bash
 pip install -r requirements.txt
-```
-
----
-
-## 2️⃣ Generate the Dataset
-
-Run this **once**:
-
-```bash
-python books_jsonl.py
-```
-
-Output:
-
-```
-books.jsonl created!
 ```
 
 ---
