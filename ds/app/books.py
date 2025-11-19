@@ -24,12 +24,13 @@ descriptions = list(books.values())
 
 # Pre-compute all embeddings
 print("Preparing book database...")
-embeddings = model.encode(descriptions, convert_to_numpy=True)
+embeddings = model.encode(titles, convert_to_numpy=True)
 print("Ready! You can now search by title or meaning.\n")
 
+list_of_books = ["The Great Gastby", "1984", "Pride Predujice", "Brave New World",]
 # Main loop
-while True:
-    query = input("Enter book title or theme (or 'quit' to exit): ").strip()
+for query in list_of_books:
+    # query = input("Enter book title or theme (or 'quit' to exit): ").strip()
 
     if query.lower() in ["quit", "exit", "q", ""]:
         print("\nThanks for using the Book Recommender! See you!")
@@ -49,7 +50,7 @@ while True:
         continue
 
     # Semantic search
-    print(f"\nSearching for books similar to: \"{query}\"")
+    print(f"\nSearching for books with name similar to: \"{query}\"")
     query_embedding = model.encode(query)
     similarities = np.dot(embeddings, query_embedding)
     best_idx = np.argmax(similarities)
