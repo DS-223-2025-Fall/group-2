@@ -5,7 +5,7 @@ from sqlalchemy import create_engine,Column,Integer,String,Float, DATE, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 from datetime import datetime
-from Database.database import Base, engine
+from database.database import Base, engine
 
 # More tables will be added as we gather data for them
 
@@ -19,5 +19,5 @@ class Book(Base):
     language = Column(Text)
     data_source = Column(Text)
     description = Column(Text)
-    
+
 Base.metadata.create_all(engine)
