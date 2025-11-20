@@ -3,6 +3,7 @@ site_name: My Docs
 nav:
   - Home: index.md
   # - ETL: etl.md
+  - Problem Defintion: problem_definition.md
   - API: backend.md
   - APP: frontend.md
   - API models: api_models.md
