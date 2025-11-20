@@ -19,6 +19,5 @@ class Book(Base):
     language = Column(Text)
     data_source = Column(Text)
     description = Column(Text)
-# Define the Sales table
-
+    
 Base.metadata.create_all(engine)
