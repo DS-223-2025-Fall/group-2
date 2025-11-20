@@ -9,6 +9,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./app /app
 COPY .env ./
 
-EXPOSE 8008
+EXPOSE 8000
 
-CMD ["sh", "-c", "python seed/seed_books.py && uvicorn main:app --host 0.0.0.0 --port 8008"]
+CMD ["sh", "-c", "python seed/seed_books.py && uvicorn main:app --host 0.0.0.0 --port 8000"]
