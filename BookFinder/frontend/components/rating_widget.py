@@ -5,6 +5,7 @@ Handles displaying ratings and submitting new ratings.
 import streamlit as st
 from typing import List, Dict, Optional
 from utils.api_client import APIClient
+from utils.session import is_authenticated, get_auth_token, get_user_info
 
 
 def render_star_rating(rating: float, max_stars: int = 5, size: int = 20) -> str:
@@ -50,6 +51,20 @@ def render_rating_submission(book_id: str) -> None:
     """
     st.markdown("### 📝 Rate This Book")
     
+    # Check if user is authenticated
+    if not is_authenticated():
+        st.warning("🔒 Please login to rate books")
+        
+        if st.button("🔑 Go to Login Page", use_container_width=True, type="primary"):
+            from utils.session import go_to_login
+            go_to_login()
+            st.rerun()
+        return
+    
+    # Show logged in user info
+    user = get_user_info()
+    st.info(f"📧 Posting as: {user['email']}")
+    
     with st.form(key=f"rating_form_{book_id}"):
         # Star rating selector - discrete options
         st.markdown("**Your Rating**")
@@ -77,8 +92,8 @@ def render_rating_submission(book_id: str) -> None:
             if rating is None:
                 st.error("⚠️ Please select a rating (1-5 stars)")
             else:
-                # Submit the rating
-                api_client = APIClient()
+                # Submit the rating with authentication token
+                api_client = APIClient(auth_token=get_auth_token())
                 result = api_client.rate_book(
                     book_id=book_id,
                     rating=rating,

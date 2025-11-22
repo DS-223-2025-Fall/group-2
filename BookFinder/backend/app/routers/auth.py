@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
 from authlib.integrations.starlette_client import OAuth
 from starlette.middleware.sessions import SessionMiddleware
-from core.config import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, API_SECRET_KEY
+from core.config import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, API_SECRET_KEY, FRONTEND_URL
 from datetime import datetime, timedelta, timezone
 from jose import jwt
 
@@ -39,4 +39,8 @@ async def auth_google_callback(request: Request):
     }
     jwt_token = jwt.encode(payload, API_SECRET_KEY, algorithm="HS256")
 
-    return {"access_token": jwt_token, "token_type": "bearer", "user": user}
+    # Redirect to frontend with token and user info in URL parameters
+    from urllib.parse import quote
+    return RedirectResponse(
+        url=f"{FRONTEND_URL}?token={jwt_token}&email={quote(user['email'])}&name={quote(user.get('name', ''))}"
+    )

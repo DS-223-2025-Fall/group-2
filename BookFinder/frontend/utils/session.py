@@ -17,6 +17,14 @@ def initialize_session_state():
         st.session_state["suggestions"] = []
     if "selected_book_id" not in st.session_state:
         st.session_state["selected_book_id"] = None
+    
+    # Authentication state
+    if "auth_token" not in st.session_state:
+        st.session_state["auth_token"] = None
+    if "user_email" not in st.session_state:
+        st.session_state["user_email"] = None
+    if "user_name" not in st.session_state:
+        st.session_state["user_name"] = None
 
 
 def sync_query_params():
@@ -59,3 +67,48 @@ def go_back_to_results():
     """Navigate back to search results view."""
     st.session_state["view"] = "results"
     st.query_params.update({"view": "results"})
+
+
+def go_to_login():
+    """Navigate to login page."""
+    st.session_state["view"] = "login"
+    st.query_params.update({"view": "login"})
+
+
+def is_authenticated() -> bool:
+    """Check if user is currently authenticated."""
+    return st.session_state.get("auth_token") is not None
+
+
+def login(token: str, email: str, name: str = None):
+    """
+    Store authentication credentials in session.
+    
+    Args:
+        token: JWT authentication token
+        email: User's email address
+        name: User's display name (optional)
+    """
+    st.session_state["auth_token"] = token
+    st.session_state["user_email"] = email
+    st.session_state["user_name"] = name
+
+
+def logout():
+    """Clear authentication credentials from session."""
+    st.session_state["auth_token"] = None
+    st.session_state["user_email"] = None
+    st.session_state["user_name"] = None
+
+
+def get_auth_token() -> str:
+    """Get the current authentication token."""
+    return st.session_state.get("auth_token")
+
+
+def get_user_info() -> dict:
+    """Get current user information."""
+    return {
+        "email": st.session_state.get("user_email"),
+        "name": st.session_state.get("user_name")
+    }

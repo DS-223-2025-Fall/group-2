@@ -11,7 +11,7 @@ from config.settings import BACKEND_URL, API_ENDPOINTS, API_TIMEOUT
 class APIClient:
     """Client for making requests to the backend API."""
     
-    def __init__(self):
+    def __init__(self, auth_token: Optional[str] = None):
         self.base_url = BACKEND_URL
         self.timeout = API_TIMEOUT
         self.session = requests.Session()
@@ -20,6 +20,18 @@ class APIClient:
             "Content-Type": "application/json",
             "Accept": "application/json",
         })
+        # Set authentication token if provided
+        if auth_token:
+            self.set_auth_token(auth_token)
+    
+    def set_auth_token(self, token: str):
+        """Set the authentication token for API requests."""
+        self.session.headers["Authorization"] = f"Bearer {token}"
+    
+    def clear_auth_token(self):
+        """Clear the authentication token."""
+        if "Authorization" in self.session.headers:
+            del self.session.headers["Authorization"]
     
     def _make_request(
         self, 
@@ -69,7 +81,9 @@ class APIClient:
             return None
             
         except requests.exceptions.HTTPError as e:
-            if response.status_code == 404:
+            if response.status_code == 401:
+                st.error("🔒 Authentication required - Please log in to rate books")
+            elif response.status_code == 404:
                 st.warning("📚 No books found for your search")
             elif response.status_code == 422:
                 st.error("❌ Invalid search query")
@@ -155,9 +169,19 @@ class APIClient:
 # Singleton instance
 _api_client = None
 
-def get_api_client() -> APIClient:
-    """Get or create the API client singleton."""
+def get_api_client(auth_token: Optional[str] = None) -> APIClient:
+    """
+    Get or create the API client singleton.
+    
+    Args:
+        auth_token: Optional authentication token to set
+        
+    Returns:
+        APIClient instance
+    """
     global _api_client
     if _api_client is None:
-        _api_client = APIClient()
+        _api_client = APIClient(auth_token=auth_token)
+    elif auth_token:
+        _api_client.set_auth_token(auth_token)
     return _api_client
