@@ -28,4 +28,3 @@ class BookStoreInfo(BaseModel):
 class FullBookInfo(BookInfo):
     stores: list[BookStoreInfo]
     book: BookInfo
-    
