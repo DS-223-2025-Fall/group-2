@@ -22,10 +22,8 @@ services:
       - "8008:8000"
     env_file:
       - ./backend/.env
-      - ./.env
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8501}
       PYTHONWARNINGS: "ignore"
     depends_on:
       - db
