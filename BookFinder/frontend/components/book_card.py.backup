@@ -5,14 +5,13 @@ import streamlit as st
 from utils.session import go_to_detail
 
 
-def render_book_card(book: dict, book_id: int = None, index: int = 0):
+def render_book_card(book: dict, book_id: int = None):
     """
     Render a book card with cover, title, author, description, and store info.
     
     Args:
         book: Book dictionary containing book data
         book_id: Optional book ID for adding a View button
-        index: Index to ensure unique keys for duplicate book IDs
     """
     # Calculate star rating display
     full_stars = int(round(book["rating"]))
@@ -51,5 +50,4 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
     if book_id is not None:
         c1, c2, c3 = st.columns([6, 1, 1])
         with c2:
-            # Use index to make key unique even for duplicate book IDs
-            st.button("View", key=f"view_{book_id}_{index}", on_click=go_to_detail, args=(book_id,))
+            st.button("View", key=f"view_{book_id}", on_click=go_to_detail, args=(book_id,))

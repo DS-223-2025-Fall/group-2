@@ -65,16 +65,16 @@ def render_results():
     # Display book cards
     if exact:
         # Center exact match cards
-        for book in exact:
+        for idx, book in enumerate(exact):
             cols = st.columns([1, 2, 1])
             with cols[1]:
-                render_book_card(book, book.get("id"))
+                render_book_card(book, book.get("id"), index=idx)
             st.write("")
     else:
         # Grid layout for suggestions
         st.markdown('<div class="recommend-grid">', unsafe_allow_html=True)
-        for book in suggestions:
+        for idx, book in enumerate(suggestions):
             st.markdown("<div>", unsafe_allow_html=True)
-            render_book_card(book, book.get("id"))
+            render_book_card(book, book.get("id"), index=idx)
             st.markdown("</div>", unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)

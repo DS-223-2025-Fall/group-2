@@ -51,12 +51,15 @@ def render_rating_submission(book_id: str) -> None:
     st.markdown("### 📝 Rate This Book")
     
     with st.form(key=f"rating_form_{book_id}"):
-        # Star rating selector
-        rating = st.select_slider(
-            "Your Rating",
-            options=[0, 1, 2, 3, 4, 5],
-            value=0,
-            format_func=lambda x: '★' * x + '☆' * (5 - x) if x > 0 else 'Select rating'
+        # Star rating selector - discrete options
+        st.markdown("**Your Rating**")
+        rating = st.radio(
+            "Select your rating",
+            options=[1, 2, 3, 4, 5],
+            format_func=lambda x: '⭐' * x + f' ({x} star{"s" if x > 1 else ""})',
+            index=None,  # No default selection
+            label_visibility="collapsed",
+            horizontal=False
         )
         
         # Comment text area
@@ -71,7 +74,7 @@ def render_rating_submission(book_id: str) -> None:
         submitted = st.form_submit_button("Submit Rating", type="primary")
         
         if submitted:
-            if rating == 0:
+            if rating is None:
                 st.error("⚠️ Please select a rating (1-5 stars)")
             else:
                 # Submit the rating
