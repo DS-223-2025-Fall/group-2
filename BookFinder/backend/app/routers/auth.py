@@ -14,8 +14,7 @@ oauth.register(
     name="google",
     client_id=GOOGLE_CLIENT_ID,
     client_secret=GOOGLE_CLIENT_SECRET,
-    access_token_url="https://oauth2.googleapis.com/token",
-    authorize_url="https://accounts.google.com/o/oauth2/v2/auth",
+    server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
     api_base_url="https://www.googleapis.com/oauth2/v2/",
     client_kwargs={"scope": "openid email profile"},
 )
@@ -31,7 +30,6 @@ async def auth_google_callback(request: Request):
     user_info = await oauth.google.get("userinfo", token=token)
     user = user_info.json()
 
-    # Create JWT token
     payload = {
         "sub": user["email"],
         "name": user.get("name"),
@@ -39,8 +37,9 @@ async def auth_google_callback(request: Request):
     }
     jwt_token = jwt.encode(payload, API_SECRET_KEY, algorithm="HS256")
 
-    # Redirect to frontend with token and user info in URL parameters
-    from urllib.parse import quote
+    frontend_url = "http://localhost:8501"  # or env var
+
+    # Redirect to frontend with token
     return RedirectResponse(
-        url=f"{FRONTEND_URL}?token={jwt_token}&email={quote(user['email'])}&name={quote(user.get('name', ''))}"
+        url=f"{frontend_url}?token={jwt_token}"
     )
