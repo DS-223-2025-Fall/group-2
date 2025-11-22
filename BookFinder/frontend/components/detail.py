@@ -5,6 +5,11 @@ Displays comprehensive information about a selected book.
 import streamlit as st
 from utils.search import get_book_by_id
 from utils.session import go_back_to_results
+# Add this import at the top
+from components.rating_widget import render_ratings_section
+
+# Inside render_detail(), after displaying book description, add:
+   
 
 
 def render_detail():
@@ -71,3 +76,7 @@ def render_detail():
         """, unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Ratings section
+    st.markdown("---")
+    render_ratings_section(book['id'])

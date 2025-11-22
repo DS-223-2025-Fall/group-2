@@ -1,0 +1,163 @@
+"""
+Rating Widget Component for BookFinder
+Handles displaying ratings and submitting new ratings.
+"""
+import streamlit as st
+from typing import List, Dict, Optional
+from utils.api_client import APIClient
+
+
+def render_star_rating(rating: float, max_stars: int = 5, size: int = 20) -> str:
+    """
+    Generate HTML for star rating display.
+    
+    Args:
+        rating: Rating value (0-5)
+        max_stars: Maximum number of stars
+        size: Size of stars in pixels
+        
+    Returns:
+        HTML string for stars
+    """
+    full_stars = int(rating)
+    partial_star = rating - full_stars
+    empty_stars = max_stars - full_stars - (1 if partial_star > 0 else 0)
+    
+    html = f'<div style="color: #FFD700; font-size: {size}px; line-height: 1;">'
+    
+    # Full stars
+    html += '★' * full_stars
+    
+    # Partial star
+    if partial_star > 0:
+        html += '★'  # For now, show full star if there's any partial
+    
+    # Empty stars
+    html += '☆' * empty_stars
+    
+    html += f' <span style="color: #666; font-size: {size-2}px;">({rating:.1f})</span>'
+    html += '</div>'
+    
+    return html
+
+
+def render_rating_submission(book_id: str) -> None:
+    """
+    Render the rating submission form.
+    
+    Args:
+        book_id: The book's unique identifier
+    """
+    st.markdown("### 📝 Rate This Book")
+    
+    with st.form(key=f"rating_form_{book_id}"):
+        # Star rating selector
+        rating = st.select_slider(
+            "Your Rating",
+            options=[0, 1, 2, 3, 4, 5],
+            value=0,
+            format_func=lambda x: '★' * x + '☆' * (5 - x) if x > 0 else 'Select rating'
+        )
+        
+        # Comment text area
+        comment = st.text_area(
+            "Your Review (optional)",
+            placeholder="Share your thoughts about this book...",
+            max_chars=500,
+            height=100
+        )
+        
+        # Submit button
+        submitted = st.form_submit_button("Submit Rating", type="primary")
+        
+        if submitted:
+            if rating == 0:
+                st.error("⚠️ Please select a rating (1-5 stars)")
+            else:
+                # Submit the rating
+                api_client = APIClient()
+                result = api_client.rate_book(
+                    book_id=book_id,
+                    rating=rating,
+                    comment=comment if comment.strip() else None
+                )
+                
+                if result:
+                    st.success("✅ Thank you for your rating!")
+                    # Clear the form by rerunning
+                    st.rerun()
+                else:
+                    st.error("❌ Failed to submit rating. Please try again.")
+
+
+def render_ratings_list(ratings: List[Dict]) -> None:
+    """
+    Display a list of existing ratings.
+    
+    Args:
+        ratings: List of rating dictionaries
+    """
+    if not ratings:
+        st.info("🔍 No ratings yet. Be the first to rate this book!")
+        return
+    
+    st.markdown(f"### 💬 User Reviews ({len(ratings)})")
+    
+    # Calculate average rating
+    avg_rating = sum(r["rating"] for r in ratings) / len(ratings)
+    
+    # Display average
+    st.markdown("#### Average Rating")
+    st.markdown(render_star_rating(avg_rating, size=24), unsafe_allow_html=True)
+    st.markdown("---")
+    
+    # Display individual ratings
+    for idx, rating in enumerate(ratings):
+        with st.container():
+            col1, col2 = st.columns([3, 1])
+            
+            with col1:
+                # User email (anonymized)
+                email = rating.get("user_email", "Anonymous")
+                # Show only first part of email for privacy
+                display_email = email.split('@')[0] + "@***" if '@' in email else "Anonymous"
+                st.markdown(f"**{display_email}**")
+            
+            with col2:
+                # Star rating
+                st.markdown(
+                    render_star_rating(rating["rating"], size=16), 
+                    unsafe_allow_html=True
+                )
+            
+            # Comment
+            if rating.get("comment"):
+                st.markdown(f'> {rating["comment"]}')
+            
+            # Divider between reviews (except last one)
+            if idx < len(ratings) - 1:
+                st.markdown("---")
+
+
+def render_ratings_section(book_id: str) -> None:
+    """
+    Render complete ratings section (list + submission form).
+    
+    Args:
+        book_id: The book's unique identifier
+    """
+    # Fetch existing ratings
+    api_client = APIClient()
+    ratings = api_client.get_book_ratings(book_id)
+    
+    # Create tabs for viewing and submitting
+    tab1, tab2 = st.tabs(["📚 View Ratings", "✍️ Rate This Book"])
+    
+    with tab1:
+        if ratings is not None:
+            render_ratings_list(ratings)
+        else:
+            st.error("❌ Failed to load ratings. Please try again later.")
+    
+    with tab2:
+        render_rating_submission(book_id)

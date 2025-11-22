@@ -96,41 +96,60 @@ class APIClient:
         
         return self._make_request("GET", endpoint, params=params)
     
-    def get_book_ratings(self, book_id: str) -> Optional[Dict]:
+    def get_book_ratings(self, book_id: str) -> Optional[List[Dict]]:
         """
-        Get ratings for a specific book.
+        Get all ratings for a specific book.
         
         Args:
             book_id: The book's unique identifier
             
         Returns:
-            Ratings data or None if request fails
+            List of rating dictionaries or None if request fails
+            [
+                {
+                    "bookId": "string",
+                    "user_email": "string",
+                    "rating": 0,
+                    "comment": "string"
+                }
+            ]
         """
         endpoint = API_ENDPOINTS["get_book_ratings"].format(book_id=book_id)
         return self._make_request("GET", endpoint)
     
-    def rate_book(self, book_id: str, rating: float, user_id: Optional[str] = None) -> bool:
+    def rate_book(
+        self, 
+        book_id: str, 
+        rating: float, 
+        comment: Optional[str] = None
+    ) -> Optional[Dict]:
         """
         Submit a rating for a book.
         
         Args:
             book_id: The book's unique identifier
-            rating: Rating value (typically 1-5)
-            user_id: Optional user identifier
+            rating: Rating value (0-5)
+            comment: Optional text review/comment
             
         Returns:
-            True if successful, False otherwise
+            Rating response dict or None if request fails
+            {
+                "bookId": "string",
+                "user_email": "string",
+                "rating": 0,
+                "comment": "string"
+            }
         """
         endpoint = API_ENDPOINTS["rate_book"]
         data = {
-            "book_id": book_id,
+            "bookId": book_id,
             "rating": rating,
         }
-        if user_id:
-            data["user_id"] = user_id
+        if comment:
+            data["comment"] = comment
         
         result = self._make_request("POST", endpoint, data=data)
-        return result is not None
+        return result
 
 
 # Singleton instance
