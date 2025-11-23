@@ -1,3 +1,4 @@
+from typing_extensions import Optional
 from pydantic import BaseModel
 
 class RatingCreate(BaseModel):
@@ -9,4 +10,4 @@ class RatingResponse(BaseModel):
     bookId: str
     user_email: str
     rating: int
-    comment: str
+    comment: Optional[str] = None
