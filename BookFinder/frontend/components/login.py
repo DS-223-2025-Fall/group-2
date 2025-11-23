@@ -3,7 +3,7 @@ Login page component for BookFinder
 Dedicated page for user authentication.
 """
 import streamlit as st
-from config.settings import BACKEND_URL, API_ENDPOINTS
+from config.settings import BACKEND_BROWSER_URL, API_ENDPOINTS
 from utils.session import is_authenticated, get_user_info
 
 
@@ -89,8 +89,8 @@ def render_login():
         st.markdown("### Sign in with Google")
         st.info("🔒 We use Google OAuth for secure authentication. We only access your email and name.")
         
-        # Create login URL
-        login_url = f"{BACKEND_URL}{API_ENDPOINTS['auth_google']}"
+        # Create login URL (use BACKEND_BROWSER_URL for browser redirects)
+        login_url = f"{BACKEND_BROWSER_URL}{API_ENDPOINTS['auth_google']}"
         
         # Google Sign In Button (styled)
         st.markdown(
