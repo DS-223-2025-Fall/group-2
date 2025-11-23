@@ -39,8 +39,7 @@ async def auth_google_callback(request: Request):
 
     frontend_url = "http://localhost:8501"  # or env var
 
-    # Redirect to frontend with token, email, and name
-    from urllib.parse import quote
+    # Redirect to frontend with token
     return RedirectResponse(
-        url=f"{frontend_url}?token={jwt_token}&email={quote(user['email'])}&name={quote(user.get('name', ''))}"
+        url=f"{frontend_url}?token={jwt_token}"
     )
