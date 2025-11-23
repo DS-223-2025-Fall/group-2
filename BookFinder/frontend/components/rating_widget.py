@@ -65,6 +65,11 @@ def render_rating_submission(book_id: str) -> None:
     user = get_user_info()
     st.info(f"📧 Posting as: {user['email']}")
     
+    # Show success message if rating was just submitted
+    if st.session_state.get('rating_submitted', False):
+        st.success("✅ Thank you for your rating!")
+        st.session_state['rating_submitted'] = False
+    
     with st.form(key=f"rating_form_{book_id}"):
         # Star rating selector - discrete options
         st.markdown("**Your Rating**")
@@ -101,8 +106,8 @@ def render_rating_submission(book_id: str) -> None:
                 )
                 
                 if result:
-                    st.success("✅ Thank you for your rating!")
-                    # Clear the form by rerunning
+                    # Store success state to show message after rerun
+                    st.session_state['rating_submitted'] = True
                     st.rerun()
                 else:
                     st.error("❌ Failed to submit rating. Please try again.")

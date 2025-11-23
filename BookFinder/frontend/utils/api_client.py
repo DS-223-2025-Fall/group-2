@@ -86,7 +86,9 @@ class APIClient:
             elif response.status_code == 404:
                 st.warning("📚 No books found for your search")
             elif response.status_code == 422:
-                st.error("❌ Invalid search query")
+                # Validation error - could be from any endpoint
+                error_detail = response.json().get("detail", "Invalid data format")
+                st.error(f"❌ Validation error: {error_detail}")
             else:
                 st.error(f"❌ Server error: {response.status_code}")
             return None
