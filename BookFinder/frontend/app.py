@@ -23,17 +23,17 @@ def handle_auth_callback():
     # Check if we have auth token in URL (from OAuth callback)
     if "token" in query_params and not is_authenticated():
         token = query_params["token"]
-        # email = unquote(query_params.get("email", ""))
-        # name = unquote(query_params.get("name", ""))
+        email = unquote(query_params.get("email", ""))
+        name = unquote(query_params.get("name", ""))
         
         # Store in session
-        # login(token, email, name)
-        login(token)
+        login(token, email, name)
+        # login(token)
         
         # Clean URL by removing auth params
         st.query_params.clear()
-        # st.success(f"✅ Welcome, {name or email}!")
-        st.success("✅ Logged in successfully!")
+        st.success(f"✅ Welcome, {name or email}!")
+        # st.success("✅ Logged in successfully!")
         st.rerun()
 
 
