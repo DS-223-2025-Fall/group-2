@@ -5,7 +5,8 @@ from os import path
 from sqlalchemy import text
 from sqlalchemy.orm import sessionmaker
 import logging
-from database.database import engine
+from database.database import engine, Base
+from database.models import Book, AppUser, Bookstore, BookStoreInventory, BookSimilarity, SearchQuery, Ratings
 from fastapi import status
 
 # ➡️ New Imports for Web Service ⬅️
@@ -15,7 +16,7 @@ import uvicorn
 # Configure logging (good practice for services)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
+Base.metadata.create_all(engine)
 # ➡️ Initialize FastAPI Application ⬅️
 app = FastAPI()
 
@@ -25,28 +26,15 @@ def load_csv_to_table(table_name: str, csv_path: str) -> None:
     """
     Load data from a CSV file into a database table.
     """
+    with engine.connect() as conn:
+        result = conn.execute(text(f"SELECT 1 FROM {table_name} LIMIT 1"))
+        if result.first() is not None:
+            logger.info(f"Table '{table_name}' already has data. Skipping CSV load.")
+            return
+        
     df = pd.read_csv(csv_path)
-    
-    # Map CSV columns to DB table columns
-    column_mapping = {
-        "ISBN": "isbn",
-        "title": "title",
-        "author": "author",
-        "genre": "genre",
-        "language": "language",
-        "data_source": "data_source",
-        "url": "description"
-    }
-
-    df = df.rename(columns=column_mapping)
-    
-    # Keep only the columns that exist in the table
-    # Note: Using try/except here is more robust if a column is missing
-    db_cols = list(column_mapping.values())
-    df = df.reindex(columns=db_cols) 
-
     # Write to DB
-    df.to_sql(table_name, con=engine, if_exists="append", index=False)
+    df.to_sql(table_name, con=engine, if_exists="append", index=False, method="multi")
     logger.info(f"Loaded data into table: {table_name}")
 
 # -----------------------------------------------------
@@ -111,6 +99,7 @@ def startup_event():
     """
     logger.info("Application startup event triggered. Starting initial data ingestion.")
     # Call your data loading function directly
+    
     trigger_data_ingestion()
     logger.info("Initial data ingestion complete.")
 
