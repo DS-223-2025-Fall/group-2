@@ -15,7 +15,11 @@ def add_rating(rating: RatingCreate, user_email: str) -> RatingResponse:
             r.rating = rating.rating
             return r
     
-    new_rating = RatingResponse(bookId=rating.bookId, user_email=user_email, rating=rating.rating)
+    new_rating = RatingResponse(bookId=rating.bookId, 
+                                user_email=user_email, 
+                                rating=rating.rating,     
+                                comment=getattr(rating, 'comment', None)  # Pass None if it doesn't exist
+)
     ratings_db.append(new_rating)
     return new_rating
 
