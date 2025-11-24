@@ -49,12 +49,12 @@ def get_styles():
     --book-store-name: #8b785e;
     --book-price: #3f301e;
     --book-btn-bg: #f3eadc;
-    --book-btn-color: #eee0d3;
+    --book-btn-color: #4a3720;
     --navbar-bg: transparent;
     --navbar-shadow: none;
     --login-btn-bg: #f3eadc;
     --login-btn-hover: #e6d8c5;
-    --login-btn-text: #eee0d3;
+    --login-btn-text: #4a3720;
     }
     
     /* Keyframe animations */
@@ -291,31 +291,11 @@ def get_styles():
         letter-spacing: 0.01em;
     }
 
-    /* Hero search form as beige container */
+    /* Hero search form - simple container without unified pill */
     div[data-testid="stForm"][aria-label="hero_search"] {
         margin: 1.5rem auto 1rem auto;
         max-width: 750px;
-        background: var(--search-container-bg);
-        border-radius: 24px;
-        padding: 1.6rem 2.2rem;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    }
-    
-    /* Unified search container - wrap input and button together */
-    /* Inner pill that wraps input + button inside the beige card */
-    div[data-testid="stForm"][aria-label="hero_search"] .row-widget {
-        background: var(--search-bg);
-        border-radius: 999px;
-        padding: 0.25rem 0.4rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    /* Let the text input column take all horizontal space */
-    div[data-testid="stForm"][aria-label="hero_search"] div[data-testid="column"]:first-child {
-        flex: 1 1 auto;
+        padding: 0;
     }
 
     .search-helper-text {
@@ -465,6 +445,7 @@ def get_styles():
     .book-card-container {
         position: relative;
         margin-bottom: 1.5rem;
+        width: 100%;
     }
     
     .book-card {
@@ -474,6 +455,8 @@ def get_styles():
         box-shadow: 0 16px 40px rgba(0,0,0,0.08);
         border: 1px solid var(--book-card-border);
         margin-bottom: 0 !important;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .book-card-inner {
@@ -617,8 +600,17 @@ def get_styles():
     /* Grid for "You might like these" */
     .recommend-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap: 1.4rem;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    /* For exact results - ensure consistent width */
+    .exact-results-container {
+        max-width: 800px;
+        margin: 0 auto;
     }
     
     /* Detail view styles */

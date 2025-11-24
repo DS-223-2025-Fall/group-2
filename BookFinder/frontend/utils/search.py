@@ -27,8 +27,7 @@ def simple_search(query: str):
     # Try to fetch from API
     api_client = get_api_client()
     
-    with st.spinner("🔍 Searching for books..."):
-        api_response = api_client.search_books(q)
+    api_response = api_client.search_books(q)
     
     if api_response is not None:
         # API call successful - transform the data

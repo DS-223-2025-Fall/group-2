@@ -8,23 +8,23 @@ from utils.session import go_back_to_results
 from components.rating_widget import render_ratings_section
 
 
-def get_book_image(book_id) -> str:
+def get_book_image(book_title: str) -> str:
     """
-    Get a consistent book image for a given book ID.
-    Uses modulo to cycle through available images.
+    Get a consistent book image based on the book title.
+    Uses hash to randomly but consistently select from available images.
     
     Args:
-        book_id: The ID of the book (can be int or str)
+        book_title: The title of the book
         
     Returns:
         Path to the image file
     """
-    # Convert to int if it's a string
-    if isinstance(book_id, str):
-        book_id = int(book_id)
+    # We have 7 images: book_2, book_3, book_4, book_5, book_6, book_7, book_13
+    available_images = [2, 3, 4, 5, 6, 7, 13]
     
-    # We have 13 images (book_1.jpg to book_13.jpg)
-    image_num = ((book_id - 1) % 13) + 1
+    # Use hash of title to get consistent but random-looking selection
+    title_hash = hash(book_title) if book_title else 0
+    image_num = available_images[title_hash % len(available_images)]
     return f"img/book_{image_num}.jpg"
 
 
@@ -36,11 +36,13 @@ def render_detail():
     if book is None:
         st.warning("Book not found.")
         go_back_to_results()
+        st.rerun()
         return
     
     # Back button
     if st.button("← Back to Results", key="detail_back"):
         go_back_to_results()
+        st.rerun()
     
     # Header with title and author - single container
     st.markdown(f"""
@@ -54,8 +56,8 @@ def render_detail():
     left, right = st.columns([2, 5])
     
     with left:
-        # Book cover with actual image
-        book_image = get_book_image(book.get('id', 1))
+        # Book cover with actual image based on title
+        book_image = get_book_image(book.get('title', ''))
         st.image(book_image, use_container_width=True)
         
         # Rating with stars

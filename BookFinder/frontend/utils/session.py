@@ -39,8 +39,14 @@ def sync_query_params():
             book_id = int(query_params["book_id"])
             st.session_state["view"] = "detail"
             st.session_state["selected_book_id"] = book_id
-            # Update query params to include view for consistency
-            st.query_params.update({"view": "detail", "book_id": str(book_id)})
+            
+            # Preserve search query if present
+            if "q" in query_params:
+                query_from_url = query_params["q"]
+                st.session_state["last_query"] = query_from_url
+                st.query_params.update({"view": "detail", "book_id": str(book_id), "q": query_from_url})
+            else:
+                st.query_params.update({"view": "detail", "book_id": str(book_id)})
             return
         except ValueError:
             pass
@@ -50,9 +56,22 @@ def sync_query_params():
         param_view = query_params["view"]
         if param_view in ["home", "results", "detail"]:
             st.session_state["view"] = param_view
+            
+            # If returning to results view and we have a query param, preserve it
+            if param_view == "results" and "q" in query_params:
+                query_from_url = query_params["q"]
+                # Only update last_query if not already set
+                if not st.session_state.get("last_query"):
+                    st.session_state["last_query"] = query_from_url
+            
             if param_view == "detail" and "book_id" in query_params:
                 try:
                     st.session_state["selected_book_id"] = int(query_params["book_id"])
+                    # Also preserve search query if present
+                    if "q" in query_params:
+                        query_from_url = query_params["q"]
+                        if not st.session_state.get("last_query"):
+                            st.session_state["last_query"] = query_from_url
                 except ValueError:
                     pass
 
@@ -82,7 +101,12 @@ def go_to_detail(book_id: int):
 def go_back_to_results():
     """Navigate back to search results view."""
     st.session_state["view"] = "results"
-    st.query_params.update({"view": "results"})
+    # Preserve the last query in URL params if it exists
+    last_query = st.session_state.get("last_query", "")
+    if last_query:
+        st.query_params.update({"view": "results", "q": last_query})
+    else:
+        st.query_params.update({"view": "results"})
 
 
 def go_to_login():

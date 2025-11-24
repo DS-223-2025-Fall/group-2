@@ -1,23 +1,23 @@
 import streamlit as st
 
 
-def get_book_image(book_id) -> str:
+def get_book_image(book_title: str) -> str:
     """
-    Get a consistent book image for a given book ID.
-    Uses modulo to cycle through available images.
+    Get a consistent book image based on the book title.
+    Uses hash to randomly but consistently select from available images.
     
     Args:
-        book_id: The ID of the book (can be int or str)
+        book_title: The title of the book
         
     Returns:
         Path to the image file
     """
-    # Convert to int if it's a string
-    if isinstance(book_id, str):
-        book_id = int(book_id)
+    # We have 7 images: book_2, book_3, book_4, book_5, book_6, book_7, book_13
+    available_images = [2, 3, 4, 5, 6, 7, 13]
     
-    # We have 13 images (book_1.jpg to book_13.jpg)
-    image_num = ((book_id - 1) % 13) + 1
+    # Use hash of title to get consistent but random-looking selection
+    title_hash = hash(book_title) if book_title else 0
+    image_num = available_images[title_hash % len(available_images)]
     return f"img/book_{image_num}.jpg"
 
 
@@ -30,12 +30,18 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
     store = book["store"]
 
     # Build optional View button HTML (only if book_id is provided)
+    # Include the current search query in the URL to preserve it
     view_button_html = ""
     if book_id is not None:
-        view_button_html = f'<div class="book-view-btn-wrapper"><a href="?book_id={book_id}" class="book-view-btn">View</a></div>'
+        # Get current query from session state to preserve it in navigation
+        current_query = st.session_state.get("last_query", "")
+        if current_query:
+            view_button_html = f'<div class="book-view-btn-wrapper"><a href="?book_id={book_id}&q={current_query}" class="book-view-btn">View</a></div>'
+        else:
+            view_button_html = f'<div class="book-view-btn-wrapper"><a href="?book_id={book_id}" class="book-view-btn">View</a></div>'
 
-    # Get book image
-    book_image = get_book_image(book_id if book_id else 1)
+    # Get book image based on title (consistent but random-looking)
+    book_image = get_book_image(book.get("title", ""))
     
     st.markdown(
         f"""
