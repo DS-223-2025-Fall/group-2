@@ -332,6 +332,15 @@ def get_styles():
         box-shadow: none !important;
     }
 
+    /* Hide "Press Enter to submit form" helper text */
+    [data-testid="stForm"] [data-testid="InputInstructions"] {
+        display: none !important;
+    }
+    
+    [data-testid="stForm"] div[class*="instructions"] {
+        display: none !important;
+    }
+
     /* Bottom bookstore strip */
     .store-strip-container {
         margin-top: 10rem;
@@ -743,7 +752,7 @@ def get_styles():
         }
         
         .store-strip-container {
-            margin-top: 2.2rem;
+            margin-top: 15rem;
             padding: 0 1rem 1.2rem 1rem;
         }
         

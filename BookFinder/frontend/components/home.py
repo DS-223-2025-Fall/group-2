@@ -9,10 +9,10 @@ from utils.search import simple_search
 
 def render_home():
     """Render the home page view."""
-    # Hero section with fade-in animation
+    # Hero section
     st.markdown(
         """
-        <div class="hero-wrapper fade-in">
+        <div class="hero-wrapper">
             <div class="hero-title">Discover Your Next<br/>Literary Journey</div>
             <div class="hero-subtitle">
                 Find your next read — or the closest one.
@@ -22,20 +22,20 @@ def render_home():
         unsafe_allow_html=True,
     )
 
-    # Centered search form (the beige container is now handled purely by CSS)
-    center = st.columns([1, 6, 1])[1]
+    # Search form
+    center = st.columns([1, 2, 1])[1]
     with center:
-        with st.form("hero_search"):
+        with st.form("hero_search", clear_on_submit=True):
             c1, c2 = st.columns([7, 2])
             with c1:
                 query = st.text_input(
                     "",
-                    placeholder="🔍 Search for any book…",
+                    placeholder="Search for any book…",
                     label_visibility="collapsed",
                     key="hero_query",
                 )
             with c2:
-                submit = st.form_submit_button("Search", use_container_width=True)
+                submit = st.form_submit_button("Search")
 
     # Handle search submission
     if submit and query:
@@ -49,17 +49,15 @@ def render_home():
 
     # Bookstore strip at bottom
     items = "".join(
-        f'<div class="store-strip-item">📚 {store}</div>'
+        f'<div class="store-strip-item"><span class="store-strip-icon"></span><span>{store}</span></div>'
         for store in BOOKSTORES
     )
     st.markdown(
-        f"""
+        f'''
         <div class="store-strip-container">
             <div class="store-strip-label">Searching across trusted bookstores</div>
-            <div class="store-strip-badges">
-                {items}
-            </div>
+            <div class="store-strip-badges">{items}</div>
         </div>
-        """,
+        ''',
         unsafe_allow_html=True,
     )

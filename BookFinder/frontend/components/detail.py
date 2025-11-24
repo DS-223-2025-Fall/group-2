@@ -4,7 +4,7 @@ Displays comprehensive information about a selected book.
 """
 import streamlit as st
 from utils.search import get_book_by_id
-from utils.session import go_back_to_results
+from utils.session import go_back_to_home
 from components.rating_widget import render_ratings_section
 
 
@@ -35,16 +35,15 @@ def render_detail():
     
     if book is None:
         st.warning("Book not found.")
-        go_back_to_results()
-        st.rerun()
+        go_back_to_home()
         return
     
     # Back button
-    if st.button("← Back to Results", key="detail_back"):
-        go_back_to_results()
+    if st.button("← Back to Home", key="detail_back"):
+        go_back_to_home()
         st.rerun()
     
-    # Header with title and author - single container
+    # Header with title and author
     st.markdown(f"""
         <div class="detail-header">
             <div class="detail-title">{book['title']}</div>
@@ -56,7 +55,7 @@ def render_detail():
     left, right = st.columns([2, 5])
     
     with left:
-        # Book cover with actual image based on title
+        # Book cover with actual image
         book_image = get_book_image(book.get('title', ''))
         st.image(book_image, use_container_width=True)
         

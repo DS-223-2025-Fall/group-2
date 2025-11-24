@@ -42,17 +42,9 @@ def render_results():
         st.rerun()
 
     # Get current results from session state
-    exact = st.session_state.get("exact", [])
-    suggestions = st.session_state.get("suggestions", [])
-    query = st.session_state.get("last_query", "")
-    
-    # If no results at all, redirect to home to search again
-    if not exact and not suggestions:
-        st.info("No search results found. Please search for a book.")
-        if st.button("Go to Home"):
-            go_home()
-            st.rerun()
-        return
+    exact = st.session_state["exact"]
+    suggestions = st.session_state["suggestions"]
+    query = st.session_state["last_query"]
 
     # Header text
     st.markdown('<div class="results-header">', unsafe_allow_html=True)
@@ -74,13 +66,12 @@ def render_results():
 
     # Display book cards
     if exact:
-        # Center exact match cards with consistent container
-        st.markdown('<div class="exact-results-container">', unsafe_allow_html=True)
+        # Center exact match cards
         for idx, book in enumerate(exact):
-            render_book_card(book, book.get("id"), index=idx)
-            if idx < len(exact) - 1:
-                st.markdown('<div style="margin-bottom: 1.5rem;"></div>', unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+            cols = st.columns([1, 2, 1])
+            with cols[1]:
+                render_book_card(book, book.get("id"), index=idx)
+            st.write("")
     else:
         # Grid layout for suggestions
         st.markdown('<div class="recommend-grid">', unsafe_allow_html=True)
