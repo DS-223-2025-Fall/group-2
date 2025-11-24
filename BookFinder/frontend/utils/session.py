@@ -25,11 +25,27 @@ def initialize_session_state():
         st.session_state["user_email"] = None
     if "user_name" not in st.session_state:
         st.session_state["user_name"] = None
+    if "login_success_message" not in st.session_state:
+        st.session_state["login_success_message"] = None
 
 
 def sync_query_params():
     """Sync session state from URL query parameters for browser navigation."""
     query_params = st.query_params
+    
+    # Handle direct book_id parameter (from book card links)
+    if "book_id" in query_params and "view" not in query_params:
+        try:
+            book_id = int(query_params["book_id"])
+            st.session_state["view"] = "detail"
+            st.session_state["selected_book_id"] = book_id
+            # Update query params to include view for consistency
+            st.query_params.update({"view": "detail", "book_id": str(book_id)})
+            return
+        except ValueError:
+            pass
+    
+    # Handle view parameter
     if "view" in query_params:
         param_view = query_params["view"]
         if param_view in ["home", "results", "detail"]:
@@ -92,6 +108,9 @@ def login(token: str, email: str, name: str = None):
     st.session_state["auth_token"] = token
     st.session_state["user_email"] = email
     st.session_state["user_name"] = name
+    # Set success message to be displayed after redirect
+    display_name = name or email
+    st.session_state["login_success_message"] = f"Welcome back, {display_name}! You have successfully logged in."
 
 
 def logout():
@@ -99,6 +118,7 @@ def logout():
     st.session_state["auth_token"] = None
     st.session_state["user_email"] = None
     st.session_state["user_name"] = None
+    st.session_state["login_success_message"] = None
 
 
 def get_auth_token() -> str:

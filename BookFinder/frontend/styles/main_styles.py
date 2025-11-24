@@ -7,26 +7,35 @@ def get_styles():
     """Returns the complete CSS styles for the application."""
     return """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap');
+    
     :root {
     --body-bg: #f5efe6;
     --container-bg: #faf5ee;
     --logo-border: #5f4b32;
-    --hero-title: #5b4730;
+    --hero-title: #4a3720;
     --hero-subtitle: #7f6a4d;
-    --search-bg: #ffffff;
-    --search-shadow: 0 18px 40px rgba(0,0,0,0.08);
-    --search-icon: #a08f7b;
-    --search-btn-bg: #8b6a3b;
+    --search-bg: #ede6da;
+    --search-text: #4a3720;
+    --search-container-bg: #f2ebe1;
+    --search-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    --search-icon: #7f6a4d;
+    --search-btn-bg: #f3eadc;
+    --search-btn-hover: #e6d8c5;
+    --search-btn-text: #4a3720;
     --bookish-color: #7a6750;
     --strip-label: #8a7a63;
-    --strip-item-bg: #f2ebe1;
+    --strip-container-bg: rgba(242,235,225,0.5);
+    --strip-item-bg: #ede6da;
+    --strip-item-hover: #e2d8ca;
+    --strip-item-active: #c9b89d;
     --strip-item-color: #5e4a32;
     --strip-icon-border: #a08f7b;
     --results-search-bg: #ffffff;
     --results-shadow: 0 10px 24px rgba(0,0,0,0.05);
     --results-back: #8a7a63;
     --results-icon: #a08f7b;
-    --results-btn-bg: #8b6a3b;
+    --results-btn-bg: #f3eadc;
     --book-card-bg: #fffdf8;
     --book-card-border: #efe1ce;
     --book-cover-bg: linear-gradient(135deg, #b49a7a, #6e5840);
@@ -39,153 +48,364 @@ def get_styles():
     --book-store-icon-border: #b29f84;
     --book-store-name: #8b785e;
     --book-price: #3f301e;
-    --book-btn-bg: #8b6a3b;
-    --book-btn-color: #fffaf2;
+    --book-btn-bg: #f3eadc;
+    --book-btn-color: #eee0d3;
+    --navbar-bg: transparent;
+    --navbar-shadow: none;
+    --login-btn-bg: #f3eadc;
+    --login-btn-hover: #e6d8c5;
+    --login-btn-text: #eee0d3;
+    }
+    
+    /* Keyframe animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .fade-in {
+        animation: fadeIn 0.6s ease-out;
     }
     
     body {
-        background: var(--body-bg);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f5efe6;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
     [data-testid="stAppViewContainer"] {
-        background: var(--container-bg);
+        background: #faf5ee;
+        max-width: 1400px;
+        margin: 0 auto;
     }
     [data-testid="stHeader"] {
         background: rgba(255,255,255,0.0);
     }
 
-    /* Top logo bar */
+    /* Global text color - force all text to be dark */
+    body, p, span, div, h1, h2, h3, h4, h5, h6, li, label, [data-testid="stMarkdownContainer"] {
+        color: #4a3720 !important;
+    }
+    
+    [data-testid="stMarkdownContainer"] p, 
+    [data-testid="stMarkdownContainer"] li,
+    [data-testid="stMarkdownContainer"] span,
+    [data-testid="stMarkdownContainer"] div {
+        color: #4a3720 !important;
+    }
+
+    /* Global button styling - all buttons beige with dark text */
+    button, .stButton > button, button[kind="primary"], button[kind="secondary"] {
+        background: var(--login-btn-bg) !important;
+        color: var(--login-btn-text) !important;
+        border: 1px solid var(--logo-border) !important;
+        border-radius: 12px !important;
+        font-weight: 600 !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    }
+    
+    button:hover, .stButton > button:hover, button[kind="primary"]:hover, button[kind="secondary"]:hover {
+        background: var(--login-btn-hover) !important;
+        color: var(--login-btn-text) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
+    }
+    
+    button:active, .stButton > button:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+    }
+
+    /* Top navbar styling */
     .app-topbar {
-        padding: 0.6rem 1.4rem 0.4rem 1.4rem;
+        padding: 0.3rem 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background: transparent;
+        margin-bottom: 0.5rem;
     }
+    
     .app-logo {
         font-weight: 700;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         display: flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.5rem;
         color: #5f4b32;
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
     }
+    
     .logo-icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 8px;
-        border: 2px solid var(--logo-border);
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        border: 2.5px solid var(--logo-border);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, rgba(95,75,50,0.08), rgba(95,75,50,0.03));
     }
 
-    /* Make all text inputs look like your dark bar */
+    /* Sidebar styling - beige background */
+    [data-testid="stSidebar"] {
+        background: #e8dcc8 !important;
+    }
+    
+    [data-testid="stSidebar"] > div:first-child {
+        background: #e8dcc8 !important;
+    }
+    
+    /* Sidebar content styling */
+    [data-testid="stSidebar"] h3 {
+        color: #4a3720 !important;
+        font-weight: 600;
+    }
+    
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
+        color: #4a3720 !important;
+    }
+    
+    /* Info box in sidebar - remove background and border */
+    [data-testid="stSidebar"] [data-testid="stAlert"] {
+        background: transparent !important;
+        border: none !important;
+        color: #4a3720 !important;
+        padding: 0.5rem 0 !important;
+    }
+    
+    [data-testid="stSidebar"] [data-testid="stAlert"] p {
+        color: #4a3720 !important;
+        margin: 0 !important;
+    }
+    
+    /* Hide the info icon in sidebar but keep text visible */
+    [data-testid="stSidebar"] [data-testid="stAlert"] svg {
+        display: none !important;
+    }
+    
+    /* Sidebar horizontal rule */
+    [data-testid="stSidebar"] hr {
+        border-color: #c9b89d !important;
+        opacity: 0.5;
+    }
+    
+    /* Sidebar buttons */
+    [data-testid="stSidebar"] button {
+        background: var(--login-btn-bg) !important;
+        color: var(--login-btn-text) !important;
+        border: 1px solid var(--logo-border) !important;
+    }
+
+    /* Login button styling: light background, dark text, thin border */
+    button[key="header_login"] {
+        background: var(--login-btn-bg) !important;
+        color: var(--login-btn-text) !important;
+        border: 1px solid var(--logo-border) !important;
+        border-radius: 12px !important;
+        padding: 0.6rem 1.4rem !important;
+        font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+        cursor: pointer !important;
+    }
+    
+    button[key="header_login"]:hover {
+        background: var(--login-btn-hover) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
+    }
+    
+    button[key="header_login"]:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+    }
+
+    /* Make all text inputs light background */
     div[data-testid="stTextInput"] input {
-        background: #232429;
-        color: #ffffff;
-        border-radius: 999px;
-        border: none;
-        padding: 0.8rem 1.2rem;
+        background: var(--search-bg) !important;
+        color: var(--search-text) !important;
+        border-radius: 999px !important;
+        border: none !important;
+        padding: 0.9rem 1.4rem !important;
+        font-size: 1rem !important;
+        transition: all 0.2s ease !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    
+    /* Fix BaseWeb container styling */
+    div[data-testid="stTextInput"] div[data-baseweb="input"] {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 999px !important;
+    }
+    
+    div[data-testid="stTextInput"] input:focus {
+        box-shadow: none !important;
+        outline: none !important;
+        border: none !important;
+    }
+    
+    div[data-testid="stTextInput"] input:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    div[data-testid="stTextInput"] input::placeholder {
+        color: rgba(127,106,77,0.6) !important;
     }
 
     /* Hero view */
     .hero-wrapper {
-        margin-top: 3.2rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
         text-align: center;
+        padding: 0 2rem;
     }
+    
     .hero-title {
-        font-size: 3rem;
-        line-height: 1.1;
+        font-size: 3.3rem;
+        line-height: 1.15;
         font-weight: 700;
         color: var(--hero-title);
+        font-family: 'Merriweather', Georgia, serif;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
     }
+    
     .hero-subtitle {
-        margin-top: 0.7rem;
-        font-size: 1.05rem;
+        margin-top: 0.4rem;
+        font-size: 1.2rem;
         color: var(--hero-subtitle);
+        font-weight: 400;
+        letter-spacing: 0.01em;
     }
 
-    /* Search on hero */
-    .hero-search-wrapper {
-        margin: 2.4rem auto 1.1rem auto;
-        max-width: 640px;
+    /* Hero search form as beige container */
+    div[data-testid="stForm"][aria-label="hero_search"] {
+        margin: 1.5rem auto 1rem auto;
+        max-width: 750px;
+        background: var(--search-container-bg);
+        border-radius: 24px;
+        padding: 1.6rem 2.2rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
-    .hero-search-box {
+    
+    /* Unified search container - wrap input and button together */
+    /* Inner pill that wraps input + button inside the beige card */
+    div[data-testid="stForm"][aria-label="hero_search"] .row-widget {
         background: var(--search-bg);
         border-radius: 999px;
         padding: 0.25rem 0.4rem;
-        box-shadow: var(--search-shadow);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         display: flex;
         align-items: center;
+        gap: 0.5rem;
     }
-    .hero-search-icon {
-        margin-left: 1.1rem;
-        margin-right: 0.6rem;
-        font-size: 1rem;
-        color: var(--search-icon);
+
+    /* Let the text input column take all horizontal space */
+    div[data-testid="stForm"][aria-label="hero_search"] div[data-testid="column"]:first-child {
+        flex: 1 1 auto;
     }
-    .hero-search-input > div > div > input {
-        border-radius: 999px;
-        border: none !important;
+
+    .search-helper-text {
+        text-align: center;
+        margin-top: 0.8rem;
+        font-size: 0.9rem;
+        color: var(--bookish-color);
+        font-style: italic;
+    }
+
+    /* Search button styling: light background, dark text, thin border */
+    button[type="submit"] {
+        background: var(--search-btn-bg) !important;
+        color: var(--search-btn-text) !important;
+        border: 1px solid var(--logo-border) !important;
+        border-radius: 999px !important;
+        padding: 0.9rem 2rem !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        transition: all 0.2s ease !important;
+        cursor: pointer !important;
         box-shadow: none !important;
+        margin: 0 !important;
+    }
+    
+    button[type="submit"]:hover {
+        background: var(--search-btn-hover) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+    }
+    
+    button[type="submit"]:active {
+        transform: translateY(0);
+        box-shadow: none !important;
+    }
+
+    /* Bottom bookstore strip */
+    .store-strip-container {
+        margin-top: 10rem;
+    }
+    
+    .store-strip-label {
+        text-align: center;
+        font-size: 1rem;
+        color: var(--strip-label);
+        font-weight: 500;
+        margin-bottom: 1.2rem;
+    }
+    
+    .store-strip-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0 1rem 2rem 1rem;
+    }
+    
+    .store-strip-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 999px;
+        background: var(--strip-item-bg);
+        font-size: 0.95rem;
+        color: var(--strip-item-color);
+        font-weight: 500;
+        border: 1px solid rgba(95,75,50,0.35);
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .store-strip-item:hover {
+        background: var(--strip-item-hover);
+        border-color: rgba(95,75,50,0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .store-strip-item:active,
+    .store-strip-item.active {
+        background: var(--strip-item-active);
+        border-color: rgba(95,75,50,0.9);
+        transform: translateY(0);
+        font-weight: 600;
     }
 
     /* Optional: remove extra spacing */
     div[data-testid="stTextInput"] {
         margin-bottom: 0;
-    }
-
-    .hero-search-button > button {
-        border-radius: 999px;
-        background: var(--search-btn-bg) !important;
-        border: none;
-        padding: 0.6rem 1.8rem;
-        font-weight: 600;
-    }
-
-    /* "Feeling bookish" */
-    .bookish-wrapper {
-        text-align: center;
-        margin-top: 0.6rem;
-        color: var(--bookish-color);
-        font-size: 0.95rem;
-    }
-
-    /* Bottom bookstore strip */
-    .store-strip-label {
-        margin-top: 3rem;
-        text-align: center;
-        font-size: 0.95rem;
-        color: var(--strip-label);
-    }
-    .store-strip-badges {
-        margin-top: 0.6rem;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.9rem;
-    }
-    .store-strip-item {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.35rem 0.75rem;
-        border-radius: 999px;
-        background: var(--strip-item-bg);
-        font-size: 0.9rem;
-        color: var(--strip-item-color);
-    }
-    .store-strip-icon {
-        width: 20px;
-        height: 20px;
-        border-radius: 6px;
-        border: 1px solid var(--strip-icon-border);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.75rem;
     }
 
     /* Results view */
@@ -235,23 +455,52 @@ def get_styles():
     .results-search-button > button {
         border-radius: 999px;
         background: var(--results-btn-bg) !important;
-        border: none;
+        border: 1px solid var(--logo-border) !important;
         padding: 0.45rem 1.5rem;
         font-weight: 600;
+        color: var(--search-btn-text) !important;
     }
 
     /* Book cards */
+    .book-card-container {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+    
     .book-card {
         background: var(--book-card-bg);
         border-radius: 22px;
-        padding: 1.2rem 1.4rem;
+        padding: 1.2rem 1.4rem 1.2rem 1.4rem;
         box-shadow: 0 16px 40px rgba(0,0,0,0.08);
         border: 1px solid var(--book-card-border);
+        margin-bottom: 0 !important;
     }
+    
     .book-card-inner {
         display: flex;
         gap: 1rem;
     }
+    
+    /* Style for book cover images */
+    .book-card-inner img {
+        width: 94px;
+        height: 130px;
+        border-radius: 16px;
+        object-fit: cover;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Style columns to prevent extra spacing */
+    .book-card-inner > div[data-testid="column"] {
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+    
+    .book-card-inner > div[data-testid="column"]:first-child {
+        max-width: 94px !important;
+        min-width: 94px !important;
+    }
+    
     .book-cover {
         width: 94px;
         height: 130px;
@@ -299,7 +548,44 @@ def get_styles():
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 1rem;
+        min-height: 40px;
     }
+    
+    .book-view-btn-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+    
+    /* The actual "View" button inside the card */
+    .book-view-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.45rem 1.2rem;
+        border-radius: 999px;
+        background: var(--book-btn-bg);
+        color: var(--book-btn-color) !important;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid var(--logo-border);
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        transition: all 0.2s ease;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+    
+    .book-view-btn:hover {
+        background: var(--login-btn-hover);
+        color: var(--book-btn-color) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    
     .book-store-pill {
         display: inline-flex;
         align-items: center;
@@ -326,15 +612,6 @@ def get_styles():
         font-weight: 600;
         font-size: 1rem;
         color: var(--book-price);
-    }
-
-    .book-view-btn {
-        padding: 0.45rem 1.2rem;
-        border-radius: 999px;
-        background: var(--book-btn-bg);
-        color: var(--book-btn-color);
-        font-size: 0.9rem;
-        font-weight: 600;
     }
 
     /* Grid for "You might like these" */
@@ -365,12 +642,15 @@ def get_styles():
         color: var(--book-author, #7b6a53);
         font-style: italic;
     }
-    .detail-content {
-        background: var(--book-card-bg, #f5f1e8);
-        padding: 2rem;
+    
+    /* Style for detail page book images */
+    div[data-testid="column"] img {
         border-radius: 12px;
-        border: 1px solid var(--book-card-border, #d4c5a9);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        object-fit: cover;
+        width: 100%;
     }
+    
     .detail-cover {
         width: 220px;
         height: 320px;
@@ -400,6 +680,85 @@ def get_styles():
         color: #d4af37;
         font-size: 1.25rem;
         margin-right: 0.5rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+        }
+        
+        .hero-wrapper {
+            margin-top: 2rem;
+            padding: 0 1rem;
+        }
+        
+        div[data-testid="stForm"][aria-label="hero_search"] {
+            padding: 1.2rem 1.4rem;
+            margin-top: 1.6rem;
+        }
+        
+        div[data-testid="stTextInput"] input {
+            padding: 0.8rem 1.2rem !important;
+            font-size: 0.95rem !important;
+        }
+        
+        button[type="submit"] {
+            padding: 0.8rem 1.5rem !important;
+            font-size: 0.95rem !important;
+        }
+        
+        .app-logo {
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .store-strip-badges {
+            gap: 0.7rem;
+        }
+        
+        .store-strip-item {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .app-topbar {
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.75rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 2.1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.9rem;
+        }
+        
+        .hero-wrapper {
+            margin-top: 1.6rem;
+        }
+        
+        .store-strip-container {
+            margin-top: 2.2rem;
+            padding: 0 1rem 1.2rem 1rem;
+        }
+        
+        button[key="header_login"] {
+            padding: 0.5rem 1rem !important;
+            font-size: 0.85rem !important;
+        }
     }
     </style>
     """

@@ -31,7 +31,8 @@ def render_auth_button():
         # User is not logged in - show login button
         st.markdown("---")
         st.markdown("### 🔐 Authentication")
-        st.info("Login to rate and review books!")
+        st.markdown("Login to rate and review books!")
+        st.markdown("<br>", unsafe_allow_html=True)
         
         if st.button("🔑 Go to Login", use_container_width=True, type="primary"):
             from utils.session import go_to_login

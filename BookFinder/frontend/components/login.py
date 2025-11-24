@@ -49,11 +49,11 @@ def render_login():
     # Not authenticated - show login page
     st.markdown(
         """
-        <div style="text-align: center; padding: 2rem 0;">
-            <h1>🔐 Login to FindMyRead</h1>
-            <p style="font-size: 1.2rem; color: #666; margin-top: 1rem;">
+        <div class="hero-wrapper fade-in">
+            <div class="hero-title">Login to<br/>FindMyRead</div>
+            <div class="hero-subtitle">
                 Sign in to rate books, write reviews, and save your favorites
-            </p>
+            </div>
         </div>
         """,
         unsafe_allow_html=True
@@ -63,30 +63,6 @@ def render_login():
     col1, col2, col3 = st.columns([1, 2, 1])
     
     with col2:
-        st.markdown(
-            """
-            <div style="
-                background: white;
-                border-radius: 1rem;
-                padding: 2rem;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                margin: 2rem 0;
-            ">
-            """,
-            unsafe_allow_html=True
-        )
-        
-        st.markdown("### Why Login?")
-        st.markdown("""
-        - ⭐ **Rate & Review** books you've read
-        - 💬 **Share your thoughts** with other readers
-        - 📚 **Track your reading** history
-        - 🔔 **Get personalized** recommendations
-        """)
-        
-        st.markdown("---")
-        
-        st.markdown("### Sign in with Google")
         st.info("🔒 We use Google OAuth for secure authentication. We only access your email and name.")
         
         # Create login URL (use BACKEND_BROWSER_URL for browser redirects)
@@ -115,8 +91,6 @@ def render_login():
             unsafe_allow_html=True
         )
         
-        st.markdown("</div>", unsafe_allow_html=True)
-        
         # Back to home button
         st.markdown("<br/>", unsafe_allow_html=True)
         if st.button("← Back to Home", use_container_width=True):
@@ -127,7 +101,7 @@ def render_login():
         # Privacy notice
         st.markdown(
             """
-            <div style="text-align: center; margin-top: 2rem; color: #999; font-size: 0.9rem;">
+            <div style="text-align: center; margin-top: 2rem; color: #7f6a4d; font-size: 0.9rem;">
                 By signing in, you agree to our Terms of Service and Privacy Policy.<br/>
                 Your data is secure and we never share your information.
             </div>

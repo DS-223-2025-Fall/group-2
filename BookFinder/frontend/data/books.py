@@ -33,4 +33,4 @@ BOOKS = [
     },
 ]
 
-BOOKSTORES = ["Zangak", "Epigraph", "Books.am", "Nor Graxanut", "Phoenix", "Bookinist"]
+BOOKSTORES = ["Zangak",  "Books.am", "Bookinist"]

@@ -5,11 +5,23 @@ Displays comprehensive information about a selected book.
 import streamlit as st
 from utils.search import get_book_by_id
 from utils.session import go_back_to_results
-# Add this import at the top
 from components.rating_widget import render_ratings_section
 
-# Inside render_detail(), after displaying book description, add:
-   
+
+def get_book_image(book_id: int) -> str:
+    """
+    Get a consistent book image for a given book ID.
+    Uses modulo to cycle through available images.
+    
+    Args:
+        book_id: The ID of the book
+        
+    Returns:
+        Path to the image file
+    """
+    # We have 13 images (book_1.jpg to book_13.jpg)
+    image_num = ((book_id - 1) % 13) + 1
+    return f"img/book_{image_num}.jpg"
 
 
 def render_detail():
@@ -26,7 +38,7 @@ def render_detail():
     if st.button("← Back to Results", key="detail_back"):
         go_back_to_results()
     
-    # Header with title and author
+    # Header with title and author - single container
     st.markdown(f"""
         <div class="detail-header">
             <div class="detail-title">{book['title']}</div>
@@ -35,12 +47,12 @@ def render_detail():
     """, unsafe_allow_html=True)
     
     # Main content: cover and metadata at left, long description at right
-    st.markdown('<div class="detail-content">', unsafe_allow_html=True)
     left, right = st.columns([2, 5])
     
     with left:
-        # Book cover
-        st.markdown('<div class="detail-cover"></div>', unsafe_allow_html=True)
+        # Book cover with actual image
+        book_image = get_book_image(book.get('id', 1))
+        st.image(book_image, use_container_width=True)
         
         # Rating with stars
         full_stars = int(round(book["rating"]))
@@ -52,21 +64,15 @@ def render_detail():
             </div>
         """, unsafe_allow_html=True)
         
-        # Store info
+        # Store price info (without "Available at" text)
         st.markdown(f"""
             <div class="detail-meta" style="margin-top: 1.5rem;">
-                <div class="detail-meta-label">Available at:</div>
                 <div style="font-size: 1.125rem; margin-top: 0.5rem;">{book['store']['name']}</div>
                 <div style="font-size: 1.25rem; font-weight: 600; color: var(--book-price, #2c1810); margin-top: 0.25rem;">
                     {book['store']['price']} {book['store']['currency']}
                 </div>
             </div>
         """, unsafe_allow_html=True)
-        
-        # Buy button
-        st.markdown("<br/>", unsafe_allow_html=True)
-        if st.button("Buy from Store", key=f"buy_{book.get('id')}", use_container_width=True):
-            st.info(f"This would redirect to {book['store']['name']} in a real app.")
     
     with right:
         st.markdown(f"""
@@ -74,8 +80,6 @@ def render_detail():
                 {book.get('long_description', book['description'])}
             </div>
         """, unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
     
     # Ratings section
     st.markdown("---")
