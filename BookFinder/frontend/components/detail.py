@@ -8,17 +8,21 @@ from utils.session import go_back_to_results
 from components.rating_widget import render_ratings_section
 
 
-def get_book_image(book_id: int) -> str:
+def get_book_image(book_id) -> str:
     """
     Get a consistent book image for a given book ID.
     Uses modulo to cycle through available images.
     
     Args:
-        book_id: The ID of the book
+        book_id: The ID of the book (can be int or str)
         
     Returns:
         Path to the image file
     """
+    # Convert to int if it's a string
+    if isinstance(book_id, str):
+        book_id = int(book_id)
+    
     # We have 13 images (book_1.jpg to book_13.jpg)
     image_num = ((book_id - 1) % 13) + 1
     return f"img/book_{image_num}.jpg"
