@@ -77,7 +77,7 @@ def _search_mock_data(query: str):
 def get_book_by_id(book_id: str):
     """
     Retrieve a book by its ID.
-    First checks API, then falls back to mock data if enabled.
+    First checks session state (API results), then falls back to mock data.
     
     Args:
         book_id: The book's unique identifier (string for API compatibility)
@@ -85,16 +85,7 @@ def get_book_by_id(book_id: str):
     Returns:
         Book dict or None if not found
     """
-    # For now, we don't have a get-by-id endpoint
-    # So we'll search through session state if available
-    # or fall back to mock data
-    
-    # Try to find in mock data first (for backwards compatibility)
-    for book in BOOKS:
-        if str(book.get("id")) == str(book_id):
-            return book
-    
-    # If not found and we have session state with search results, check there
+    # PRIORITY 1: Check session state with search results from API
     if "exact" in st.session_state:
         for book in st.session_state["exact"]:
             if str(book.get("id")) == str(book_id):
@@ -104,5 +95,10 @@ def get_book_by_id(book_id: str):
         for book in st.session_state["suggestions"]:
             if str(book.get("id")) == str(book_id):
                 return book
+    
+    # PRIORITY 2: Try to find in mock data (for backwards compatibility)
+    for book in BOOKS:
+        if str(book.get("id")) == str(book_id):
+            return book
     
     return None

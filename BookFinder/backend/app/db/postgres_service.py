@@ -1,199 +1,127 @@
-from typing import List
-from schemas.book_schema import BookStoreInfo, FullBookInfo, BookInfo
+import os
+from typing import List, Optional
+from dotenv import load_dotenv
+from loguru import logger
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, Session, declarative_base
+from schemas.rating_schema import RatingResponse
 
-from typing import List
-from schemas.book_schema import FullBookInfo, BookInfo, BookStoreInfo
+# Import your models
+from db.models import Book, BookStoreInventory, BookSimilarity, SearchQuery, Ratings, Bookstore, AppUser
 
-import psycopg2
+# Book methods
+# -------------------------
+def get_book_by_id(db: Session, book_id: int) -> Optional[Book]:
+    return db.query(Book).filter(Book.book_id == book_id).first()
 
-# Temporary untill DB is fully ready
-def get_allBooks() -> List[FullBookInfo]:
-    book = BookInfo(
-        bookId="1",
-        bookName="1984",
-        isbn="1234567890",
-        title="1984",
-        author="George Orwell",
-        genre="Dystopian",
-        description="A dystopian novel...",
-        language="en",
-        data_source="internal"
+
+def search_books_by_title(db: Session, search_term: str, limit: int = 20) -> List[Book]:
+    return db.query(Book).filter(Book.title.ilike(f"%{search_term}%")).limit(limit).all()
+
+
+def insert_book(db: Session, title: str, author: str, genre: str, description: str, isbn: str, source: str = "local") -> int:
+    new_book = Book(
+        title=title,
+        author=author,
+        genre=genre,
+        description=description,
+        ISBN=isbn,
+        data_source=source
     )
+    db.add(new_book)
+    db.commit()
+    db.refresh(new_book)
+    return new_book.book_id
 
-    stores = [
-        BookStoreInfo(
-            storeId="1",
-            storeName="Awesome Books",
-            address="123 Main St",
-            city="NY",
-            phone="123-456-7890",
-            website_url="https://awesomebooks.com",
-            email="info@awesomebooks.com",
-            latitude=40.7128,
-            longitude=-74.0060
+    
+def get_allBooks(db: Session) -> List[Ratings]:
+    return db.query(Book).all()
+
+# -------------------------
+# Bookstore / Inventory
+# -------------------------
+def get_stores_for_book(db: Session, book_id: int) -> List[BookStoreInventory]:
+    return db.query(BookStoreInventory).join(Bookstore).filter(
+        BookStoreInventory.book_id == book_id
+    ).order_by(BookStoreInventory.price.asc()).all()
+
+
+def insert_inventory_entry(db: Session, book_id: int, store_id: int, price: float) -> BookStoreInventory:
+    entry = db.query(BookStoreInventory).filter_by(book_id=book_id, store_id=store_id).first()
+    if entry:
+        entry.price = price
+    else:
+        entry = BookStoreInventory(book_id=book_id, store_id=store_id, price=price)
+        db.add(entry)
+    db.commit()
+    db.refresh(entry)
+    return entry
+
+# -------------------------
+# Similarity methods
+# -------------------------
+def get_similar_books(db: Session, book_id: int, top_n: int = 10) -> List[BookSimilarity]:
+    return db.query(BookSimilarity).join(Book, Book.book_id == BookSimilarity.book_id_2)\
+        .filter(BookSimilarity.book_id_1 == book_id)\
+        .order_by(BookSimilarity.similarity_score.desc())\
+        .limit(top_n).all()
+
+
+def insert_similarity(db: Session, book1: int, book2: int, score: float) -> BookSimilarity:
+    entry = db.query(BookSimilarity).filter_by(book_id_1=book1, book_id_2=book2).first()
+    if entry:
+        entry.similarity_score = score
+    else:
+        entry = BookSimilarity(book_id_1=book1, book_id_2=book2, similarity_score=score)
+        db.add(entry)
+    db.commit()
+    db.refresh(entry)
+    return entry
+
+# -------------------------
+# Search logging
+# -------------------------
+def log_search_query(db: Session, user_id: int = None, term: str = "", matched_book_id: int = None) -> SearchQuery:
+    entry = SearchQuery(user_id=user_id, search_term=term, matched_book_id=matched_book_id)
+    db.add(entry)
+    db.commit()
+    db.refresh(entry)
+    return entry
+
+
+def get_recent_searches(db: Session, limit: int = 20) -> List[SearchQuery]:
+    return db.query(SearchQuery).order_by(SearchQuery.query_id.desc()).limit(limit).all()
+
+# -------------------------
+# Ratings
+# -------------------------
+def add_or_update_rating(db: Session, user_id: int, book_id: int, rating_value: int, comment: str = None) -> Ratings:
+    existing_rating = db.query(Ratings).filter_by(user_id=user_id, book_id=book_id).first()
+    if existing_rating:
+        existing_rating.rating = rating_value
+        existing_rating.comment = comment
+        db.commit()
+        db.refresh(existing_rating)
+        return existing_rating
+    else:
+        new_rating = Ratings(user_id=user_id, book_id=book_id, rating=rating_value, comment=comment)
+        db.add(new_rating)
+        db.commit()
+        db.refresh(new_rating)
+        return new_rating
+
+def get_ratings_for_book(db: Session, book_id: int) -> List[RatingResponse]:
+    """
+    Fetch all ratings for a given book_id from the database
+    and return them as a list of RatingResponse.
+    """
+    ratings = db.query(Ratings).filter(Ratings.book_id == book_id).all()
+    return [
+        RatingResponse(
+            bookId=str(r.book_id),
+            user_email=r.user.email,
+            rating=r.rating,
+            comment=r.comment
         )
+        for r in ratings
     ]
-
-    full = FullBookInfo(
-        **book.dict(),  # inherited fields
-        book=book,      # REQUIRED
-        stores=stores   # REQUIRED
-    )
-
-    return [full]
-
-
-conn = psycopg2.connect(
-    dbname="postgres",
-    user="postgres",
-    password="postgres",
-    host="db",
-    port="5432"
-)
-cur = conn.cursor()
-
-# -------------------------------------------------------
-# BOOK METHODS
-# -------------------------------------------------------
-
-def get_book_by_id(book_id):
-
-    cur.execute("""
-        SELECT * FROM book WHERE book_id = %s
-    """, (book_id,))
-
-    result = cur.fetchone()
-    conn.close()
-    return result
-
-
-def search_books_by_title(search_term):
-    cur.execute("""
-        SELECT * FROM book
-        WHERE LOWER(title) LIKE LOWER(%s)
-        LIMIT 20
-    """, (f"%{search_term}%",))
-
-    results = cur.fetchall()
-    conn.close()
-    return results
-
-
-def insert_book(title, author, genre, description, isbn, source="local"):
-
-
-    cur.execute("""
-        INSERT INTO book (title, author, genre, description, isbn, data_source)
-        VALUES (%s, %s, %s, %s, %s, %s)
-        RETURNING book_id
-    """, (title, author, genre, description, isbn, source))
-
-    book_id = cur.fetchone()["book_id"]
-    conn.commit()
-    conn.close()
-    return book_id
-
-
-# -------------------------------------------------------
-# BOOKSTORE + INVENTORY METHODS
-# -------------------------------------------------------
-
-def get_stores_for_book(book_id):
-
-    cur.execute("""
-        SELECT bs.store_name, bs.address, bsi.price
-        FROM book_store_inventory bsi
-        JOIN bookstore bs ON bsi.store_id = bs.store_id
-        WHERE bsi.book_id = %s
-        ORDER BY bsi.price ASC
-    """, (book_id,))
-
-    results = cur.fetchall()
-    conn.close()
-    return results
-
-
-def insert_inventory_entry(book_id, store_id, price):
-
-    cur.execute("""
-        INSERT INTO book_store_inventory (book_id, store_id, price)
-        VALUES (%s, %s, %s)
-        ON CONFLICT (book_id, store_id)
-        DO UPDATE SET price = EXCLUDED.price;
-    """, (book_id, store_id, price))
-
-    conn.commit()
-    conn.close()
-
-
-# -------------------------------------------------------
-# SIMILARITY METHODS
-# -------------------------------------------------------
-
-def get_similar_books(book_id, top_n=10):
-
-    cur.execute("""
-        SELECT b2.*, bs.similarity_score
-        FROM book_similarity bs
-        JOIN book b2 ON b2.book_id = bs.book_id_2
-        WHERE bs.book_id_1 = %s
-        ORDER BY bs.similarity_score DESC
-        LIMIT %s
-    """, (book_id, top_n))
-
-    results = cur.fetchall()
-    conn.close()
-    return results
-
-
-def insert_similarity(book1, book2, score):
-
-    cur.execute("""
-        INSERT INTO book_similarity (book_id_1, book_id_2, similarity_score)
-        VALUES (%s, %s, %s)
-        ON CONFLICT (book_id_1, book_id_2)
-        DO UPDATE SET similarity_score = EXCLUDED.similarity_score;
-    """, (book1, book2, score))
-
-    conn.commit()
-    conn.close()
-
-
-# -------------------------------------------------------
-# SEARCH LOGGING METHODS
-# -------------------------------------------------------
-
-def log_search_query(term, matched_book_id=None):
-
-    cur.execute("""
-        INSERT INTO search_query (search_term, matched_book_id)
-        VALUES (%s, %s)
-    """, (term, matched_book_id))
-
-    conn.commit()
-    conn.close()
-
-
-def get_recent_searches(limit=20):
-
-    cur.execute("""
-        SELECT * FROM search_query
-        ORDER BY query_id DESC
-        LIMIT %s
-    """, (limit,))
-
-    results = cur.fetchall()
-    conn.close()
-    return results
-
-
-# -------------------------------------------------------
-# HEALTH CHECK (useful for backend readiness)
-# -------------------------------------------------------
-
-def health_check():
-    try:
-        conn.close()
-        return True
-    except:
-        return False

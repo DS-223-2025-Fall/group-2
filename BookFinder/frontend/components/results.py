@@ -38,6 +38,9 @@ def render_results():
         st.session_state["last_query"] = query2
         st.session_state["exact"] = exact
         st.session_state["suggestions"] = suggestions
+        # Update URL
+        st.query_params["view"] = "results"
+        st.query_params["q"] = query2
         st.rerun()
 
     # Get current results from session state
@@ -63,19 +66,21 @@ def render_results():
         )
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # Display book cards
-    if exact:
-        # Center exact match cards
-        for idx, book in enumerate(exact):
-            cols = st.columns([1, 2, 1])
+    # Display book cards in a grid using columns
+    books_to_show = exact if exact else suggestions
+    
+    # Display books in rows of 2 columns
+    for i in range(0, len(books_to_show), 2):
+        cols = st.columns(2)
+        
+        # First book in the row
+        with cols[0]:
+            render_book_card(books_to_show[i], books_to_show[i].get("id"), index=i)
+        
+        # Second book in the row (if exists)
+        if i + 1 < len(books_to_show):
             with cols[1]:
-                render_book_card(book, book.get("id"), index=idx)
-            st.write("")
-    else:
-        # Grid layout for suggestions
-        st.markdown('<div class="recommend-grid">', unsafe_allow_html=True)
-        for idx, book in enumerate(suggestions):
-            st.markdown("<div>", unsafe_allow_html=True)
-            render_book_card(book, book.get("id"), index=idx)
-            st.markdown("</div>", unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+                render_book_card(books_to_show[i + 1], books_to_show[i + 1].get("id"), index=i + 1)
+    
+    # Add bottom padding
+    st.markdown('<div style="height: 3rem;"></div>', unsafe_allow_html=True)

@@ -25,6 +25,7 @@ def get_book_image(book_title: str) -> str:
 def render_book_card(book: dict, book_id: int = None, index: int = 0):
     """
     Render a book card with cover, title, author, description, and store info.
+    The entire card is clickable if book_id is provided.
     """
     full_stars = int(round(book["rating"]))
     stars = "★" * full_stars + "☆" * (5 - full_stars)
@@ -33,23 +34,52 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
     # Get book image based on title (consistent but random-looking)
     book_image = get_book_image(book.get("title", ""))
     
-    st.markdown(
-        f"""
-        <div class="book-card-container">
-          <div class="book-card">
-            <div class="book-card-inner">
-        """,
-        unsafe_allow_html=True,
-    )
-    
-    # Display actual book image using Streamlit's image widget
-    col_img, col_content = st.columns([1, 4])
-    with col_img:
-        st.image(book_image, use_container_width=True)
-    
-    with col_content:
-        st.markdown(f"""
-              <div class="book-main">
+    # Clickable card
+    if book_id is not None:
+        # Wrap everything in a container for relative positioning
+        with st.container():
+            # Create columns for layout
+            col1, col2 = st.columns([1, 4])
+            
+            with col1:
+                st.image(book_image, use_container_width=True)
+            
+            with col2:
+                st.markdown(f"""
+                <div class="book-card-content">
+                    <div class="book-title">{book['title']}</div>
+                    <div class="book-author">by {book['author']}</div>
+                    <div class="book-desc">{book['description']}</div>
+                    <div class="book-rating-row">
+                      <span class="book-stars">{stars}</span>
+                      <span class="book-rating-value">{book['rating']}</span>
+                    </div>
+                    <div class="book-bottom-row">
+                      <div class="book-store-pill">
+                        <span class="book-store-icon"></span>
+                        <span>
+                          <span class="book-store-name">{store['name']}</span>
+                          <span class="book-price">{store['price']} {store['currency']}</span>
+                        </span>
+                      </div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Hidden button inside the content column to make card clickable
+                if st.button("​", key=f"card_btn_{book_id}_{index}", type="secondary"):
+                    go_to_detail(book_id)
+                    st.rerun()
+    else:
+        # Non-clickable card
+        col1, col2 = st.columns([1, 4])
+        
+        with col1:
+            st.image(book_image, use_container_width=True)
+        
+        with col2:
+            st.markdown(f"""
+            <div class="book-card-content">
                 <div class="book-title">{book['title']}</div>
                 <div class="book-author">by {book['author']}</div>
                 <div class="book-desc">{book['description']}</div>
@@ -65,22 +95,6 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
                       <span class="book-price">{store['price']} {store['currency']}</span>
                     </span>
                   </div>
-        """,
-        unsafe_allow_html=True,
-    )
-        
-        # Add View button using Streamlit button (only if book_id is provided)
-        if book_id is not None:
-            if st.button("View", key=f"view_book_{book_id}_{index}", type="primary"):
-                go_to_detail(book_id)
-                st.rerun()
-        
-        st.markdown("""
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            """, unsafe_allow_html=True)

@@ -31,16 +31,50 @@ def sync_query_params():
     """Sync session state from URL query parameters for browser navigation."""
     query_params = st.query_params
     
+    # Handle OAuth callback parameters (token, email, name)
+    if "token" in query_params:
+        st.session_state["auth_token"] = query_params["token"]
+        if "email" in query_params:
+            st.session_state["user_email"] = query_params["email"]
+        if "name" in query_params:
+            st.session_state["user_name"] = query_params["name"]
+        
+        # Set success message
+        st.session_state["login_success_message"] = "Successfully logged in!"
+        
+        # Clear the callback params from URL and redirect to home
+        st.query_params.clear()
+        st.session_state["view"] = "home"
+        st.rerun()
+        return
+    
     # Handle view parameter
     if "view" in query_params:
         param_view = query_params["view"]
         if param_view in ["home", "results", "detail"]:
             st.session_state["view"] = param_view
+            
+            # Handle detail view
             if param_view == "detail" and "book_id" in query_params:
                 try:
                     st.session_state["selected_book_id"] = int(query_params["book_id"])
                 except ValueError:
                     pass
+            
+            # Handle results view - restore search if we have a query
+            if param_view == "results" and "q" in query_params:
+                search_query = query_params["q"]
+                # Only re-search if the query is different from what we have
+                if st.session_state.get("last_query") != search_query:
+                    from utils.search import simple_search
+                    st.session_state["last_query"] = search_query
+                    exact, suggestions = simple_search(search_query)
+                    st.session_state["exact"] = exact
+                    st.session_state["suggestions"] = suggestions
+    elif "q" not in query_params:
+        # No view param and no query - default to home
+        if st.session_state.get("view") not in ["home", "results", "detail"]:
+            st.session_state["view"] = "home"
 
 
 def go_home():
@@ -50,6 +84,8 @@ def go_home():
     st.session_state["exact"] = []
     st.session_state["suggestions"] = []
     st.session_state["selected_book_id"] = None
+    # Update URL
+    st.query_params.clear()
 
 
 def go_to_detail(book_id: int):
@@ -59,8 +95,15 @@ def go_to_detail(book_id: int):
     Args:
         book_id: The ID of the book to display
     """
+    if book_id is None:
+        st.error("Error: Book ID is missing")
+        return
+        
     st.session_state["view"] = "detail"
     st.session_state["selected_book_id"] = book_id
+    # Update URL - keep search query if it exists for back navigation
+    st.query_params["view"] = "detail"
+    st.query_params["book_id"] = str(book_id)
 
 
 def go_back_to_home():
@@ -75,6 +118,9 @@ def go_back_to_home():
 def go_to_login():
     """Navigate to login page."""
     st.session_state["view"] = "login"
+    # Update URL
+    st.query_params.clear()
+    st.query_params["view"] = "login"
 
 
 def is_authenticated() -> bool:

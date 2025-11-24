@@ -7,6 +7,12 @@ import os
 PAGE_TITLE = "FindMyRead"
 PAGE_ICON = "📚"
 LAYOUT = "wide"
+INITIAL_SIDEBAR_STATE = "collapsed"
+MENU_ITEMS = {
+    'Get Help': None,
+    'Report a bug': None,
+    'About': None
+}
 
 # API Configuration
 # Reads from environment variable first, falls back to localhost for development

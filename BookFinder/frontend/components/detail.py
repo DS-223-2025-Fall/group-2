@@ -4,7 +4,7 @@ Displays comprehensive information about a selected book.
 """
 import streamlit as st
 from utils.search import get_book_by_id
-from utils.session import go_back_to_home
+from utils.session import go_back_to_home, go_home
 from components.rating_widget import render_ratings_section
 
 
@@ -38,9 +38,24 @@ def render_detail():
         go_back_to_home()
         return
     
-    # Back button
-    if st.button("← Back to Home", key="detail_back"):
-        go_back_to_home()
+    # Back button - go to results if we have a search query, otherwise home
+    last_query = st.session_state.get("last_query", "")
+    has_results = st.session_state.get("exact") or st.session_state.get("suggestions")
+    
+    if last_query and has_results:
+        back_label = "← Back to Results"
+    else:
+        back_label = "← Back to Home"
+    
+    if st.button(back_label, key="detail_back"):
+        if last_query and has_results:
+            # Go back to results
+            st.session_state["view"] = "results"
+            st.query_params["view"] = "results"
+            st.query_params["q"] = last_query
+        else:
+            # Go back to home
+            go_home()
         st.rerun()
     
     # Header with title and author
