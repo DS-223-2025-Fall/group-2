@@ -233,13 +233,15 @@ def get_styles():
     div[data-testid="stTextInput"] input {
         background: var(--search-bg) !important;
         color: var(--search-text) !important;
-        border-radius: 999px !important;
-        border: none !important;
-        padding: 0.9rem 1.4rem !important;
-        font-size: 1rem !important;
+        border-radius: 8px !important;
+        border: 1.5px solid #d0c4b0 !important;
+        padding: 0.85rem 1.2rem !important;
+        font-size: 0.95rem !important;
         transition: all 0.2s ease !important;
         box-shadow: none !important;
         outline: none !important;
+        height: 52px !important;
+        box-sizing: border-box !important;
     }
     
     /* Fix BaseWeb container styling */
@@ -247,18 +249,18 @@ def get_styles():
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        border-radius: 999px !important;
+        border-radius: 8px !important;
     }
     
     div[data-testid="stTextInput"] input:focus {
-        box-shadow: none !important;
+        box-shadow: 0 0 0 2px rgba(127,106,77,0.15) !important;
         outline: none !important;
-        border: none !important;
+        border: 1.5px solid #b5a797 !important;
     }
     
     div[data-testid="stTextInput"] input:focus-visible {
         outline: none !important;
-        box-shadow: none !important;
+        box-shadow: 0 0 0 2px rgba(127,106,77,0.15) !important;
     }
     
     div[data-testid="stTextInput"] input::placeholder {
@@ -291,11 +293,21 @@ def get_styles():
         letter-spacing: 0.01em;
     }
 
-    /* Hero search form - simple container without unified pill */
+    /* Hero search form - horizontal layout */
     div[data-testid="stForm"][aria-label="hero_search"] {
         margin: 1.5rem auto 1rem auto;
-        max-width: 750px;
+        max-width: 850px;
         padding: 0;
+    }
+    
+    /* Make form columns align horizontally without gaps */
+    div[data-testid="stForm"][aria-label="hero_search"] [data-testid="column"] {
+        padding: 0 !important;
+        gap: 0.5rem !important;
+    }
+    
+    div[data-testid="stForm"][aria-label="hero_search"] [data-testid="stHorizontalBlock"] {
+        gap: 0.5rem !important;
     }
 
     .search-helper-text {
@@ -306,29 +318,33 @@ def get_styles():
         font-style: italic;
     }
 
-    /* Search button styling: light background, dark text, thin border */
+    /* Search button styling: compact with border */
     button[type="submit"] {
-        background: var(--search-btn-bg) !important;
+        background: #ffffff !important;
         color: var(--search-btn-text) !important;
-        border: 1px solid var(--logo-border) !important;
-        border-radius: 999px !important;
-        padding: 0.9rem 2rem !important;
-        font-weight: 600 !important;
-        font-size: 1rem !important;
+        border: 1.5px solid #d0c4b0 !important;
+        border-radius: 8px !important;
+        padding: 0.85rem 1.8rem !important;
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
         transition: all 0.2s ease !important;
         cursor: pointer !important;
         box-shadow: none !important;
         margin: 0 !important;
+        white-space: nowrap !important;
+        height: 52px !important;
     }
     
     button[type="submit"]:hover {
-        background: var(--search-btn-hover) !important;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+        background: #f8f6f3 !important;
+        border-color: #b5a797 !important;
+        transform: translateY(0);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
     }
     
     button[type="submit"]:active {
         transform: translateY(0);
+        background: #f0ede8 !important;
         box-shadow: none !important;
     }
 

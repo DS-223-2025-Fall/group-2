@@ -37,6 +37,12 @@ def sync_query_params():
             book_id = int(query_params["book_id"])
             st.session_state["view"] = "detail"
             st.session_state["selected_book_id"] = book_id
+            # Update query params to include view=detail for persistence
+            update_params = {"view": "detail", "book_id": str(book_id)}
+            # Preserve the search query if it exists
+            if "q" in query_params:
+                update_params["q"] = query_params["q"]
+            st.query_params.update(update_params)
             return
         except ValueError:
             pass
