@@ -38,7 +38,6 @@ def render_results():
         st.session_state["last_query"] = query2
         st.session_state["exact"] = exact
         st.session_state["suggestions"] = suggestions
-        st.query_params.update({"view": "results", "q": query2})
         st.rerun()
 
     # Get current results from session state

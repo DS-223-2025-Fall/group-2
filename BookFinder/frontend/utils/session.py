@@ -31,22 +31,6 @@ def sync_query_params():
     """Sync session state from URL query parameters for browser navigation."""
     query_params = st.query_params
     
-    # Handle direct book_id parameter (from book card links)
-    if "book_id" in query_params and "view" not in query_params:
-        try:
-            book_id = int(query_params["book_id"])
-            st.session_state["view"] = "detail"
-            st.session_state["selected_book_id"] = book_id
-            # Update query params to include view=detail for persistence
-            update_params = {"view": "detail", "book_id": str(book_id)}
-            # Preserve the search query if it exists
-            if "q" in query_params:
-                update_params["q"] = query_params["q"]
-            st.query_params.update(update_params)
-            return
-        except ValueError:
-            pass
-    
     # Handle view parameter
     if "view" in query_params:
         param_view = query_params["view"]
@@ -66,7 +50,6 @@ def go_home():
     st.session_state["exact"] = []
     st.session_state["suggestions"] = []
     st.session_state["selected_book_id"] = None
-    st.query_params.clear()
 
 
 def go_to_detail(book_id: int):
@@ -78,19 +61,20 @@ def go_to_detail(book_id: int):
     """
     st.session_state["view"] = "detail"
     st.session_state["selected_book_id"] = book_id
-    st.query_params.update({"view": "detail", "book_id": str(book_id)})
 
 
 def go_back_to_home():
     """Navigate back to home page."""
     st.session_state["view"] = "home"
-    st.query_params.clear()
+    st.session_state["last_query"] = ""
+    st.session_state["exact"] = []
+    st.session_state["suggestions"] = []
+    st.session_state["selected_book_id"] = None
 
 
 def go_to_login():
     """Navigate to login page."""
     st.session_state["view"] = "login"
-    st.query_params.update({"view": "login"})
 
 
 def is_authenticated() -> bool:

@@ -1,4 +1,5 @@
 import streamlit as st
+from utils.session import go_to_detail
 
 
 def get_book_image(book_title: str) -> str:
@@ -28,17 +29,6 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
     full_stars = int(round(book["rating"]))
     stars = "★" * full_stars + "☆" * (5 - full_stars)
     store = book["store"]
-
-    # Build optional View button HTML (only if book_id is provided)
-    # Include the current search query in the URL to preserve it
-    view_button_html = ""
-    if book_id is not None:
-        # Get current query from session state to preserve it in navigation
-        current_query = st.session_state.get("last_query", "")
-        if current_query:
-            view_button_html = f'<div class="book-view-btn-wrapper"><a href="?book_id={book_id}&q={current_query}" class="book-view-btn">View</a></div>'
-        else:
-            view_button_html = f'<div class="book-view-btn-wrapper"><a href="?book_id={book_id}" class="book-view-btn">View</a></div>'
 
     # Get book image based on title (consistent but random-looking)
     book_image = get_book_image(book.get("title", ""))
@@ -75,7 +65,17 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
                       <span class="book-price">{store['price']} {store['currency']}</span>
                     </span>
                   </div>
-                  {view_button_html}
+        """,
+        unsafe_allow_html=True,
+    )
+        
+        # Add View button using Streamlit button (only if book_id is provided)
+        if book_id is not None:
+            if st.button("View", key=f"view_book_{book_id}_{index}", type="primary"):
+                go_to_detail(book_id)
+                st.rerun()
+        
+        st.markdown("""
                 </div>
               </div>
             </div>
