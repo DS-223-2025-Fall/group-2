@@ -31,4 +31,4 @@ API_ENDPOINTS = {
 API_TIMEOUT = 10
 
 # Enable mock data fallback if API fails
-USE_MOCK_FALLBACK = True
+USE_MOCK_FALLBACK = False
