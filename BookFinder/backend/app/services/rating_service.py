@@ -1,27 +1,48 @@
 from typing import List
+from sqlalchemy.orm import Session
+from db.postgres import get_db
+from db.postgres_service import add_or_update_rating
 from schemas.rating_schema import RatingResponse, RatingCreate
+from db.models import Ratings, AppUser
 
-ratings_db: List[RatingResponse] = [
-    RatingResponse(bookId="b1", user_email="alice@example.com", rating=5, comment="Great book!"),
-    RatingResponse(bookId="b1", user_email="bob@example.com", rating=4, comment="Enjoyed it."),
-    RatingResponse(bookId="b2", user_email="charlie@example.com", rating=3, comment="It was okay."),
-    RatingResponse(bookId="b2", user_email="alice@example.com", rating=4, comment="Good read."),
-    RatingResponse(bookId="b3", user_email="bob@example.com", rating=2, comment="Not my type."),
-] # Get from DB later
-
-def add_rating(rating: RatingCreate, user_email: str) -> RatingResponse:
-    for r in ratings_db:
-        if r.bookId == rating.bookId and r.user_email == user_email:
-            r.rating = rating.rating
-            return r
+# -------------------------
+# Add or update rating
+# -------------------------
+def add_rating(db: Session, rating: RatingCreate, user_email: str) -> RatingResponse:
+    # First, get the user_id from email
+    user = db.query(AppUser).filter(AppUser.email == user_email).first()
+    if not user:
+        raise ValueError(f"User with email {user_email} not found")
     
-    new_rating = RatingResponse(bookId=rating.bookId, 
-                                user_email=user_email, 
-                                rating=rating.rating,     
-                                comment=getattr(rating, 'comment', None)  # Pass None if it doesn't exist
-)
-    ratings_db.append(new_rating)
-    return new_rating
+    # Call the generic function from db.py
+    db_rating = add_or_update_rating(
+        db=db,
+        user_id=user.user_id,
+        book_id=rating.bookId,
+        rating_value=rating.rating,
+        comment=getattr(rating, "comment", None)
+    )
+    
+    # Return RatingResponse
+    return RatingResponse(
+        bookId=str(db_rating.book_id),
+        user_email=user_email,
+        rating=db_rating.rating,
+        comment=db_rating.comment
+    )
 
-def get_ratings_for_book(book_id: str) -> List[RatingResponse]:
-    return [r for r in ratings_db if r.bookId == book_id]
+# -------------------------
+# Get all ratings for a book
+# -------------------------
+def get_ratings_for_book(db: Session, book_id: str) -> List[RatingResponse]:
+    ratings = db.query(Ratings).join(AppUser).filter(Ratings.book_id == book_id).all()
+
+    return [
+        RatingResponse(
+            bookId=str(r.book_id),
+            user_email=r.user.email,
+            rating=r.rating,
+            comment=r.comment
+        )
+        for r in ratings
+    ]

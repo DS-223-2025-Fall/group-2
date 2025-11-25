@@ -44,6 +44,9 @@ def render_home():
         st.session_state["last_query"] = query
         st.session_state["exact"] = exact
         st.session_state["suggestions"] = suggestions
+        # Update URL
+        st.query_params["view"] = "results"
+        st.query_params["q"] = query
         st.rerun()
 
     # Bookstore strip at bottom

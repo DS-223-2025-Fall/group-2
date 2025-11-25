@@ -6,7 +6,7 @@ This app helps users discover books across multiple Armenian bookstores.
 """
 import streamlit as st
 from urllib.parse import unquote
-from config.settings import PAGE_TITLE, PAGE_ICON, LAYOUT
+from config.settings import PAGE_TITLE, PAGE_ICON, LAYOUT, INITIAL_SIDEBAR_STATE, MENU_ITEMS
 from styles.main_styles import get_styles
 from utils.session import (
     initialize_session_state,
@@ -20,6 +20,14 @@ from components.detail import render_detail
 from components.login import render_login
 from components.auth import render_auth_button
 
+st.set_page_config(
+    page_title=PAGE_TITLE, 
+    page_icon=PAGE_ICON, 
+    layout=LAYOUT,
+    initial_sidebar_state=INITIAL_SIDEBAR_STATE,
+    menu_items=MENU_ITEMS
+)
+st.markdown(get_styles(), unsafe_allow_html=True)
 
 def handle_auth_callback():
     """Handle authentication callback from Google OAuth."""
@@ -42,8 +50,6 @@ def handle_auth_callback():
 
 def main():
     """Main application entry point."""
-    st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON, layout=LAYOUT)
-    st.markdown(get_styles(), unsafe_allow_html=True)
     initialize_session_state()
 
     # Handle OAuth callback first
@@ -52,12 +58,14 @@ def main():
     # Then sync other query params
     sync_query_params()
 
-    # Render top bar with logo and auth in a navbar-style container
-    col1, col2, col3 = st.columns([1.5, 7, 1.5])
+    # Render top bar with logo and auth in a full-width navbar
+    st.markdown('<div class="navbar-wrapper">', unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns([1, 8, 1])
 
     with col1:
         st.markdown(
-            '<div class="app-logo"><div class="logo-icon">F</div><span>FindMyRead</span></div>',
+            '<div class="app-logo"><div class="logo-icon">F</div><span>indMyRead</span></div>',
             unsafe_allow_html=True,
         )
 
@@ -78,7 +86,8 @@ def main():
 
                 go_to_login()
                 st.rerun()
-
+    
+    st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('<div style="margin-bottom: 0.5rem;"></div>', unsafe_allow_html=True)
 
     # Show login success message if present
@@ -87,9 +96,9 @@ def main():
         # Clear the message after displaying it once
         st.session_state["login_success_message"] = None
 
-    # Sidebar for detailed auth info
-    with st.sidebar:
-        render_auth_button()
+    # Sidebar removed - not using sidebar anymore
+    # with st.sidebar:
+    #     render_auth_button()
 
     # Route to appropriate view based on session state
     current_view = st.session_state["view"]
