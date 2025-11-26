@@ -46,7 +46,6 @@ class Book(Base):
     genre = Column(String(100))
     description = Column(Text)
     language = Column(String(50))
-    data_source = Column(String(100))
     url = Column(String(255))
 
     inventory = relationship("BookStoreInventory", back_populates="book")
@@ -116,20 +115,6 @@ class BookSimilarity(Base):
     book1 = relationship("Book", foreign_keys=[book_id_1], back_populates="similarities_1")
     book2 = relationship("Book", foreign_keys=[book_id_2], back_populates="similarities_2")
 
-
-# ==========================================
-# SEARCH_QUERY TABLE
-# ==========================================
-class SearchQuery(Base):
-    __tablename__ = "search_query"
-
-    query_id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("app_user.user_id"))
-    search_term = Column(String(255), nullable=False)
-    matched_book_id = Column(Integer, ForeignKey("book.book_id"))
-
-    user = relationship("AppUser", back_populates="queries")
-    matched_book = relationship("Book")
 
 
 # ==========================================
