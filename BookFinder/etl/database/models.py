@@ -40,7 +40,7 @@ class Book(Base):
     __tablename__ = "book"
 
     book_id = Column(Integer, primary_key=True)
-    ISBN = Column(String(50), unique=True)
+    ISBN = Column(String(50), primary_key=True)
     title = Column(String(255), nullable=False)
     author = Column(String(255))
     genre = Column(String(100))
@@ -91,7 +91,7 @@ class BookStoreInventory(Base):
     )
 
     inventory_id = Column(Integer, primary_key=True)
-    book_id = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
+    ISBN = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
     store_id = Column(Integer, ForeignKey("bookstore.store_id", ondelete="CASCADE"), nullable=False)
     price = Column(DECIMAL(10, 2))
 
@@ -140,7 +140,7 @@ class Ratings(Base):
 
     rating_id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("app_user.user_id", ondelete="CASCADE"), nullable=False)
-    book_id = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
+    ISBN = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
     rating = Column(Integer)
     comment = Column(Text)
 
