@@ -40,12 +40,13 @@ class Book(Base):
     __tablename__ = "book"
 
     book_id = Column(Integer, primary_key=True)
-    ISBN = Column(String(50), primary_key=True)
+    ISBN = Column(String(50), unique=True)
     title = Column(String(255), nullable=False)
     author = Column(String(255))
     genre = Column(String(100))
     description = Column(Text)
     language = Column(String(50))
+    data_source = Column(String(100))
     url = Column(String(255))
 
     inventory = relationship("BookStoreInventory", back_populates="book")
@@ -90,7 +91,7 @@ class BookStoreInventory(Base):
     )
 
     inventory_id = Column(Integer, primary_key=True)
-    ISBN = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
+    book_id = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
     store_id = Column(Integer, ForeignKey("bookstore.store_id", ondelete="CASCADE"), nullable=False)
     price = Column(DECIMAL(10, 2))
 
@@ -116,6 +117,20 @@ class BookSimilarity(Base):
     book2 = relationship("Book", foreign_keys=[book_id_2], back_populates="similarities_2")
 
 
+# ==========================================
+# SEARCH_QUERY TABLE
+# ==========================================
+class SearchQuery(Base):
+    __tablename__ = "search_query"
+
+    query_id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("app_user.user_id"))
+    search_term = Column(String(255), nullable=False)
+    matched_book_id = Column(Integer, ForeignKey("book.book_id"))
+
+    user = relationship("AppUser", back_populates="queries")
+    matched_book = relationship("Book")
+
 
 # ==========================================
 # RATINGS TABLE
@@ -125,7 +140,7 @@ class Ratings(Base):
 
     rating_id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("app_user.user_id", ondelete="CASCADE"), nullable=False)
-    ISBN = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
+    book_id = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
     rating = Column(Integer)
     comment = Column(Text)
 
