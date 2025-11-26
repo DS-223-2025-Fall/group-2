@@ -44,30 +44,36 @@ def load_csv_to_table(table_name: str, csv_path: str) -> None:
 @app.post("/load_all_csv")
 def trigger_data_ingestion():
     """
-    Triggers the process to load all CSV files in the 'data/' folder to the database.
+    Triggers the process to load all CSV files in the specified order.
     """
     logger.info("Starting data ingestion process via API trigger.")
-    
-    folder_path = "data/*.csv"
-    files = glob.glob(folder_path)
-    files = sorted(files, key=os.path.getmtime)
-    base_names = [path.splitext(path.basename(file))[0] for file in files]
-    
+
+    # Define explicit order of CSVs/tables
+    table_order = [
+        "bookstore",
+        "book",
+        "book_store_inventory",
+    ]
+
     successful_tables = []
     failed_tables = {}
 
-    for table in base_names:
+    for table in table_order:
+        csv_path = f"data/{table}.csv"
+        if not path.exists(csv_path):
+            logger.warning(f"CSV file not found for table: {table}, skipping.")
+            continue
+
         try:
             logger.info(f"Attempting to load data into table: {table}")
-            load_csv_to_table(table, path.join("data/", f"{table}.csv"))
+            load_csv_to_table(table, csv_path)
             successful_tables.append(table)
         except Exception as e:
             logger.error(f"Failed to ingest table {table}. Error: {e}")
             failed_tables[table] = str(e)
 
     if failed_tables:
-        logger.error(f"Ingestion completed with failures.")
-        # Return a 500 status if any table failed to load
+        logger.error("Ingestion completed with failures.")
         raise HTTPException(
             status_code=500,
             detail={
@@ -76,7 +82,7 @@ def trigger_data_ingestion():
                 "failed_tables": failed_tables
             }
         )
-    
+
     logger.info("Tables are fully populated.")
     return {"message": "Tables are fully populated.", "successful_tables": successful_tables}
 

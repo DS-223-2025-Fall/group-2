@@ -39,13 +39,13 @@ class AppUser(Base):
 class Book(Base):
     __tablename__ = "book"
 
-    book_id = Column(Integer, primary_key=True)
     ISBN = Column(String(50), primary_key=True)
     title = Column(String(255), nullable=False)
     author = Column(String(255))
     genre = Column(String(100))
     description = Column(Text)
     language = Column(String(50))
+    data_source = Column(String(100))
     url = Column(String(255))
 
     inventory = relationship("BookStoreInventory", back_populates="book")
@@ -86,11 +86,11 @@ class Bookstore(Base):
 class BookStoreInventory(Base):
     __tablename__ = "book_store_inventory"
     __table_args__ = (
-        UniqueConstraint("book_id", "store_id", name="idx_inventory_unique"),
+        UniqueConstraint("ISBN", "store_id", name="idx_inventory_unique"),
     )
 
     inventory_id = Column(Integer, primary_key=True)
-    ISBN = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
+    ISBN = Column(String(50), ForeignKey("book.ISBN", ondelete="CASCADE"), nullable=False)
     store_id = Column(Integer, ForeignKey("bookstore.store_id", ondelete="CASCADE"), nullable=False)
     price = Column(DECIMAL(10, 2))
 
@@ -104,17 +104,31 @@ class BookStoreInventory(Base):
 class BookSimilarity(Base):
     __tablename__ = "book_similarity"
     __table_args__ = (
-        UniqueConstraint("book_id_1", "book_id_2", name="idx_unique_similarity"),
+        UniqueConstraint("ISBN_1", "ISBN_2", name="idx_unique_similarity"),
     )
 
     similarity_id = Column(Integer, primary_key=True)
-    book_id_1 = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
-    book_id_2 = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
+    ISBN_1 = Column(String(50), ForeignKey("book.ISBN", ondelete="CASCADE"), nullable=False)
+    ISBN_2 = Column(String(50), ForeignKey("book.ISBN", ondelete="CASCADE"), nullable=False)
     similarity_score = Column(Float)
 
-    book1 = relationship("Book", foreign_keys=[book_id_1], back_populates="similarities_1")
-    book2 = relationship("Book", foreign_keys=[book_id_2], back_populates="similarities_2")
+    book1 = relationship("Book", foreign_keys=[ISBN_1], back_populates="similarities_1")
+    book2 = relationship("Book", foreign_keys=[ISBN_2], back_populates="similarities_2")
 
+
+# ==========================================
+# SEARCH_QUERY TABLE
+# ==========================================
+class SearchQuery(Base):
+    __tablename__ = "search_query"
+
+    query_id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("app_user.user_id"))
+    search_term = Column(String(50), nullable=False)
+    matched_book_ISBN = Column(String(50), ForeignKey("book.ISBN"))
+
+    user = relationship("AppUser", back_populates="queries")
+    matched_book = relationship("Book")
 
 
 # ==========================================
@@ -125,11 +139,9 @@ class Ratings(Base):
 
     rating_id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("app_user.user_id", ondelete="CASCADE"), nullable=False)
-    ISBN = Column(Integer, ForeignKey("book.book_id", ondelete="CASCADE"), nullable=False)
+    ISBN = Column(String(50), ForeignKey("book.ISBN", ondelete="CASCADE"), nullable=False)
     rating = Column(Integer)
     comment = Column(Text)
 
     user = relationship("AppUser", back_populates="ratings")
     book = relationship("Book")
-    
-    
