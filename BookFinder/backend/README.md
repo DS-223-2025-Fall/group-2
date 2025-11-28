@@ -31,11 +31,6 @@ The backend reads configuration from `.env` or environment variables: This is fo
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 API_SECRET_KEY=your-jwt-secret
-CALLBACK_URL=http://localhost:8501
-DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/postgres
-DB_USER=postgres
-DB_PASSWORD=postgres
-DB_NAME=db
 ```
 ---
 
@@ -44,7 +39,7 @@ DB_NAME=db
 ### **Books**
 
 * **GET /books**
-  Retrieve list of books.
+  Retrieve list of books (dummy data).
 
 **Request Params (JSON):**
 
@@ -173,3 +168,7 @@ docker run -d -p 8000:8000 backend-api
 * `/books` and `/ratings` endpoints can be tested
 
 ---
+
+## **Notes**
+
+* Filling `.env` is not needed yet, posting a rating will be available in the next milestone

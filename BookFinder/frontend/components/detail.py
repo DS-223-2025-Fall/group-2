@@ -59,10 +59,18 @@ def render_detail():
         st.rerun()
     
     # Header with title and author
+    # Get language for display
+    language = book.get("language", "")
+    if language and language.strip() and language.strip().lower() not in ["unknown", ""]:
+        language_display = language.split(",")[0].strip()
+        author_info = f"by {book['author']} • {language_display}"
+    else:
+        author_info = f"by {book['author']}"
+    
     st.markdown(f"""
         <div class="detail-header">
             <div class="detail-title">{book['title']}</div>
-            <div class="detail-author">by {book['author']}</div>
+            <div class="detail-author">{author_info}</div>
         </div>
     """, unsafe_allow_html=True)
     
@@ -72,17 +80,28 @@ def render_detail():
     with left:
         # Book cover with actual image
         book_image = get_book_image(book.get('title', ''))
-        st.image(book_image, use_container_width=True)
+        st.image(book_image, width='stretch')
         
-        # Rating with stars
-        full_stars = int(round(book["rating"]))
-        stars = "★" * full_stars + "☆" * (5 - full_stars)
-        st.markdown(f"""
-            <div class="detail-meta">
-                <span class="detail-stars">{stars}</span>
-                <span>{book['rating']} / 5</span>
-            </div>
-        """, unsafe_allow_html=True)
+        # # Rating with stars - show "No reviews yet" if rating is 4.0 (default)
+        # rating = book.get("rating", 4.0)
+        # if rating == 4.0:  # Default rating means no real reviews
+        #     stars = "☆" * 5
+        #     st.markdown(f"""
+        #         <div class="detail-meta">
+        #             <span class="detail-stars">{stars}</span>
+        #             <span style="color: #999;">No reviews yet</span>
+        #         </div>
+        #     """, unsafe_allow_html=True)
+        # else:
+        #     # Show actual rating
+        #     full_stars = int(round(rating))
+        #     stars = "★" * full_stars + "☆" * (5 - full_stars)
+        #     st.markdown(f"""
+        #         <div class="detail-meta">
+        #             <span class="detail-stars">{stars}</span>
+        #             <span>{rating} / 5</span>
+        #         </div>
+        #     """, unsafe_allow_html=True)
         
         # Store price info (without "Available at" text)
         st.markdown(f"""

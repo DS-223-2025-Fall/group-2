@@ -50,7 +50,7 @@ def transform_book_from_api(api_book: Dict[str, Any]) -> Dict[str, Any]:
     # Create store object for our format
     store_data = {
         "name": primary_store.get("storeName", "Unknown Store") if primary_store else "Unknown Store",
-        "price": 0,  # Backend doesn't provide price yet
+        "price": int(primary_store.get("price", 0)) if primary_store else 0,  # Get price from backend
         "currency": "AMD"
     }
     
@@ -74,6 +74,8 @@ def transform_book_from_api(api_book: Dict[str, Any]) -> Dict[str, Any]:
         "store": store_data,
         "stores": stores,  # Keep all stores for potential future use
         "data_source": api_book.get("data_source", ""),
+        "match_type": api_book.get("match_type", None),  # Metadata from backend
+        "is_recommendation": api_book.get("is_recommendation", False),  # Metadata from backend
     }
 
 

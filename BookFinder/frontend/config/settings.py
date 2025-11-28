@@ -17,12 +17,13 @@ MENU_ITEMS = {
 # API Configuration
 # Reads from environment variable first, falls back to localhost for development
 BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+BACKEND_DOCKER_URL = os.getenv("BACKEND_DOCKER_URL", "http://backend:8000")
 
 # Backend URL for browser redirects (OAuth)
 # This is the URL accessible from user's browser, not from inside Docker
 # For Docker: use http://localhost:8008 (host machine port)
 # For local dev: use http://localhost:8000
-BACKEND_BROWSER_URL = os.getenv("BACKEND_BROWSER_URL")
+BACKEND_BROWSER_URL = os.getenv("BACKEND_BROWSER_URL", "http://localhost:8000")
 
 # API Endpoints
 API_ENDPOINTS = {
@@ -34,7 +35,8 @@ API_ENDPOINTS = {
 }
 
 # Request timeout (seconds)
-API_TIMEOUT = 10
+# Increased to 30s to allow for OpenAI API calls in semantic search
+API_TIMEOUT = 30
 
 # Enable mock data fallback if API fails
 USE_MOCK_FALLBACK = False

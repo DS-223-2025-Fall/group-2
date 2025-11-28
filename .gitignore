@@ -6,4 +6,10 @@ backend/app/core/__pycache__/
 backend/app/routers/__pycache__/
 backend/app/schemas/__pycache__/
 backend/app/services/__pycache__/
+backend/app/db/__pycache__/
 backend/.env
+
+# DS Service - vector stores and cache
+ds/vector_stores/
+ds/cache/
+ds/**/__pycache__/

@@ -23,7 +23,7 @@ def render_auth_button():
             st.markdown(f"**{user['name']}**")
         st.markdown(f"📧 {user['email']}")
         
-        if st.button("🚪 Logout", use_container_width=True):
+        if st.button("🚪 Logout", width='stretch'):
             logout()
             st.success("✅ Logged out successfully!")
             st.rerun()
@@ -34,7 +34,7 @@ def render_auth_button():
         st.markdown("Login to rate and review books!")
         st.markdown("<br>", unsafe_allow_html=True)
         
-        if st.button("🔑 Go to Login", use_container_width=True, type="primary"):
+        if st.button("🔑 Go to Login", width='stretch', type="primary"):
             from utils.session import go_to_login
             go_to_login()
             st.rerun()

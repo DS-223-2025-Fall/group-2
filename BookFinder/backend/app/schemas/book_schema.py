@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class BookInfoGet(BaseModel):
     search_query: str
@@ -24,7 +25,10 @@ class BookStoreInfo(BaseModel):
     email: str
     latitude: float
     longitude: float
+    price: float = 0.0  # Price of book at this store
     
 class FullBookInfo(BookInfo):
     stores: list[BookStoreInfo]
     book: BookInfo
+    match_type: Optional[str] = None  # "exact", "fuzzy", "semantic", "external", or None
+    is_recommendation: bool = False  # True if this is a recommendation, False if main result
