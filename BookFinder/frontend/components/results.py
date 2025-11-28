@@ -19,7 +19,7 @@ def render_results():
 
         with col_input:
             query2 = st.text_input(
-                "",
+                "Search query",
                 value=st.session_state["last_query"],
                 label_visibility="collapsed",
                 key="results_query",
@@ -48,39 +48,98 @@ def render_results():
     suggestions = st.session_state["suggestions"]
     query = st.session_state["last_query"]
 
-    # Header text
-    st.markdown('<div class="results-header">', unsafe_allow_html=True)
-    if exact:
+    # Separate based on match_type:
+    # - Exact and Fuzzy matches go to "Found in Bookstores"
+    # - Semantic matches (including recommendations) go to "You Might Also Like"
+    found_in_stores = [
+        book for book in exact 
+        if book.get("match_type") in ["exact", "fuzzy"]
+    ]
+    
+    similar_books = [
+        book for book in exact 
+        if book.get("match_type") == "semantic" or book.get("is_recommendation", False)
+    ]
+    
+    # Display "Found in Bookstores" section if we have exact or fuzzy matches
+    if found_in_stores:
+        st.markdown('<div class="results-header">', unsafe_allow_html=True)
         st.markdown('<div class="result-title">Found in Bookstores</div>', unsafe_allow_html=True)
-        count_text = f"{len(exact)} result" + ("s" if len(exact) != 1 else "")
+        count_text = f"{len(found_in_stores)} result" + ("s" if len(found_in_stores) != 1 else "")
         st.markdown(
             f'<div class="result-subtitle">{count_text} for "{query}"</div>',
             unsafe_allow_html=True,
         )
-    else:
-        st.markdown('<div class="result-title">You Might Like These</div>', unsafe_allow_html=True)
-        subtitle_text = f'We couldn\'t find an exact match for "{query}", but here are some similar books'
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Display books in rows of 2 columns
+        for i in range(0, len(found_in_stores), 2):
+            cols = st.columns(2)
+            
+            with cols[0]:
+                render_book_card(found_in_stores[i], found_in_stores[i].get("id"), index=i)
+            
+            if i + 1 < len(found_in_stores):
+                with cols[1]:
+                    render_book_card(found_in_stores[i + 1], found_in_stores[i + 1].get("id"), index=i + 1)
+    
+    # Display "You Might Also Like" section for semantic matches
+    if similar_books:
+        # Add spacing if we already showed "Found in Bookstores"
+        if found_in_stores:
+            st.markdown('<div style="height: 2rem;"></div>', unsafe_allow_html=True)
+        
+        st.markdown('<div class="results-header">', unsafe_allow_html=True)
+        
+        # Different title/subtitle based on whether we found exact/fuzzy matches
+        if found_in_stores:
+            st.markdown('<div class="result-title">You Might Also Like</div>', unsafe_allow_html=True)
+            st.markdown('<div class="result-subtitle">Similar books based on your search</div>', unsafe_allow_html=True)
+        else:
+            # Only semantic matches, no exact/fuzzy found
+            st.markdown('<div class="result-title">Not Found in Bookstores</div>', unsafe_allow_html=True)
+            st.markdown(
+                f'<div class="result-subtitle">We couldn\'t find "{query}" in our bookstores, but here are similar books</div>',
+                unsafe_allow_html=True,
+            )
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Display semantic books in rows of 2 columns
+        for i in range(0, len(similar_books), 2):
+            cols = st.columns(2)
+            
+            with cols[0]:
+                render_book_card(similar_books[i], similar_books[i].get("id"), index=i + 1000)
+            
+            if i + 1 < len(similar_books):
+                with cols[1]:
+                    render_book_card(similar_books[i + 1], similar_books[i + 1].get("id"), index=i + 1001)
+    
+    # If no results at all, show fallback suggestions
+    if not found_in_stores and not similar_books:
+        st.markdown('<div class="results-header">', unsafe_allow_html=True)
+        st.markdown('<div class="result-title">No Results Found</div>', unsafe_allow_html=True)
         st.markdown(
-            f'<div class="result-subtitle">{subtitle_text}</div>',
+            f'<div class="result-subtitle">We couldn\'t find any books matching "{query}"</div>',
             unsafe_allow_html=True,
         )
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    # Display book cards in a grid using columns
-    books_to_show = exact if exact else suggestions
-    
-    # Display books in rows of 2 columns
-    for i in range(0, len(books_to_show), 2):
-        cols = st.columns(2)
+        st.markdown("</div>", unsafe_allow_html=True)
         
-        # First book in the row
-        with cols[0]:
-            render_book_card(books_to_show[i], books_to_show[i].get("id"), index=i)
-        
-        # Second book in the row (if exists)
-        if i + 1 < len(books_to_show):
-            with cols[1]:
-                render_book_card(books_to_show[i + 1], books_to_show[i + 1].get("id"), index=i + 1)
+        # Show fallback suggestions if available
+        if suggestions:
+            st.markdown('<div style="height: 1rem;"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="result-subtitle">You might like these books:</div>', unsafe_allow_html=True)
+            
+            for i in range(0, len(suggestions), 2):
+                cols = st.columns(2)
+                
+                with cols[0]:
+                    render_book_card(suggestions[i], suggestions[i].get("id"), index=i + 2000)
+                
+                if i + 1 < len(suggestions):
+                    with cols[1]:
+                        render_book_card(suggestions[i + 1], suggestions[i + 1].get("id"), index=i + 2001)
     
     # Add bottom padding
     st.markdown('<div style="height: 3rem;"></div>', unsafe_allow_html=True)

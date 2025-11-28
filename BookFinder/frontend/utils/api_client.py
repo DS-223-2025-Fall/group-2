@@ -108,73 +108,73 @@ class APIClient:
             List of book dictionaries or None if request fails
         """
         # TODO: Remove dummy data and use actual API
-        # endpoint = API_ENDPOINTS["search_books"]
-        # params = {"search_query": query}
-        # return self._make_request("GET", endpoint, params=params)
+        endpoint = API_ENDPOINTS["search_books"]
+        params = {"search_query": query}
+        return self._make_request("GET", endpoint, params=params)
         
-        # Return dummy books for testing - matching backend API format
-        return [
-            {
-                "bookId": "1",
-                "title": "The Great Gatsby",
-                "author": "F. Scott Fitzgerald",
-                "description": "A classic novel of the Jazz Age, exploring themes of wealth, love, and the American Dream.",
-                "genre": "Fiction",
-                "language": "English",
-                "isbn": "978-0-7432-7356-5",
-                "stores": [{"storeName": "Zangak"}]
-            },
-            {
-                "bookId": "2",
-                "title": "To Kill a Mockingbird",
-                "author": "Harper Lee",
-                "description": "A gripping tale of racial injustice and childhood innocence in the American South.",
-                "genre": "Fiction",
-                "language": "English",
-                "isbn": "978-0-06-112008-4",
-                "stores": [{"storeName": "Books.am"}]
-            },
-            {
-                "bookId": "3",
-                "title": "1984",
-                "author": "George Orwell",
-                "description": "A dystopian masterpiece about totalitarianism, surveillance, and individual freedom.",
-                "genre": "Science Fiction",
-                "language": "English",
-                "isbn": "978-0-452-28423-4",
-                "stores": [{"storeName": "Bookinist"}]
-            },
-            {
-                "bookId": "4",
-                "title": "Pride and Prejudice",
-                "author": "Jane Austen",
-                "description": "A timeless romance exploring class, marriage, and society in Regency England.",
-                "genre": "Romance",
-                "language": "English",
-                "isbn": "978-0-14-143951-8",
-                "stores": [{"storeName": "Noyan Tapan"}]
-            },
-                        {
-                "bookId": "5",
-                "title": "Pride and Prejudice",
-                "author": "Jane Austen",
-                "description": "A timeless romance exploring class, marriage, and society in Regency England.",
-                "genre": "Romance",
-                "language": "English",
-                "isbn": "978-0-14-143951-8",
-                "stores": [{"storeName": "Noyan Tapan"}]
-            },
-                        {
-                "bookId": "6",
-                "title": "Pride and Prejudice",
-                "author": "Jane Austen",
-                "description": "A timeless romance exploring class, marriage, and society in Regency England.",
-                "genre": "Romance",
-                "language": "English",
-                "isbn": "978-0-14-143951-8",
-                "stores": [{"storeName": "Noyan Tapan"}]
-            }
-        ]
+        # # Return dummy books for testing - matching backend API format
+        # return [
+        #     {
+        #         "bookId": "1",
+        #         "title": "The Great Gatsby",
+        #         "author": "F. Scott Fitzgerald",
+        #         "description": "A classic novel of the Jazz Age, exploring themes of wealth, love, and the American Dream.",
+        #         "genre": "Fiction",
+        #         "language": "English",
+        #         "isbn": "978-0-7432-7356-5",
+        #         "stores": [{"storeName": "Zangak"}]
+        #     },
+        #     {
+        #         "bookId": "2",
+        #         "title": "To Kill a Mockingbird",
+        #         "author": "Harper Lee",
+        #         "description": "A gripping tale of racial injustice and childhood innocence in the American South.",
+        #         "genre": "Fiction",
+        #         "language": "English",
+        #         "isbn": "978-0-06-112008-4",
+        #         "stores": [{"storeName": "Books.am"}]
+        #     },
+        #     {
+        #         "bookId": "3",
+        #         "title": "1984",
+        #         "author": "George Orwell",
+        #         "description": "A dystopian masterpiece about totalitarianism, surveillance, and individual freedom.",
+        #         "genre": "Science Fiction",
+        #         "language": "English",
+        #         "isbn": "978-0-452-28423-4",
+        #         "stores": [{"storeName": "Bookinist"}]
+        #     },
+        #     {
+        #         "bookId": "4",
+        #         "title": "Pride and Prejudice",
+        #         "author": "Jane Austen",
+        #         "description": "A timeless romance exploring class, marriage, and society in Regency England.",
+        #         "genre": "Romance",
+        #         "language": "English",
+        #         "isbn": "978-0-14-143951-8",
+        #         "stores": [{"storeName": "Noyan Tapan"}]
+        #     },
+        #                 {
+        #         "bookId": "5",
+        #         "title": "Pride and Prejudice",
+        #         "author": "Jane Austen",
+        #         "description": "A timeless romance exploring class, marriage, and society in Regency England.",
+        #         "genre": "Romance",
+        #         "language": "English",
+        #         "isbn": "978-0-14-143951-8",
+        #         "stores": [{"storeName": "Noyan Tapan"}]
+        #     },
+        #                 {
+        #         "bookId": "6",
+        #         "title": "Pride and Prejudice",
+        #         "author": "Jane Austen",
+        #         "description": "A timeless romance exploring class, marriage, and society in Regency England.",
+        #         "genre": "Romance",
+        #         "language": "English",
+        #         "isbn": "978-0-14-143951-8",
+        #         "stores": [{"storeName": "Noyan Tapan"}]
+        #     }
+        # ]
     
     def get_book_ratings(self, book_id: str) -> Optional[List[Dict]]:
         """

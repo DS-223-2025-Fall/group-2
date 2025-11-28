@@ -32,13 +32,13 @@ def render_login():
             # Navigation buttons
             col_a, col_b = st.columns(2)
             with col_a:
-                if st.button("🏠 Go to Home", use_container_width=True, type="primary"):
+                if st.button("🏠 Go to Home", width='stretch', type="primary"):
                     from utils.session import go_home
                     go_home()
                     st.rerun()
             
             with col_b:
-                if st.button("🚪 Logout", use_container_width=True):
+                if st.button("🚪 Logout", width='stretch'):
                     from utils.session import logout
                     logout()
                     st.success("✅ Logged out successfully!")
@@ -93,7 +93,7 @@ def render_login():
         
         # Back to home button
         st.markdown("<br/>", unsafe_allow_html=True)
-        if st.button("← Back to Home", use_container_width=True):
+        if st.button("← Back to Home", width='stretch'):
             from utils.session import go_home
             go_home()
             st.rerun()

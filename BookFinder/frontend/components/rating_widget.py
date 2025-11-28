@@ -55,7 +55,7 @@ def render_rating_submission(book_id: str) -> None:
     if not is_authenticated():
         st.warning("🔒 Please login to rate books")
         
-        if st.button("🔑 Go to Login Page", use_container_width=True, type="primary"):
+        if st.button("🔑 Go to Login Page", width='stretch', type="primary"):
             from utils.session import go_to_login
             go_to_login()
             st.rerun()

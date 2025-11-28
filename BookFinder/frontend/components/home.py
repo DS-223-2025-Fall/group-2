@@ -29,7 +29,7 @@ def render_home():
             c1, c2 = st.columns([7, 2])
             with c1:
                 query = st.text_input(
-                    "",
+                    "Search for books",
                     placeholder="Search for any book…",
                     label_visibility="collapsed",
                     key="hero_query",

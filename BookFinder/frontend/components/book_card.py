@@ -27,12 +27,35 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
     Render a book card with cover, title, author, description, and store info.
     The entire card is clickable if book_id is provided.
     """
-    full_stars = int(round(book["rating"]))
-    stars = "★" * full_stars + "☆" * (5 - full_stars)
     store = book["store"]
 
     # Get book image based on title (consistent but random-looking)
     book_image = get_book_image(book.get("title", ""))
+    
+    # Get language display - use as-is from database
+    language = book.get("language", "")
+    
+    # Handle language display
+    if language and language.strip():
+        # Remove "Unknown" and empty values
+        if language.strip().lower() not in ["unknown", ""]:
+            # Take only the first language if multiple are listed
+            language_display = language.split(",")[0].strip()
+        else:
+            language_display = ""
+    else:
+        language_display = ""
+    
+    # Determine badge text and color based on match type
+    badge_html = ""
+    match_type = book.get("match_type", "").lower()
+    
+    if match_type == "exact":
+        badge_html = '<span style="font-size: 0.7rem; color: #28a745; margin-left: 8px;">• Exact Match</span>'
+    elif match_type == "fuzzy":
+        badge_html = '<span style="font-size: 0.7rem; color: #ffc107; margin-left: 8px;">• Close Match</span>'
+    elif match_type == "semantic":
+        badge_html = '<span style="font-size: 0.7rem; color: #17a2b8; margin-left: 8px;">• Similar Book</span>'
     
     # Clickable card
     if book_id is not None:
@@ -42,18 +65,19 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
             col1, col2 = st.columns([1, 4])
             
             with col1:
-                st.image(book_image, use_container_width=True)
+                st.image(book_image, width='stretch')
             
             with col2:
+                # Build author line with language if available
+                author_line = f"by {book['author']}"
+                if language_display:
+                    author_line += f" • {language_display}"
+                
                 st.markdown(f"""
                 <div class="book-card-content">
-                    <div class="book-title">{book['title']}</div>
-                    <div class="book-author">by {book['author']}</div>
+                    <div class="book-title">{book['title']}{badge_html}</div>
+                    <div class="book-author">{author_line}</div>
                     <div class="book-desc">{book['description']}</div>
-                    <div class="book-rating-row">
-                      <span class="book-stars">{stars}</span>
-                      <span class="book-rating-value">{book['rating']}</span>
-                    </div>
                     <div class="book-bottom-row">
                       <div class="book-store-pill">
                         <span class="book-store-icon"></span>
@@ -75,18 +99,19 @@ def render_book_card(book: dict, book_id: int = None, index: int = 0):
         col1, col2 = st.columns([1, 4])
         
         with col1:
-            st.image(book_image, use_container_width=True)
+            st.image(book_image, width='stretch')
         
         with col2:
+            # Build author line with language if available
+            author_line = f"by {book['author']}"
+            if language_display:
+                author_line += f" • {language_display}"
+            
             st.markdown(f"""
             <div class="book-card-content">
-                <div class="book-title">{book['title']}</div>
-                <div class="book-author">by {book['author']}</div>
+                <div class="book-title">{book['title']}{badge_html}</div>
+                <div class="book-author">{author_line}</div>
                 <div class="book-desc">{book['description']}</div>
-                <div class="book-rating-row">
-                  <span class="book-stars">{stars}</span>
-                  <span class="book-rating-value">{book['rating']}</span>
-                </div>
                 <div class="book-bottom-row">
                   <div class="book-store-pill">
                     <span class="book-store-icon"></span>

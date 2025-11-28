@@ -32,3 +32,9 @@ pandas==2.3.3
 psycopg2-binary==2.9.11
 SQLAlchemy==2.0.36
 loguru==0.7.2
+# DS service dependencies
+openai>=1.0.0,<2.0.0
+sentence-transformers==3.1.1
+numpy>=1.24.0,<2.0.0
+faiss-cpu==1.8.0
+
