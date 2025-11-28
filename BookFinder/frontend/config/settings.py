@@ -22,7 +22,7 @@ BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 # This is the URL accessible from user's browser, not from inside Docker
 # For Docker: use http://localhost:8008 (host machine port)
 # For local dev: use http://localhost:8000
-BACKEND_BROWSER_URL = os.getenv("BACKEND_BROWSER_URL", "http://localhost:8000")
+BACKEND_BROWSER_URL = os.getenv("BACKEND_BROWSER_URL")
 
 # API Endpoints
 API_ENDPOINTS = {

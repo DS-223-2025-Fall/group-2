@@ -20,7 +20,7 @@ spec:
           ports:
             - containerPort: 8501
           env:
-            - name: BACKEND_URL
-              value: http://backend:8000
+            - name: BACKEND_BROWSER_URL
+              value: https://bookfinder.swedencentral.cloudapp.azure.com
             - name: PYTHONWARNINGS
               value: ignore

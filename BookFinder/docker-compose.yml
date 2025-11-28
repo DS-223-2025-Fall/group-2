@@ -9,8 +9,7 @@ services:
     depends_on:
       - backend
     environment:
-      BACKEND_URL: "http://backend:8000"
-      BACKEND_BROWSER_URL: "http://localhost:8008"
+      BACKEND_BROWSER_URL: "http://backend:8000"
       PYTHONWARNINGS: "ignore"
     restart: always
 

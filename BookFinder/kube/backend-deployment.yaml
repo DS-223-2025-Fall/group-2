@@ -17,6 +17,20 @@ spec:
           image: bookfinderacr223.azurecr.io/backend:latest
           ports:
             - containerPort: 8000
-          envFrom:
-            - configMapRef:
-                name: backend--env
+          env:
+            - name: GOOGLE_CLIENT_ID
+              value: 294472315234-m0dg2fjr0c3448gf4lph7jdk1qvu7s4a.apps.googleusercontent.com
+            - name: GOOGLE_CLIENT_SECRET
+              value: ASK-FOR-SECRET
+            - name: API_SECRET_KEY
+              value: ASK-FOR-SECRET
+            - name: DATABASE_URL
+              value: postgresql+psycopg2://postgres:postgres@db:5432/postgres
+            - name: DB_USER
+              value: postgres
+            - name: DB_PASSWORD
+              value: postgres
+            - name: DB_NAME
+              value: db
+            - name: CALLBACK_URL
+              value: https://bookfinder.swedencentral.cloudapp.azure.com
