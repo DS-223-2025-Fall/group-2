@@ -5,14 +5,14 @@ Handles all HTTP requests, error handling, and response transformation.
 import requests
 import streamlit as st
 from typing import Optional, Dict, Any, List
-from config.settings import BACKEND_URL, API_ENDPOINTS, API_TIMEOUT
+from config.settings import BACKEND_BROWSER_URL, API_ENDPOINTS, API_TIMEOUT
 
 
 class APIClient:
     """Client for making requests to the backend API."""
     
     def __init__(self, auth_token: Optional[str] = None):
-        self.base_url = BACKEND_URL
+        self.base_url = BACKEND_BROWSER_URL
         self.timeout = API_TIMEOUT
         self.session = requests.Session()
         # Set default headers
