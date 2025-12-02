@@ -130,7 +130,7 @@ def calculate_cer(s1: str, s2: str) -> float:
     return cer
 
 
-def fuzzy_search_with_cer(search_query: str, all_books: List, threshold: float = 0.2) -> Optional[Tuple[any, float]]:
+def fuzzy_search_with_cer(search_query: str, all_books: List, threshold: float = 0.3) -> Optional[Tuple[any, float]]:
     """
     Find books using fuzzy matching based on Character Error Rate.
     Returns the best match if CER is below threshold (likely a typo).
@@ -204,7 +204,7 @@ def get_books_service(search_query: str) -> List[FullBookInfo]:
             
             # Step 2: Try fuzzy search (CER)
             logger.info("Step 2: Trying fuzzy search (CER-based)...")
-            fuzzy_result = fuzzy_search_with_cer(search_query, all_books, threshold=0.2)
+            fuzzy_result = fuzzy_search_with_cer(search_query, all_books, threshold=0.3)
             
             if fuzzy_result:
                 book, cer_score = fuzzy_result
