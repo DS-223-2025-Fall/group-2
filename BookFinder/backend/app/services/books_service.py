@@ -138,7 +138,7 @@ def fuzzy_search_with_cer(search_query: str, all_books: List, threshold: float =
     Args:
         search_query: User's search query
         all_books: List of all books to search through
-        threshold: Maximum CER to consider a match (default 0.2 = 20% error allowed)
+        threshold: Maximum CER to consider a match (default 0.3 = 30% error allowed)
         
     Returns:
         Tuple of (best_matching_book, cer_score) or None if no match below threshold
@@ -165,23 +165,26 @@ def fuzzy_search_with_cer(search_query: str, all_books: List, threshold: float =
 
 def get_books_service(search_query: str) -> List[FullBookInfo]:
     """
-    Main search function with 4-step process.
+    Main search function with similar books always included.
     
     Process:
     1. Exact match (lowercase) from database
     2. Fuzzy search (CER-based) if no exact match - handles typos
-    3. DS semantic search if fuzzy fails
-    4. External API fallback if semantic search fails
+    3. DS semantic search ALWAYS runs to get similar books
+    4. External API fallback if no results at all
     
     Returns:
         List of FullBookInfo with metadata:
+        - If exact/fuzzy match found: primary match + similar books (no duplicates)
+        - If no exact/fuzzy match: only similar books
         - match_type: 'exact', 'fuzzy', 'semantic', or 'external'
-        - is_recommendation: Always False (no separate recommendations)
+        - is_recommendation: False for primary match, True for similar books
     """
     logger.info(f"Search initiated for query: '{search_query}'")
     
     results = []
     match_type = None
+    seen_isbns = set()  # Track ISBNs to prevent duplicates
     
     # Get database session
     db = next(get_db())
@@ -197,7 +200,8 @@ def get_books_service(search_query: str) -> List[FullBookInfo]:
         
         if exact_match:
             logger.info(f"✓ Exact match found: '{exact_match.title}'")
-            results = [build_full_book_info(exact_match, db, match_type='exact', is_recommendation=False)]
+            results.append(build_full_book_info(exact_match, db, match_type='exact', is_recommendation=False))
+            seen_isbns.add(exact_match.ISBN)
             match_type = 'exact'
         else:
             logger.info("No exact match found")
@@ -209,44 +213,67 @@ def get_books_service(search_query: str) -> List[FullBookInfo]:
             if fuzzy_result:
                 book, cer_score = fuzzy_result
                 logger.info(f"✓ Fuzzy match found: '{book.title}' (CER: {cer_score:.3f})")
-                results = [build_full_book_info(book, db, match_type='fuzzy', is_recommendation=False)]
+                results.append(build_full_book_info(book, db, match_type='fuzzy', is_recommendation=False))
+                seen_isbns.add(book.ISBN)
                 match_type = 'fuzzy'
             else:
                 logger.info("No fuzzy match found below threshold")
+        
+        # Step 3: ALWAYS get similar books from DS semantic search
+        logger.info("Step 3: Getting similar books via DS semantic search...")
+        ds_isbns = search_book_ids_with_ds(search_query, top_k=5)
+        
+        if ds_isbns:
+            logger.info(f"✓ Found {len(ds_isbns)} similar books via DS")
+            logger.info(f"ISBNs from DS: {ds_isbns}")
+            
+            for isbn in ds_isbns:
+                # Skip if already added (exact or fuzzy match)
+                if isbn in seen_isbns:
+                    logger.info(f"Skipping duplicate ISBN: {isbn}")
+                    continue
                 
-                # Step 3: Try DS semantic search
-                logger.info("Step 3: Trying DS semantic search...")
-                ds_isbns = search_book_ids_with_ds(search_query, top_k=5)
-                
-                if ds_isbns:
-                    logger.info(f"✓ Found {len(ds_isbns)} semantic matches via DS")
-                    logger.info(f"ISBNs from DS: {ds_isbns}")
-                    seen_isbns = set()  # Track ISBNs to avoid duplicates
-                    for isbn in ds_isbns:
-                        if isbn in seen_isbns:
-                            continue
-                        logger.info(f"Looking up ISBN: '{isbn}'")
-                        book = get_book_by_isbn(db, isbn)
-                        if book:
-                            logger.info(f"✓ Found book: {book.title}")
-                            results.append(build_full_book_info(book, db, match_type='semantic', is_recommendation=False))
-                            seen_isbns.add(isbn)
-                        else:
-                            logger.warning(f"✗ Book not found in DB for ISBN: '{isbn}'")
-                    match_type = 'semantic'
+                logger.info(f"Looking up ISBN: '{isbn}' (type: {type(isbn).__name__}, len: {len(isbn)})")
+                book = get_book_by_isbn(db, isbn)
+                if book:
+                    logger.info(f"✓ Found book: {book.title} (DB ISBN: '{book.ISBN}', type: {type(book.ISBN).__name__})")
+                    results.append(build_full_book_info(book, db, match_type='semantic', is_recommendation=True))
+                    seen_isbns.add(isbn)
                 else:
-                    logger.info("No DS matches found")
-                    
-                    # Step 4: Fall back to external API
-                    logger.info("Step 4: Falling back to external API...")
-                    try:
-                        external_results = search_book_from_api(search_query)
-                        if external_results:
-                            logger.info(f"✓ Found {len(external_results)} results from external API")
-                            results = external_results
-                            match_type = 'external'
-                    except Exception as e:
-                        logger.error(f"External API search failed: {e}")
+                    logger.warning(f"✗ Book not found in DB for ISBN: '{isbn}'")
+                    # Try alternative: check if book exists in all_books list
+                    for db_book in all_books:
+                        if db_book.ISBN == isbn or str(db_book.ISBN) == isbn:
+                            logger.info(f"Found in all_books! DB ISBN: '{db_book.ISBN}' (type: {type(db_book.ISBN).__name__})")
+                            break
+                    else:
+                        # Check with stripped version
+                        isbn_stripped = isbn.rstrip('.0') if isbn.endswith('.0') else isbn
+                        logger.info(f"Trying stripped ISBN: '{isbn_stripped}'")
+                        book = get_book_by_isbn(db, isbn_stripped)
+                        if book:
+                            logger.info(f"✓ Found with stripped ISBN! Book: {book.title}")
+                            results.append(build_full_book_info(book, db, match_type='semantic', is_recommendation=True))
+                            seen_isbns.add(isbn)
+                            seen_isbns.add(isbn_stripped)
+            
+            # Update match_type if no exact/fuzzy match was found
+            if not match_type:
+                match_type = 'semantic'
+        else:
+            logger.info("No DS matches found")
+        
+        # Step 4: Fall back to external API only if NO results at all
+        if not results:
+            logger.info("Step 4: No results found, falling back to external API...")
+            try:
+                external_results = search_book_from_api(search_query)
+                if external_results:
+                    logger.info(f"✓ Found {len(external_results)} results from external API")
+                    results = external_results
+                    match_type = 'external'
+            except Exception as e:
+                logger.error(f"External API search failed: {e}")
         
         logger.info(f"Search complete: {len(results)} results, type: {match_type}")
         return results
