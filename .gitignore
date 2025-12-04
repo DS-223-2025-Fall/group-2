@@ -1,15 +1,17 @@
 .venv
 venv
 .DS_Store
-backend/app/__pycache__/
-backend/app/core/__pycache__/
-backend/app/routers/__pycache__/
-backend/app/schemas/__pycache__/
-backend/app/services/__pycache__/
-backend/app/db/__pycache__/
-backend/.env
+BookFinder/backend/app/__pycache__/
+BookFinder/backend/app/core/__pycache__/
+BookFinder/backend/app/routers/__pycache__/
+BookFinder/backend/app/schemas/__pycache__/
+BookFinder/backend/app/services/__pycache__/
+BookFinder/backend/app/db/__pycache__/
+BookFinder/backend/.env
 
 # DS Service - vector stores and cache
 ds/vector_stores/
 ds/cache/
 ds/**/__pycache__/
+site
+BookFinder/backend/app/ds/examples.py

@@ -9,6 +9,18 @@ from db.models import Ratings, AppUser
 # Add or update rating
 # -------------------------
 def add_rating(db: Session, rating: RatingCreate, user_email: str) -> RatingResponse:
+    """
+    Add or update a user's rating for a specific book.
+
+    Args:
+        db (Session): Active SQLAlchemy database session.
+        rating (RatingCreate): Rating details including bookId, rating value, and optional comment.
+        user_email (str): Email of the authenticated user submitting the rating.
+
+    Returns:
+        RatingResponse: The saved or updated rating, including bookId, user email, rating value, and comment.
+    """
+
     # First, get the user_id from email
     user = db.query(AppUser).filter(AppUser.email == user_email).first()
     if not user:
@@ -35,6 +47,17 @@ def add_rating(db: Session, rating: RatingCreate, user_email: str) -> RatingResp
 # Get all ratings for a book
 # -------------------------
 def get_ratings_for_book(db: Session, isbn: str) -> List[RatingResponse]:
+    """
+    Retrieve all ratings for a given book.
+
+    Args:
+        db (Session): Active SQLAlchemy database session.
+        isbn (str): The ISBN of the book whose ratings should be returned.
+
+    Returns:
+        List[RatingResponse]: A list of ratings submitted for the specified book,
+        each including bookId, user email, rating value, and comment.
+    """
     ratings = db.query(Ratings).join(AppUser).filter(Ratings.ISBN == isbn).all()
 
     return [

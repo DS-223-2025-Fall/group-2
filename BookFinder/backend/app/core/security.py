@@ -18,7 +18,7 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         token (str): JWT token provided via the Authorization header.
 
     Returns:
-        dict: A dictionary containing the user's email and name.
+        dict (dict): A dictionary containing the user's email and name.
 
     Raises:
         HTTPException: If the token is missing, invalid, expired, or cannot be decoded.

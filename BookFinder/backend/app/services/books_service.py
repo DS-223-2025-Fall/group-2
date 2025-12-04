@@ -33,13 +33,13 @@ def build_full_book_info(book, db_session, match_type=None, is_recommendation=Fa
     Fetches all stores where this book is available.
     
     Args:
-        book: Book model from database
-        db_session: Database session
-        match_type: Type of match ("exact", "fuzzy", "semantic", "external")
-        is_recommendation: Whether this book is a recommendation
-        
+        book (Any): Book model from database.
+        db_session (Session): Active database session.
+        match_type (str | None): Type of match ("exact", "fuzzy", "semantic", "external").
+        is_recommendation (bool): Indicates if this book is a recommendation.
+
     Returns:
-        FullBookInfo with complete bookstore information and metadata
+        FullBookInfo: Complete bookstore information and metadata.
     """
     # Get all stores for this book
     store_inventories = get_stores_for_book(db_session, book.ISBN)

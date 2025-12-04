@@ -17,9 +17,3 @@ def get_books(search_query: str = Query(..., description="Search term for books"
     - is_recommendation: true for recommendations, false for main results
     """
     return get_books_service(search_query)
-
-@router.get("/similarity/{book_id}", response_model=List[FullBookInfo])
-def get_book_ratings(book_id: str):
-    """Get books similar to a specific book"""
-    # return get_books_similarity_service(book_id)
-    return []

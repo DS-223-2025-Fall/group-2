@@ -26,7 +26,7 @@ oauth.register(
 
 
 @router.get("/google")
-async def login_via_google(request: Request):
+async def login_via_google(request: Request) -> RedirectResponse:
     """
     Start Google OAuth login flow.
 
@@ -45,7 +45,7 @@ async def login_via_google(request: Request):
 
 
 @router.get("/google/callback")
-async def auth_google_callback(request: Request, db: Session = Depends(get_db)):
+async def auth_google_callback(request: Request, db: Session = Depends(get_db)) -> RedirectResponse:
     """
     Handle Google OAuth callback, authenticate the user, and return a JWT token.
 
