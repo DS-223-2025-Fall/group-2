@@ -134,8 +134,8 @@ By running `etl.py` following objects will be created:
 
 ## API
 
-### Requests
-
+![Swagger_1](docs/img/Swagger_1.png)
+![Swagger_2](docs/img/Swagger_2.png)
 
 
 ## Web Application
@@ -143,3 +143,8 @@ By running `etl.py` following objects will be created:
 Adding another service named app, which is going to be responsible for the frontend.
 
 To Open the web app visit: [here](http://localhost:8501/)
+
+![Swagger_1](docs/img/Home_page.png)
+![Swagger_1](docs/img/Search_results.png)
+![Swagger_1](docs/img/Search_results_similars.png)
+![Swagger_2](docs/img/Login_page.png)
