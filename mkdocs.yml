@@ -8,6 +8,7 @@ nav:
   - APP: frontend.md
   - DS: data_science.md
   # - API models: api_models.md
+  - ETL: etl.md
 
 theme:
   name: material

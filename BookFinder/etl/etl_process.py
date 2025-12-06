@@ -24,7 +24,15 @@ app = FastAPI()
 
 def load_csv_to_table(table_name: str, csv_path: str) -> None:
     """
-    Load data from a CSV file into a database table.
+    **Load data from a CSV file into a database table.**  
+    Skips loading if the table already contains data.
+    
+    Args:
+        table_name (str): Name of the database table to load data into.
+        csv_path (str): Path to the CSV file containing the data.
+        
+    Returns:
+        None
     """
     with engine.connect() as conn:
         result = conn.execute(text(f"SELECT 1 FROM {table_name} LIMIT 1"))
@@ -44,7 +52,21 @@ def load_csv_to_table(table_name: str, csv_path: str) -> None:
 @app.post("/load_all_csv")
 def trigger_data_ingestion():
     """
-    Triggers the process to load all CSV files in the specified order.
+    **Trigger ingestion of all CSV files in a predefined order.**  
+
+    The ETL process loads tables in the following order:
+    1. *bookstore*
+    2. *book*
+    3. *book_store_inventory*
+
+    Tracks **successful** and **failed** table loads.  
+    Raises an `HTTPException` if any table fails to load.
+    
+    Args:
+        None
+
+    Returns:
+        dict: Contains a message and a list of successfully loaded tables.
     """
     logger.info("Starting data ingestion process via API trigger.")
 
@@ -92,8 +114,14 @@ def trigger_data_ingestion():
 @app.get("/", status_code=status.HTTP_200_OK)
 def health_check():
     """
-    Kubernetes and Load Balancer health check endpoint.
-    Returns 200 OK if the server is running.
+    **Health check endpoint** for Kubernetes or load balancer.  
+    Returns **200 OK** if the ETL service is running.
+    
+    Args:
+        None
+
+    Returns:
+        dict: Status and service name.
     """
     return {"status": "ok", "service": "etl-service"}
 
@@ -101,7 +129,14 @@ def health_check():
 @app.on_event("startup")
 def startup_event():
     """
-    Runs the initial ETL load when the application starts up.
+    **Run initial ETL load on application startup.**  
+    Automatically triggers the ingestion of CSV files when the service starts.
+    
+    Args:
+        None
+
+    Returns:
+        None
     """
     logger.info("Application startup event triggered. Starting initial data ingestion.")
     # Call your data loading function directly
