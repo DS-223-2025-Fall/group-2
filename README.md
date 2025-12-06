@@ -77,8 +77,10 @@ BookFinder/
 │   └── requirements.txt
 ├── kube/
 │   └── ... (Kubernetes deployment and service files)
-├── scraping/
-│   └── requirements.txt
+└── scraping
+│   ├── books.am_scraping.py
+│   ├── requirements.txt
+│   └── zangak_scraping.py
 ├── docker-compose.yml
 ├── README.md
 ├── docs/
@@ -89,7 +91,7 @@ BookFinder/
 
 This repository provides a complete Docker-based development environment with **five main services**:
 
-1. **Frontend (Streamlit):**  
+1. **Frontend (Streamlit):** - main interface
 ![D1](docs/img/docker_front.png)
 
 2. **Backend (FastAPI):** - powers the API logic.  
@@ -154,8 +156,6 @@ By running `etl.py` following objects will be created:
 
 
 ## Web Application
-
-Adding another service named app, which is going to be responsible for the frontend.
 
 To Open the web app visit: [here](http://localhost:8501/)
 

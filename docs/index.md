@@ -28,8 +28,10 @@ BookFinder/
 │   └── requirements.txt
 ├── kube/
 │   └── ... (Kubernetes deployment and service files)
-├── scraping/
-│   └── requirements.txt
+└── scraping
+│   ├── books.am_scraping.py
+│   ├── requirements.txt
+│   └── zangak_scraping.py
 ├── docker-compose.yml
 ├── README.md
 ├── docs/
@@ -51,14 +53,14 @@ BookFinder/
 
 ### Frontend
 - **[Frontend](frontend.md)**  
-    The frontend is built with Streamlit and consists of multiple reusable components, each handling a specific part of the user interface. Users can search for books, view book details, log in, and submit or browse ratings seamlessly. The main components include: authentication, book cards, detailed book pages, the home page, login page, rating widget, and search results display.
+  Consists of multiple reusable components, each handling a specific part of the user interface. Users can search for books, view book details, log in, and submit or browse ratings seamlessly. The main components include: authentication, book cards, detailed book pages, the home page, login page, rating widget, and search results display.
 ### ETL
 - **[ETL](etl.md)**  
   Details the extraction, transformation, and loading processes, including database initialization, data pipelines, and automated ETL tasks.
 
 ### Data Science
 - **[Data Science](data_science.md)**  
-  Explains data processing, recommendation algorithms, analytics, and other computational components.
+  Contains documentation on data processing, recommendation algorithms, analytics, and other computational components.
 
 ---
 
@@ -66,9 +68,9 @@ BookFinder/
 
 The `docs/img/` directory contains visuals, including:  
 
-- **Backend.png** – Backend architecture diagram  
+- **Swagger_1.png** , **Swagger_2.png**– Backend architecture diagram  
 - **ERD.png** – Database entity relationship diagram  
-- **UI1.png**, **UI2.png**, **UI3.png** – Frontend UI screenshots  
+- **Home_page.png**, **Search_results.png**, **Search_results_similars.png**,  **Book_page.png**, **Login_page.png** – Frontend UI screenshots  
 
 ---
 
