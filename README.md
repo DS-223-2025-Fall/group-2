@@ -44,7 +44,7 @@ After running `docker-compose up --build`, you can access each component of the 
 - **Streamlit Frontend:** http://localhost:8501 The main interface for discovering, searching, and rating books.
 - **FastAPI Backend**: [http://localhost:8008](http://localhost:8008)  
   The backend API where requests are processed. You can use tools like [Swagger UI](http://localhost:8008/api/docs) (provided by FastAPI) to explore the API endpoints and their details.
-- **PgAdmin** (optional): [http://localhost:5050](http://localhost:5050)  
+- **PgAdmin**: [http://localhost:5050](http://localhost:5050)  
   A graphical tool for PostgreSQL, which allows you to view and manage the database. Login using the credentials set in the `.env` file:
 - **Documentation (MkDocs)** : [https://ds-223-2025-fall.github.io/group-2/](https://ds-223-2025-fall.github.io/group-2/)  
   Full project documentation including backend, frontend, ETL, and data science modules.
