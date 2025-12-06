@@ -92,35 +92,16 @@ This repository provides a complete Docker-based development environment with **
 1. **Frontend (Streamlit):**  
 ![D1](docs/img/docker_front.png)
 
-2. **Backend (FastAPI):**  
-   A FastAPI service that powers the API logic.  
-   - Runs on port **8008** externally (mapped to 8000 inside the container)  
-   - Loads environment variables from `backend/.env`  
-   - Depends on the PostgreSQL database  
+2. **Backend (FastAPI):** - powers the API logic.  
 ![D2](docs/img/docker_back.png)
 
-3. **PostgreSQL (db):**  
-   A PostgreSQL 15 container used for persistent database storage.  
-   - Loads credentials from `.env`  
-   - Includes a healthcheck to ensure the service is ready  
-   - Persists data via the `postgres_data` volume  
-   - Exposes port **5433** (mapped to 5432 inside)
+3. **PostgreSQL (db):** - persistent database storage.  
 ![D3](docs/img/docker_db.png)
 
-4. **pgAdmin:**  
-   A browser-based UI for managing PostgreSQL.  
-   - Runs on port **5050**  
-   - Credentials loaded from `.env`  
-   - Stores UI state using the `pgadmin_data` volume  
-   - Automatically starts after the database becomes available  
+4. **pgAdmin:** - browser-based UI for managing PostgreSQL.  
 ![D4](docs/img/docker_pgadmin.png)
 
-5. **ETL Service:**  
-   A Python-based ETL component for Extract–Transform–Load operations.  
-   - Built from the `etl/` directory  
-   - Mounts the local folder for active development  
-   - Starts only after PostgreSQL is healthy  
-   - Exposes port **3000**
+5. **ETL Service:** - A Python-based ETL component for Extract–Transform–Load operations.  
 ![D5](docs/img/docker_etl.png)
 
 ### Volumes
