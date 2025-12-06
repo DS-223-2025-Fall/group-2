@@ -26,8 +26,6 @@ This repository contains the following branches:
 
 ## Installation
 
-Before getting started, ensure you have the following prerequisites installed:
-
 1. Clone the repository:
    ```bash
    git clone hhttps://github.com/DS-223-2025-Fall/group-2.git
@@ -92,16 +90,14 @@ BookFinder/
 This repository provides a complete Docker-based development environment with **five main services**:
 
 1. **Frontend (Streamlit):**  
-   A Streamlit application that provides the user interface.  
-   - Runs on port **8501**  
-   - Communicates with the backend through internal and external URLs  
-   - Automatically restarts on failure  
+![D1](docs/img/docker_front.png)
 
 2. **Backend (FastAPI):**  
    A FastAPI service that powers the API logic.  
    - Runs on port **8008** externally (mapped to 8000 inside the container)  
    - Loads environment variables from `backend/.env`  
    - Depends on the PostgreSQL database  
+![D2](docs/img/docker_back.png)
 
 3. **PostgreSQL (db):**  
    A PostgreSQL 15 container used for persistent database storage.  
@@ -109,6 +105,7 @@ This repository provides a complete Docker-based development environment with **
    - Includes a healthcheck to ensure the service is ready  
    - Persists data via the `postgres_data` volume  
    - Exposes port **5433** (mapped to 5432 inside)
+![D3](docs/img/docker_db.png)
 
 4. **pgAdmin:**  
    A browser-based UI for managing PostgreSQL.  
@@ -116,6 +113,7 @@ This repository provides a complete Docker-based development environment with **
    - Credentials loaded from `.env`  
    - Stores UI state using the `pgadmin_data` volume  
    - Automatically starts after the database becomes available  
+![D4](docs/img/docker_pgadmin.png)
 
 5. **ETL Service:**  
    A Python-based ETL component for Extract–Transform–Load operations.  
@@ -123,6 +121,7 @@ This repository provides a complete Docker-based development environment with **
    - Mounts the local folder for active development  
    - Starts only after PostgreSQL is healthy  
    - Exposes port **3000**
+![D5](docs/img/docker_etl.png)
 
 ### Volumes
 
@@ -179,7 +178,7 @@ Adding another service named app, which is going to be responsible for the front
 
 To Open the web app visit: [here](http://localhost:8501/)
 
-![Swagger_1](docs/img/Home_page.png)
-![Swagger_1](docs/img/Search_results.png)
-![Swagger_1](docs/img/Search_results_similars.png)
-![Swagger_2](docs/img/Login_page.png)
+![UI_1](docs/img/Home_page.png)
+![UI_2](docs/img/Search_results.png)
+![UI_3](docs/img/Search_results_similars.png)
+![UI_4](docs/img/Login_page.png)
