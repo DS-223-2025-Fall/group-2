@@ -43,7 +43,7 @@ Before getting started, ensure you have the following prerequisites installed:
 
 After running `docker-compose up --build`, you can access each component of the application at the following URLs:
 
-- **Streamlit Frontend:** http://localhost:8501 The main interface for managing employees, built with Streamlit. Use this to add, view, update, and delete employee records.
+- **Streamlit Frontend:** http://localhost:8501 The main interface for discovering, searching, and rating books.
 - **FastAPI Backend**: [http://localhost:8008](http://localhost:8008)  
   The backend API where requests are processed. You can use tools like [Swagger UI](http://localhost:8008/api/docs) (provided by FastAPI) to explore the API endpoints and their details.
 - **PgAdmin** (optional): [http://localhost:5050](http://localhost:5050)  
@@ -51,11 +51,7 @@ After running `docker-compose up --build`, you can access each component of the 
 - **Documentation (MkDocs)** : [https://ds-223-2025-fall.github.io/group-2/](https://ds-223-2025-fall.github.io/group-2/)  
   Full project documentation including backend, frontend, ETL, and data science modules.
 
-  - **Email**: Value of `PGADMIN_EMAIL` in `.env` file
-  - **Password**: Value of `PGADMIN_PASSWORD` in `.env` file
-
 > Note: Ensure Docker is running, and all environment variables in `.env` are correctly configured before accessing these URLs.
-
 
 ## Project Structure
 
@@ -91,13 +87,51 @@ BookFinder/
 └── venv/
 ```
 
-## Docker 
+## Docker
 
-This repository sets up a Docker environment with three main services:
+This repository provides a complete Docker-based development environment with **five main services**:
 
-1. **PostgreSQL:** for data storage
-2. **pgAdmin:** for database management and visualization
-3. **ETL:** service for Extract, Transform, Load operations using Python
+1. **Frontend (Streamlit):**  
+   A Streamlit application that provides the user interface.  
+   - Runs on port **8501**  
+   - Communicates with the backend through internal and external URLs  
+   - Automatically restarts on failure  
+
+2. **Backend (FastAPI):**  
+   A FastAPI service that powers the API logic.  
+   - Runs on port **8008** externally (mapped to 8000 inside the container)  
+   - Loads environment variables from `backend/.env`  
+   - Depends on the PostgreSQL database  
+
+3. **PostgreSQL (db):**  
+   A PostgreSQL 15 container used for persistent database storage.  
+   - Loads credentials from `.env`  
+   - Includes a healthcheck to ensure the service is ready  
+   - Persists data via the `postgres_data` volume  
+   - Exposes port **5433** (mapped to 5432 inside)
+
+4. **pgAdmin:**  
+   A browser-based UI for managing PostgreSQL.  
+   - Runs on port **5050**  
+   - Credentials loaded from `.env`  
+   - Stores UI state using the `pgadmin_data` volume  
+   - Automatically starts after the database becomes available  
+
+5. **ETL Service:**  
+   A Python-based ETL component for Extract–Transform–Load operations.  
+   - Built from the `etl/` directory  
+   - Mounts the local folder for active development  
+   - Starts only after PostgreSQL is healthy  
+   - Exposes port **3000**
+
+### Volumes
+
+Two Docker volumes are created automatically:
+
+- **postgres_data** – persists PostgreSQL database files  
+- **pgadmin_data** – persists pgAdmin configuration
+
+
 
 ## Prerequisites
 
