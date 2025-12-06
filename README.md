@@ -45,7 +45,7 @@ After running `docker-compose up --build`, you can access each component of the 
 
 - **Streamlit Frontend:** http://localhost:8501 The main interface for managing employees, built with Streamlit. Use this to add, view, update, and delete employee records.
 - **FastAPI Backend**: [http://localhost:8008](http://localhost:8008)  
-  The backend API where requests are processed. You can use tools like [Swagger UI](http://localhost:8008/docs) (provided by FastAPI) to explore the API endpoints and their details.
+  The backend API where requests are processed. You can use tools like [Swagger UI](http://localhost:8008/api/docs) (provided by FastAPI) to explore the API endpoints and their details.
 
 - **PgAdmin** (optional): [http://localhost:5050](http://localhost:5050)  
   A graphical tool for PostgreSQL, which allows you to view and manage the database. Login using the credentials set in the `.env` file:
