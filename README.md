@@ -30,7 +30,7 @@ Before getting started, ensure you have the following prerequisites installed:
 
 1. Clone the repository:
    ```bash
-   git clone hhttps://github.com/DS-223-2025-Fall/group-7.git
+   git clone hhttps://github.com/DS-223-2025-Fall/group-2.git
    cd BookFinder
    ```
 
@@ -46,12 +46,13 @@ After running `docker-compose up --build`, you can access each component of the 
 - **Streamlit Frontend:** http://localhost:8501 The main interface for managing employees, built with Streamlit. Use this to add, view, update, and delete employee records.
 - **FastAPI Backend**: [http://localhost:8008](http://localhost:8008)  
   The backend API where requests are processed. You can use tools like [Swagger UI](http://localhost:8008/api/docs) (provided by FastAPI) to explore the API endpoints and their details.
-
 - **PgAdmin** (optional): [http://localhost:5050](http://localhost:5050)  
   A graphical tool for PostgreSQL, which allows you to view and manage the database. Login using the credentials set in the `.env` file:
-  
-  - **Email**: Value of `PGADMIN_EMAIL` in your `.env` file
-  - **Password**: Value of `PGADMIN_PASSWORD` in your `.env` file
+- **Documentation (MkDocs)** : [https://ds-223-2025-fall.github.io/group-2/](https://ds-223-2025-fall.github.io/group-2/)  
+  Full project documentation including backend, frontend, ETL, and data science modules.
+
+  - **Email**: Value of `PGADMIN_EMAIL` in `.env` file
+  - **Password**: Value of `PGADMIN_PASSWORD` in `.env` file
 
 > Note: Ensure Docker is running, and all environment variables in `.env` are correctly configured before accessing these URLs.
 
