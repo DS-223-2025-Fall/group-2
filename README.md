@@ -164,12 +164,12 @@ To Open the web app visit: [here](http://localhost:8501/)
 
 ## Authors
 
-*Product Manager* -	Viktoria Melkumyan
+**Product Manager** -	Viktoria Melkumyan
 
-*DB Developer* - Levon Hakobyan
+**DB Developer** - Levon Hakobyan
 
-*Backend Developer* - Grigor Hovhannisyan
+**Backend Developer** - Grigor Hovhannisyan
 
-*Frontend Developer* - Ani Harutyunyan
+**Frontend Developer** - Ani Harutyunyan
 
-*Data Scientist* - Zhora Poghosyan
+**Data Scientist** - Zhora Poghosyan
