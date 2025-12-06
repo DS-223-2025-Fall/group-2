@@ -129,7 +129,6 @@ Before running this setup, ensure Docker and Docker Compose are installed on you
 - Access pgAdmin for PostgreSQL management: [http://localhost:5050](http://localhost:5050)
     - username: admin@admin.com 
     - password: admin
-    - When running for the first time, you must create a server. Configure it as shown in the below image (Password is blurred it should be `password`.)
 
 
 ## ETL

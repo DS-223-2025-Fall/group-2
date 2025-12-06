@@ -44,7 +44,7 @@ BookFinder/
 ## Documentation Sections
 
 ### Problem Definition
-- **[Problem Definition](problem_definition/index.md)**  
+- **[Problem Definition](problem_definition.md)**  
   Explains the challenges that BookFinder addresses, project objectives, and overall scope.
 
 ### Backend
