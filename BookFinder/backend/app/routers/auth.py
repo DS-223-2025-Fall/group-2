@@ -28,11 +28,11 @@ oauth.register(
 @router.get("/google")
 async def login_via_google(request: Request) -> RedirectResponse:
     """
-    Start Google OAuth login flow.
+    **Start the Google OAuth login flow.**
 
-    This endpoint redirects the user to Google's authorization page.
-    After successful login, Google redirects the user back to the
-    `/google/callback` endpoint.
+    This endpoint redirects the user to Google's **authorization page**.  
+    After a successful login, Google will redirect the user back to
+    the `/google/callback` endpoint for further processing.
 
     Args:
         request (Request): Incoming HTTP request containing session info.
@@ -47,21 +47,21 @@ async def login_via_google(request: Request) -> RedirectResponse:
 @router.get("/google/callback")
 async def auth_google_callback(request: Request, db: Session = Depends(get_db)) -> RedirectResponse:
     """
-    Handle Google OAuth callback, authenticate the user, and return a JWT token.
+    **Handle Google OAuth callback and authenticate the user.**
 
-    This endpoint:
-    1. Exchanges the authorization code for an access token.
-    2. Fetches the user's Google profile (email + name).
-    3. Creates a database user if one does not already exist.
-    4. Generates a JWT token valid for 24 hours.
-    5. Redirects the user to the frontend callback URL with token and user details.
+    This endpoint performs the following steps:
+    1. **Exchanges** the authorization code for an access token.
+    2. **Fetches** the user's Google profile information (email and name).
+    3. **Creates** a new database user if one does not already exist.
+    4. **Generates** a JWT token valid for 24 hours.
+    5. **Redirects** the user to the frontend callback URL with the JWT, email, and name.
 
     Args:
         request (Request): Incoming request containing OAuth authorization response.
         db (Session): Database session dependency.
 
     Returns:
-        RedirectResponse: Redirect to frontend with JWT, email, and name in query params.
+        RedirectResponse: Redirects to the frontend with JWT, email, and name included in query parameters.
     """
     # Retrieve access token from Google
     token = await oauth.google.authorize_access_token(request)

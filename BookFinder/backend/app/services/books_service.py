@@ -29,14 +29,16 @@ def _get_ds_service():
 
 def build_full_book_info(book, db_session, match_type=None, is_recommendation=False) -> FullBookInfo:
     """
-    Build FullBookInfo with all bookstore information for a book.
-    Fetches all stores where this book is available.
-    
+    **Build a `FullBookInfo` object** with complete bookstore information for a book.
+
+    Fetches all stores where this book is available and aggregates metadata
+    into a single object for frontend consumption.
+
     Args:
         book (Any): Book model from database.
         db_session (Session): Active database session.
-        match_type (str | None): Type of match ("exact", "fuzzy", "semantic", "external").
-        is_recommendation (bool): Indicates if this book is a recommendation.
+        match_type (str | None): Type of match (**"exact"**, **"fuzzy"**, **"semantic"**, **"external"**).
+        is_recommendation (bool): Indicates if this book is a *recommendation*.
 
     Returns:
         FullBookInfo: Complete bookstore information and metadata.
@@ -89,15 +91,17 @@ def build_full_book_info(book, db_session, match_type=None, is_recommendation=Fa
 
 def calculate_cer(s1: str, s2: str) -> float:
     """
-    Calculate Character Error Rate (CER) between two strings.
-    CER is based on Levenshtein distance normalized by length.
-    
+    **Calculate Character Error Rate (CER)** between two strings.
+
+    CER is based on Levenshtein distance normalized by the length of the longer string.
+    Useful for fuzzy matching to handle typos or small variations in search queries.
+
     Args:
         s1: First string
         s2: Second string
-        
+
     Returns:
-        CER value between 0 (identical) and 1 (completely different)
+        CER value between 0 (*identical*) and 1 (*completely different*).
     """
     s1 = s1.lower().strip()
     s2 = s2.lower().strip()
@@ -132,14 +136,16 @@ def calculate_cer(s1: str, s2: str) -> float:
 
 def fuzzy_search_with_cer(search_query: str, all_books: List, threshold: float = 0.3) -> Optional[Tuple[any, float]]:
     """
-    Find books using fuzzy matching based on Character Error Rate.
-    Returns the best match if CER is below threshold (likely a typo).
-    
+    **Perform a fuzzy search using CER** to find the best matching book.
+
+    Returns the best match if the CER is below the specified threshold,
+    indicating a likely intended match despite typos.
+
     Args:
         search_query: User's search query
         all_books: List of all books to search through
         threshold: Maximum CER to consider a match (default 0.3 = 30% error allowed)
-        
+
     Returns:
         Tuple of (best_matching_book, cer_score) or None if no match below threshold
     """
@@ -165,20 +171,20 @@ def fuzzy_search_with_cer(search_query: str, all_books: List, threshold: float =
 
 def get_books_service(search_query: str) -> List[FullBookInfo]:
     """
-    Main search function with similar books always included.
-    
+    **Main book search function** that always includes similar books.
+
     Process:
-    1. Exact match (lowercase) from database
-    2. Fuzzy search (CER-based) if no exact match - handles typos
-    3. DS semantic search ALWAYS runs to get similar books
-    4. External API fallback if no results at all
-    
+    1. **Exact match** (case-insensitive) from the database
+    2. **Fuzzy search** (CER-based) to handle typos
+    3. **Semantic search** via DS service (always runs for recommendations)
+    4. **External API fallback** if no results are found
+
     Returns:
         List of FullBookInfo with metadata:
-        - If exact/fuzzy match found: primary match + similar books (no duplicates)
+        - If exact/fuzzy match found: primary match + similar books (*no duplicates*)
         - If no exact/fuzzy match: only similar books
-        - match_type: 'exact', 'fuzzy', 'semantic', or 'external'
-        - is_recommendation: False for primary match, True for similar books
+        - `match_type`: 'exact', 'fuzzy', 'semantic', or 'external'
+        - `is_recommendation`: False for primary match, True for similar books
     """
     logger.info(f"Search initiated for query: '{search_query}'")
     
@@ -284,14 +290,14 @@ def get_books_service(search_query: str) -> List[FullBookInfo]:
 
 def search_book_exact(search_query: str, all_books: List) -> Optional[any]:
     """
-    Search for exact match (case-insensitive) in database.
-    
+    **Search for an exact book title match** (case-insensitive).
+
     Args:
         search_query: User's search query
-        all_books: List of all books from database
-        
+        all_books: List of all books from the database
+
     Returns:
-        Matching book or None
+        Matching book or None if not found
     """
     query_lower = search_query.lower().strip()
     
@@ -302,7 +308,18 @@ def search_book_exact(search_query: str, all_books: List) -> Optional[any]:
     return None
 
 def search_book_ids_with_ds(search_query: str, top_k: int = 10) -> List[str]:
-    """Get ISBNs from DS semantic search. ISBNs are returned as-is from the DS service."""
+    """
+    **Get ISBNs from DS semantic search.**
+
+    ISBNs are returned as-is from the DS service, representing the top `k` similar books.
+
+    Args:
+        search_query: User's search query
+        top_k: Maximum number of similar books to return
+
+    Returns:
+        List of ISBN strings
+    """
     try:
         ds_service = _get_ds_service()
         recommendations = ds_service.find_similar_books(query_title=search_query, top_k=top_k)
@@ -319,6 +336,12 @@ def search_book_ids_with_ds(search_query: str, top_k: int = 10) -> List[str]:
         return []
 
 def get_dummy_stores() -> List[BookStoreInfo]:
+    """
+    **Generate dummy bookstore data** for fallback or testing.
+
+    Returns:
+        List of BookStoreInfo objects with placeholder store data
+    """
     return [
         BookStoreInfo(
             storeId="s1",
@@ -334,6 +357,18 @@ def get_dummy_stores() -> List[BookStoreInfo]:
     ]
 
 def search_book_from_api(search_query: str) -> List[FullBookInfo]:
+    """
+    **Search for books via external API** (OpenLibrary).
+
+    Fetches book data including title, author, ISBN, language, and description.
+    Converts the API response into `FullBookInfo` objects with dummy stores.
+
+    Args:
+        search_query: User's search query
+
+    Returns:
+        List of FullBookInfo objects populated from API results
+    """
     url = f"https://openlibrary.org/search.json?title={search_query}&limit=10"
     response = requests.get(url)
 

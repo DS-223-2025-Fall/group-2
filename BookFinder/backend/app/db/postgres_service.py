@@ -13,12 +13,12 @@ from db.models import Book, BookStoreInventory, BookSimilarity, SearchQuery, Rat
 # -------------------------
 
 def get_book_by_isbn(db: Session, isbn: str) -> Optional[Book]:
-    """Get a book object from the database by its ISBN.
-    
-    Args:
-        db (Session): SQLAlchemy database session.
-        isbn (str): ISBN of the book to retrieve.
-        
+    """
+    **Retrieve a book from the database using its ISBN.**
+
+    This function queries the database for a book matching the provided ISBN.  
+    If a match exists, the corresponding **Book** object is returned; otherwise, the function returns **None**.
+
     Returns:
         Optional[Book]: Book object if found, otherwise None.
     """
@@ -26,13 +26,18 @@ def get_book_by_isbn(db: Session, isbn: str) -> Optional[Book]:
 
 
 def search_books_by_title(db: Session, search_term: str, limit: int = 20) -> List[Book]:
-    """Search for books whose title contains the given search term.
-    
+    """
+    **Search for books based on a partial title match.**
+
+    This function performs a case-insensitive lookup and returns all books whose
+    titles **contain** the provided search term.  
+    You can optionally limit the maximum number of returned results.
+
     Args:
         db (Session): SQLAlchemy database session.
         search_term (str): Term to search in book titles.
         limit (int, optional): Maximum number of results. Defaults to 20.
-        
+
     Returns:
         List[Book]: List of Book objects matching the search term.
     """
@@ -40,8 +45,13 @@ def search_books_by_title(db: Session, search_term: str, limit: int = 20) -> Lis
 
 
 def insert_book(db: Session, title: str, author: str, genre: str, description: str, isbn: str, source: str = "local") -> str:
-    """Insert a new book into the database.
-    
+    """
+    **Insert a new book record into the database.**
+
+    This function creates a new **Book** entry with the provided metadata.  
+    If successful, it returns the ISBN of the newly added book.  
+    You can optionally specify the source of the book data.
+
     Args:
         db (Session): SQLAlchemy database session.
         title (str): Book title.
@@ -50,7 +60,7 @@ def insert_book(db: Session, title: str, author: str, genre: str, description: s
         description (str): Book description.
         isbn (str): Book ISBN.
         source (str, optional): Source of the book data. Defaults to "local".
-        
+
     Returns:
         str: ISBN of the newly inserted book.
     """
@@ -69,13 +79,16 @@ def insert_book(db: Session, title: str, author: str, genre: str, description: s
 
     
 def get_allBooks(db: Session) -> List[Ratings]:
-    """Retrieve all books from the database.
-    
+    """
+    **Retrieve all books from the database.**
+
+    This function queries the database and returns a list of **all books** currently stored.
+
     Args:
         db (Session): SQLAlchemy database session.
-        
+
     Returns:
-        List[Ratings]: List of all Book objects.
+        List[Book]: List of all Book objects.
     """
     return db.query(Book).all()
 
@@ -83,12 +96,16 @@ def get_allBooks(db: Session) -> List[Ratings]:
 # Bookstore / Inventory
 # -------------------------
 def get_stores_for_book(db: Session, isbn: str) -> List[BookStoreInventory]:
-    """Get all bookstores that have the book in inventory, ordered by price ascending.
-    
+    """
+    **Retrieve all bookstores that carry a specific book, sorted by price.**
+
+    This function queries the inventory to find all bookstores stocking the book
+    with the given ISBN and returns them in **ascending order of price**.
+
     Args:
         db (Session): SQLAlchemy database session.
         isbn (str): ISBN of the book.
-        
+
     Returns:
         List[BookStoreInventory]: List of inventory entries for the book.
     """
@@ -98,14 +115,18 @@ def get_stores_for_book(db: Session, isbn: str) -> List[BookStoreInventory]:
 
 
 def insert_inventory_entry(db: Session, isbn: str, store_id: int, price: float) -> BookStoreInventory:
-    """Insert or update an inventory entry for a book in a bookstore.
-    
+    """
+    **Insert or update a book's inventory entry in a bookstore.**
+
+    This function either **creates a new entry** or **updates an existing one** for
+    the specified book in the given bookstore. The entry includes the price information.
+
     Args:
         db (Session): SQLAlchemy database session.
         isbn (str): ISBN of the book.
         store_id (int): ID of the bookstore.
         price (float): Price of the book.
-        
+
     Returns:
         BookStoreInventory: The created or updated inventory entry.
     """
@@ -123,13 +144,18 @@ def insert_inventory_entry(db: Session, isbn: str, store_id: int, price: float) 
 # Similarity methods
 # -------------------------
 def get_similar_books(db: Session, isbn: str, top_n: int = 10) -> List[BookSimilarity]:
-    """Retrieve the most similar books to a given book by ISBN.
-    
+    """
+    **Retrieve the most similar books to a given book.**
+
+    This function finds books that are most similar to the reference book
+    identified by the provided ISBN. The results are **ordered by similarity score in descending order**.
+    You can optionally specify the number of similar books to return.
+
     Args:
         db (Session): SQLAlchemy database session.
         isbn (str): ISBN of the reference book.
         top_n (int, optional): Number of similar books to return. Defaults to 10.
-        
+
     Returns:
         List[BookSimilarity]: List of BookSimilarity objects ordered by similarity score descending.
     """
@@ -140,14 +166,19 @@ def get_similar_books(db: Session, isbn: str, top_n: int = 10) -> List[BookSimil
 
 
 def insert_similarity(db: Session, isbn1: str, isbn2: str, score: float) -> BookSimilarity:
-    """Insert or update a similarity score between two books.
-    
+    """
+    **Insert or update a similarity score between two books.**
+
+    This function creates a new similarity entry or updates an existing one
+    for the pair of books identified by their ISBNs.  
+    The similarity score reflects how closely the books are related.
+
     Args:
         db (Session): SQLAlchemy database session.
         isbn1 (str): ISBN of the first book.
         isbn2 (str): ISBN of the second book.
         score (float): Similarity score between the two books.
-        
+
     Returns:
         BookSimilarity: The created or updated similarity entry.
     """
@@ -165,14 +196,19 @@ def insert_similarity(db: Session, isbn1: str, isbn2: str, score: float) -> Book
 # Search logging
 # -------------------------
 def log_search_query(db: Session, user_id: int = None, term: str = "", matched_book_isbn: str = None) -> SearchQuery:
-    """Log a user's search query in the database.
-    
+    """
+    **Log a user's search query in the database.**
+
+    This function records the search performed by a user, including the search term
+    and, optionally, the ISBN of a book that matched the query.  
+    It helps track user behavior and search trends.
+
     Args:
         db (Session): SQLAlchemy database session.
         user_id (int, optional): ID of the user performing the search. Defaults to None.
         term (str, optional): Search term used. Defaults to "".
         matched_book_isbn (str, optional): ISBN of matched book if any. Defaults to None.
-        
+
     Returns:
         SearchQuery: The created search query entry.
     """
@@ -184,12 +220,16 @@ def log_search_query(db: Session, user_id: int = None, term: str = "", matched_b
 
 
 def get_recent_searches(db: Session, limit: int = 20) -> List[SearchQuery]:
-    """Retrieve the most recent search queries from the database.
-    
+    """
+    **Retrieve the most recent search queries from the database.**
+
+    This function fetches the latest searches performed by users, ordered by
+    **most recent first**. You can optionally specify how many recent searches to return.
+
     Args:
         db (Session): SQLAlchemy database session.
         limit (int, optional): Number of recent searches to retrieve. Defaults to 20.
-        
+
     Returns:
         List[SearchQuery]: List of recent search queries ordered by most recent first.
     """
@@ -199,15 +239,20 @@ def get_recent_searches(db: Session, limit: int = 20) -> List[SearchQuery]:
 # Ratings
 # -------------------------
 def add_or_update_rating(db: Session, user_id: int, isbn: str, rating_value: int, comment: str = None) -> Ratings:
-    """Add a new rating or update an existing rating for a book by a user.
-    
+    """
+    **Add or update a user's rating for a book.**
+
+    This function either creates a new rating or updates an existing one
+    for the specified book and user.  
+    An optional comment can be included alongside the rating value.
+
     Args:
         db (Session): SQLAlchemy database session.
         user_id (int): ID of the user providing the rating.
         isbn (str): ISBN of the book being rated.
         rating_value (int): Rating value.
         comment (str, optional): Optional comment for the rating. Defaults to None.
-        
+
     Returns:
         Ratings: The created or updated Ratings object.
     """
@@ -227,16 +272,20 @@ def add_or_update_rating(db: Session, user_id: int, isbn: str, rating_value: int
 
 def get_ratings_for_book(db: Session, isbn: str) -> List[RatingResponse]:
     """
-    Fetch all ratings for a given ISBN from the database
-    and return them as a list of RatingResponse.
-    
+    **Fetch all ratings for a specific book.**
+
+    This function retrieves all ratings associated with the given ISBN
+    and returns them as a list of **RatingResponse** objects, including
+    the user's email, rating value, and optional comment.
+
     Args:
         db (Session): SQLAlchemy database session.
         isbn (str): ISBN of the book for which to fetch ratings.
-    
+
     Returns:
         List[RatingResponse]: List of ratings with user email, rating value, and comment.
     """
+
     ratings = db.query(Ratings).filter(Ratings.ISBN == isbn).all()
     return [
         RatingResponse(

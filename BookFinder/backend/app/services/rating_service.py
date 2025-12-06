@@ -10,7 +10,10 @@ from db.models import Ratings, AppUser
 # -------------------------
 def add_rating(db: Session, rating: RatingCreate, user_email: str) -> RatingResponse:
     """
-    Add or update a user's rating for a specific book.
+    **Add or update a user's rating** for a specific book.
+
+    This function ensures that a rating exists for the user-book pair.
+    If a rating already exists, it will be updated; otherwise, a new rating is created.
 
     Args:
         db (Session): Active SQLAlchemy database session.
@@ -20,7 +23,6 @@ def add_rating(db: Session, rating: RatingCreate, user_email: str) -> RatingResp
     Returns:
         RatingResponse: The saved or updated rating, including bookId, user email, rating value, and comment.
     """
-
     # First, get the user_id from email
     user = db.query(AppUser).filter(AppUser.email == user_email).first()
     if not user:
@@ -48,7 +50,9 @@ def add_rating(db: Session, rating: RatingCreate, user_email: str) -> RatingResp
 # -------------------------
 def get_ratings_for_book(db: Session, isbn: str) -> List[RatingResponse]:
     """
-    Retrieve all ratings for a given book.
+    **Retrieve all ratings for a given book** from the database.
+
+    Each rating includes the user's email, the rating value, and any comment provided.
 
     Args:
         db (Session): Active SQLAlchemy database session.

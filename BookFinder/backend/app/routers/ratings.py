@@ -12,7 +12,11 @@ router = APIRouter(prefix="/ratings", tags=["Ratings"])
 @router.post("/", response_model=RatingResponse)
 def rate_book(rating: RatingCreate, user: dict = Depends(get_current_user), db: Session = Depends(get_db)) -> RatingResponse:
     """
-    Rate a specific book.
+    **Rate a specific book.**
+
+    This endpoint allows an authenticated user to submit a rating for a book.
+    The rating includes a numeric score and an optional comment, and is associated
+    with the current user's account.
 
     Args:
         rating (RatingCreate): Rating data containing ISBN and score.
@@ -27,7 +31,10 @@ def rate_book(rating: RatingCreate, user: dict = Depends(get_current_user), db: 
 @router.get("/{isbn}", response_model=List[RatingResponse])
 def get_book_ratings(isbn: str, db: Session = Depends(get_db)) -> List[RatingResponse]:
     """
-    Get all ratings for a specific book.
+    **Retrieve all ratings for a specific book.**
+
+    Fetches all ratings submitted for the book identified by the given ISBN.
+    Each rating includes the user's email, the rating value, and any comment provided.
 
     Args:
         isbn (str): The ISBN of the book whose ratings should be retrieved.

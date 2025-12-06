@@ -24,8 +24,27 @@ def get_book_image(book_title: str) -> str:
 
 def render_book_card(book: dict, book_id: int = None, index: int = 0):
     """
-    Render a book card with cover, title, author, description, and store info.
-    The entire card is clickable if book_id is provided.
+    Render a book card in Streamlit, including cover image, metadata,
+    description, and bookstore information.
+
+    The card becomes fully clickable when a `book_id` is provided.
+
+    Args:
+        book (dict): A dictionary containing book fields such as:
+            - title (str)
+            - author (str)
+            - description (str)
+            - language (str)
+            - store (dict with keys "name", "price", "currency")
+            - match_type (str): "exact", "fuzzy", or "semantic"
+        book_id (int | None): If provided, makes the card clickable and
+            opens the detailed view when clicked.
+        index (int): Unique index used internally to generate Streamlit
+            button keys and avoid collisions.
+
+    Returns:
+        None: This function renders UI components directly in Streamlit
+        and does not return a value.
     """
     store = book["store"]
 
