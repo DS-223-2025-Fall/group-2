@@ -1,3 +1,9 @@
+# The BookFinder Project: Enhancing the Local Yerevan Book Market
+
+The **BookFinder** project addresses a challenge in the Yerevan book market: the difficulty readers face in efficiently finding and purchasing books from local retailers. Due to the fragmented nature of the market, where major stores like Bookinist and Zangak operate on separate, non-integrated websites, customers waste time checking availability and comparing prices, often leading them to rely on less efficient foreign online retailers. This project leverages *_Product Development and Customer Experience_* principles to support local businesses and enhance the customer journey by providing a unified, data-driven solution.
+
+Our proposed solution is a data-driven **recommendation platform** built to centralize this information. The platform utilizes web scraping to aggregate availability, price, and location data from multiple local stores. It integrates advanced analytical techniques, specifically fuzzy-matching for accurate search retrieval and Machine Learning (ML) models for similarity-based recommendations. This approach ensures that users not only find the book they want at the best local price but are also guided to similar, locally available options, thereby strengthening customer engagement with the Yerevan book market and driving increased sales for local stores.
+
 # BookFinder Deployment
 
 This project is deployed on Azure Kubernetes Service (AKS).
