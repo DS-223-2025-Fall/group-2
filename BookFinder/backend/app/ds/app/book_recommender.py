@@ -20,12 +20,13 @@ logger = logging.getLogger(__name__)
 
 class BookRecommendationService:
     """
-    Main service for book recommendations
-    Handles the complete flow from query to recommendations
+    **Service for book recommendations.**
+    
+    Handles the complete flow from query to recommendations.
     """
     
     def __init__(self):
-        """Initialize the recommendation service"""
+        """**Initialize** the recommendation service."""
         logger.info("="*70)
         logger.info("Initializing BookRecommendationService...")
         logger.info("="*70)
@@ -43,7 +44,7 @@ class BookRecommendationService:
         top_k: Optional[int] = None
     ) -> List[dict]:
         """
-        Find books similar to the query title
+        **Find books similar to the query title.**
         
         Args:
             query_title: Title of the book user is searching for
@@ -114,7 +115,7 @@ class BookRecommendationService:
         description_field: str = "description"
     ):
         """
-        Build vector index from book data
+        **Build vector index from book data.**
         
         Args:
             books_data: List of book dictionaries with descriptions
@@ -170,7 +171,7 @@ class BookRecommendationService:
     
     def build_index_from_csv(self, csv_path: str, bookid_col: str = 'bookid', descr_col: str = 'descr'):
         """
-        Build vector index directly from CSV file
+        **Build vector index directly from a CSV file.**
         
         Args:
             csv_path: Path to CSV file
@@ -197,8 +198,7 @@ class BookRecommendationService:
         limit: Optional[int] = None
     ):
         """
-        Build vector index directly from database (deprecated - use CSV instead)
-        """
+        **Deprecated:** Build vector index from database. Use CSV instead."""   
         raise NotImplementedError("Database loading removed. Please use build_index_from_csv() instead.")
     
     def add_books(
@@ -207,7 +207,7 @@ class BookRecommendationService:
         description_field: str = "description"
     ):
         """
-        Add new books to existing index
+        **Add new books to the existing vector index.**
         
         Args:
             new_books: List of new book dictionaries
@@ -233,22 +233,22 @@ class BookRecommendationService:
         print(f"Added {len(descriptions)} books to index")
     
     def get_stats(self) -> dict:
-        """Get statistics for the vector store"""
+        """**Get statistics for the vector store.**"""
         return self.vector_store.get_stats()
     
     def delete_index(self):
-        """Delete the index"""
+        """**Delete the vector index.**"""
         self.vector_store.delete_index()
     
     def get_cache_stats(self) -> dict:
-        """Get description cache statistics"""
+        """**Get description cache statistics.**"""
         return self.description_generator.get_cache_stats()
 
 
 # Convenience function for quick usage
 def find_similar_books(query_title: str, top_k: int = 5) -> List[dict]:
     """
-    Convenience function to find similar books
+    **Convenience function to find similar books quickly.**
     
     Args:
         query_title: Title to search for

@@ -20,8 +20,9 @@ logger = logging.getLogger(__name__)
 
 class DescriptionGenerator:
     """
-    Generates book descriptions using OpenAI API
-    Caches results to avoid repeated API calls
+    **Generates book descriptions using OpenAI API.**
+    
+    Caches results to avoid repeated API calls.
     """
     
     PROMPT_TEMPLATE = """You are a warm, clear, and insightful book-description assistant.
@@ -44,7 +45,7 @@ Output only the description. No extra text.
 Book Title: {title}"""
     
     def __init__(self):
-        """Initialize the description generator with OpenAI client"""
+        """**Initialize the description generator with OpenAI client.**"""
         logger.info("Initializing DescriptionGenerator...")
         
         if not config.OPENAI_API_KEY or config.OPENAI_API_KEY == 'synthetic-key-replace-with-real-one':
@@ -67,7 +68,7 @@ Book Title: {title}"""
         logger.info(f"Loaded {len(self.cache)} cached descriptions")
 
     def _load_cache(self) -> dict:
-        """Load cache from disk"""
+        """**Load cached descriptions from disk.**"""
         if self.cache_path.exists():
             try:
                 with open(self.cache_path, 'r', encoding='utf-8') as f:
@@ -78,7 +79,7 @@ Book Title: {title}"""
         return {}
     
     def _save_cache(self):
-        """Save cache to disk"""
+        """**Save cached descriptions to disk.**"""
         try:
             with open(self.cache_path, 'w', encoding='utf-8') as f:
                 json.dump(self.cache, f, indent=2, ensure_ascii=False)
@@ -87,17 +88,17 @@ Book Title: {title}"""
             logger.warning(f"Could not save cache: {e}")
     
     def _get_cache_key(self, title: str) -> str:
-        """Generate a cache key from book title"""
+        """**Generate a cache key from the book title.**"""
         return hashlib.md5(title.lower().strip().encode()).hexdigest()
     
     def _generate_mock_description(self, title: str) -> str:
-        """Generate a mock description when API is not available"""
+        """**Generate a mock description when API is not available.**"""
         return f"A compelling story about {title}. This book explores themes of adventure, " \
                f"personal growth, and the human condition through an engaging narrative."
     
     def generate_description(self, title: str, use_cache: bool = True) -> str:
         """
-        Generate a description for a book title
+        **Generate a description for a single book title.**
         
         Args:
             title: Book title to generate description for
@@ -168,7 +169,7 @@ Book Title: {title}"""
     
     def batch_generate_descriptions(self, titles: list[str], use_cache: bool = True) -> dict[str, str]:
         """
-        Generate descriptions for multiple titles
+        **Generate descriptions for multiple book titles.**
         
         Args:
             titles: List of book titles
@@ -183,14 +184,14 @@ Book Title: {title}"""
         return results
     
     def clear_cache(self):
-        """Clear the description cache"""
+        """**Clear all cached descriptions.**"""
         self.cache = {}
         if self.cache_path.exists():
             self.cache_path.unlink()
         logger.info("Description cache cleared")
     
     def get_cache_stats(self) -> dict:
-        """Get statistics about the cache"""
+        """**Get statistics about the description cache.**"""
         return {
             "total_cached": len(self.cache),
             "cache_file": str(self.cache_path),
