@@ -8,7 +8,18 @@ from utils.search import simple_search
 
 
 def render_home():
-    """Render the home page view."""
+    """
+    **Render the home page view for FindMyRead.**
+
+    Displays the main landing page, including:
+
+    - **Hero section** with app title and subtitle encouraging users to explore books.
+    - **Search bar** where users can input queries to find books.
+    - Handles **search submission** by updating the session state and navigating to results.
+    - **Bookstore strip** at the bottom, showing trusted bookstores from which books can be searched.
+
+    Provides a visually engaging and functional starting point for users.
+    """
     # Hero section
     st.markdown(
         """

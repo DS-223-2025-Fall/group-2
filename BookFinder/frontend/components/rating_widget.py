@@ -10,15 +10,11 @@ from utils.session import is_authenticated, get_auth_token, get_user_info
 
 def render_star_rating(rating: float, max_stars: int = 5, size: int = 20) -> str:
     """
-    Generate HTML for star rating display.
-    
-    Args:
-        rating: Rating value (0-5)
-        max_stars: Maximum number of stars
-        size: Size of stars in pixels
-        
-    Returns:
-        HTML string for stars
+    **Generate HTML to visually display a star rating.**
+
+    - Converts a numeric rating (0-5) into **full, partial, and empty stars**.
+    - Includes a numeric rating in parentheses next to the stars.
+    - Customizable **maximum stars** and **star size** in pixels.
     """
     full_stars = int(rating)
     partial_star = rating - full_stars
@@ -44,10 +40,13 @@ def render_star_rating(rating: float, max_stars: int = 5, size: int = 20) -> str
 
 def render_rating_submission(book_id: str) -> None:
     """
-    Render the rating submission form.
-    
-    Args:
-        book_id: The book's unique identifier
+    **Render the rating submission form for a specific book.**
+
+    - Checks if the user is authenticated; prompts login if not.
+    - Shows logged-in user's email.
+    - Provides a **star selector** (1-5 stars) and optional **comment textarea**.
+    - Submits the rating via API and displays success/error messages.
+    - Ensures seamless **rerun behavior** for Streamlit forms.
     """
     st.markdown("### 📝 Rate This Book")
     
@@ -115,10 +114,12 @@ def render_rating_submission(book_id: str) -> None:
 
 def render_ratings_list(ratings: List[Dict]) -> None:
     """
-    Display a list of existing ratings.
-    
-    Args:
-        ratings: List of rating dictionaries
+    **Display a list of existing ratings for a book.**
+
+    - Shows average rating at the top with stars.
+    - Lists individual reviews with **anonymized user emails**, star ratings, and comments.
+    - Handles the case of **no ratings** gracefully.
+    - Provides visual separation between reviews.
     """
     if not ratings:
         st.info("🔍 No ratings yet. Be the first to rate this book!")
@@ -164,10 +165,11 @@ def render_ratings_list(ratings: List[Dict]) -> None:
 
 def render_ratings_section(book_id: str) -> None:
     """
-    Render complete ratings section (list + submission form).
-    
-    Args:
-        book_id: The book's unique identifier
+    **Render the complete ratings section for a book.**
+
+    - Combines **viewing existing ratings** and **submitting a new rating**.
+    - Uses tabs to switch between the **ratings list** and the **submission form**.
+    - Fetches ratings from API and handles failures.
     """
     # Fetch existing ratings
     api_client = APIClient()

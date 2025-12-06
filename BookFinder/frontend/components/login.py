@@ -8,7 +8,17 @@ from utils.session import is_authenticated, get_user_info
 
 
 def render_login():
-    """Render the login page."""
+    """
+    **Render the login page for FindMyRead.**
+
+    Provides a dedicated view for user authentication:
+
+    - Shows a **welcome message** if the user is already logged in, including their name and email.
+    - Displays **navigation buttons** for Home and Logout when authenticated.
+    - For unauthenticated users, renders a **Google OAuth login card** with styled button.
+    - Includes a **privacy notice** to inform users about data security.
+    - Centers content and provides a visually clear layout for easy login interaction.
+    """
     # If already authenticated, show welcome message
     if is_authenticated():
         user = get_user_info()

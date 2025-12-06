@@ -9,7 +9,18 @@ from utils.session import go_home
 
 
 def render_results():
-    """Render the search results page."""
+    """
+    **Render the search results page for FindMyRead.**
+
+    - Displays a search bar with **back button** to navigate home.
+    - Separates results into sections:
+        - **Found in Bookstores**: Exact and fuzzy matches.
+        - **You Might Also Like**: Semantic matches or recommendations.
+        - **No Results**: Shows fallback suggestions if nothing matches.
+    - Arranges books in **rows of two columns** with clickable book cards.
+    - Updates session state and URL parameters to maintain navigation and query context.
+    - Handles cases of empty results gracefully with informative messages.
+    """
     # Search bar with back button
     with st.form("results_search"):
         col_back, col_input, col_btn = st.columns([0.7, 7, 2])

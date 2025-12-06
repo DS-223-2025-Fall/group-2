@@ -9,8 +9,19 @@ from utils.session import is_authenticated, get_user_info, logout
 
 def render_auth_button():
     """
-    Render authentication UI in the sidebar or header.
-    Shows login button if not authenticated, user info if authenticated.
+    **Render the authentication interface for the application.**
+
+    Displays a login button for *unauthenticated users* and user information 
+    along with a logout button for *authenticated users*. The UI elements are 
+    intended to be placed in the sidebar or header for easy access.
+
+    - If the user is logged in:
+        - Shows a section with the user's **name** and **email**.
+        - Provides a **logout button** that clears the session and refreshes the page.
+
+    - If the user is not logged in:
+        - Displays a **login prompt** with a button directing to the login page.
+        - Encourages users to authenticate to access features like **rating** and **reviewing books**.
     """
     if is_authenticated():
         # User is logged in - show user info and logout button
@@ -42,8 +53,19 @@ def render_auth_button():
 
 def render_inline_auth_message():
     """
-    Render inline authentication message for protected features.
-    Use this in places like rating forms.
+    **Display an inline authentication notice for protected features.**
+
+    This function is meant for areas where authentication is required, 
+    such as **rating** or **review forms**. It informs *unauthenticated users* 
+    that login is necessary to proceed and provides a direct **login link**.
+
+    - If the user is not logged in:
+        - Shows a **warning message** prompting login.
+        - Renders a clickable **login link** using the backend authentication URL.
+        - Returns *False* to indicate the user is not authenticated.
+
+    - If the user is logged in:
+        - Returns *True*, allowing access to the protected feature.
     """
     if not is_authenticated():
         st.warning("🔒 Please login to rate books")

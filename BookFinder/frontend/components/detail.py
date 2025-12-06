@@ -10,9 +10,12 @@ from components.rating_widget import render_ratings_section
 
 def get_book_image(book_title: str) -> str:
     """
-    Get a consistent book image based on the book title.
-    Uses hash to randomly but consistently select from available images.
-    
+    **Get a consistent book image based on the book title.**
+
+    Uses a hash function to select an image in a *pseudo-random but repeatable* way 
+    from the available set of book cover images. Ensures that the same book always 
+    receives the same image, providing visual consistency across the app.
+
     Args:
         book_title: The title of the book
         
@@ -29,7 +32,19 @@ def get_book_image(book_title: str) -> str:
 
 
 def render_detail():
-    """Render the book detail page."""
+    """
+    **Render the book detail page in Streamlit.**
+
+    Displays comprehensive information for a selected book, including:
+
+    - Header with **title**, **author**, and *primary language*.
+    - Main section with book **cover image** and **pricing info** from the store.
+    - Long **description** or plot summary.
+    - Ratings section showing user reviews and interactive rating widgets.
+
+    Provides a **back button** to navigate to previous results or home, 
+    depending on the user's navigation history.
+    """
     selected_id = st.session_state.get("selected_book_id")
     book = get_book_by_id(selected_id)
     

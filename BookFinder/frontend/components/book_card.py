@@ -4,9 +4,12 @@ from utils.session import go_to_detail
 
 def get_book_image(book_title: str) -> str:
     """
-    Get a consistent book image based on the book title.
-    Uses hash to randomly but consistently select from available images.
-    
+    **Get a consistent book image based on the book title.**
+
+    Uses a hash function to select an image in a *pseudo-random but repeatable* way 
+    from the available set of book cover images. This ensures that the same book 
+    always gets the same image.
+
     Args:
         book_title: The title of the book
         
@@ -24,10 +27,17 @@ def get_book_image(book_title: str) -> str:
 
 def render_book_card(book: dict, book_id: int = None, index: int = 0):
     """
-    Render a book card in Streamlit, including cover image, metadata,
-    description, and bookstore information.
+    **Render a book card UI in Streamlit with cover, metadata, description, and store info.**
 
-    The card becomes fully clickable when a `book_id` is provided.
+    The card can be fully *clickable* when a `book_id` is provided. Displays information 
+    such as title, author, language, description, and pricing from the store. Highlights 
+    the match type using colored badges (*Exact Match*, *Close Match*, *Similar Book*).
+
+    - Clickable behavior:
+        - If `book_id` is given, the card contains a hidden button that triggers 
+          navigation to the book detail page.
+    - Non-clickable behavior:
+        - Shows the same visual layout without interaction.
 
     Args:
         book (dict): A dictionary containing book fields such as:
