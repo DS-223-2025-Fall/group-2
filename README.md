@@ -161,3 +161,11 @@ To Open the web app visit: [here](http://localhost:8501/)
 ![UI_2](docs/img/Search_results.png)
 ![UI_3](docs/img/Search_results_similars.png)
 ![UI_4](docs/img/Login_page.png)
+
+## Authors
+
+*Product Manager* -	Viktoria Melkumyan
+*DB Developer* - Levon Hakobyan
+*Backend Developer* - Grigor Hovhannisyan
+*Frontend Developer* - Ani Harutyunyan
+*Data Scientist* - Zhora Poghosyan
