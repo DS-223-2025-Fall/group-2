@@ -140,8 +140,6 @@ We will try to create below schema:
 
 ![Star Schema](docs/img/ERD.png)
 
-### ETL
-
 In `models.py`, we have used `sqlalchemy` package, which allows map python objects with SQL objects.
 
 By running `etl.py` following objects will be created:
