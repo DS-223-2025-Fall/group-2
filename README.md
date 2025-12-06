@@ -35,7 +35,7 @@ This repository contains the following branches:
 1. Clone the repository:
    ```bash
    git clone hhttps://github.com/DS-223-2025-Fall/group-2.git
-   cd BookFinder
+   cd group-2/BookFinder
    ```
 
 2. Build and start the Docker containers:
