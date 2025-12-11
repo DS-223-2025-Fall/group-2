@@ -1,0 +1,3378 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../backend/">
+      
+      
+        <link rel="next" href="../data_science/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>APP - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frontend" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              APP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../problem_definition/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Problem Defintion
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../backend/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  APP
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../data_science/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  DS
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../etl/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ETL
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../problem_definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Defintion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    APP
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    APP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        auth
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.auth.render_auth_button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_auth_button
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.auth.render_inline_auth_message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_inline_auth_message
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.book_card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        book_card
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.book_card.get_book_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_book_image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.book_card.render_book_card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_book_card
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        detail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.detail.get_book_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_book_image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.detail.render_detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_detail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.home.render_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        login
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.login.render_login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_login
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.rating_widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rating_widget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.rating_widget.render_rating_submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_rating_submission
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.rating_widget.render_ratings_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_ratings_list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.rating_widget.render_ratings_section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_ratings_section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.rating_widget.render_star_rating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_star_rating
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BookFinder.frontend.components.results.render_results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        render_results
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_science/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="frontend">Frontend</h1>
+<p>This section documents the <strong>frontend components of the BookFinder application</strong>. These modules define the user interface, including how users search for books, view details, log in, and submit or view ratings. Each component is responsible for a specific part of the app’s UI and user interactions.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="BookFinder.frontend.components.auth"></a>
+    <div class="doc doc-contents first">
+
+        <p>Authentication Component for BookFinder
+Handles login button and user display.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.auth.render_auth_button" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_auth_button</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render the authentication interface for the application.</strong></p>
+<p>Displays a login button for <em>unauthenticated users</em> and user information 
+along with a logout button for <em>authenticated users</em>. The UI elements are 
+intended to be placed in the sidebar or header for easy access.</p>
+<ul>
+<li>
+<p>If the user is logged in:</p>
+<ul>
+<li>Shows a section with the user's <strong>name</strong> and <strong>email</strong>.</li>
+<li>Provides a <strong>logout button</strong> that clears the session and refreshes the page.</li>
+</ul>
+</li>
+<li>
+<p>If the user is not logged in:</p>
+<ul>
+<li>Displays a <strong>login prompt</strong> with a button directing to the login page.</li>
+<li>Encourages users to authenticate to access features like <strong>rating</strong> and <strong>reviewing books</strong>.</li>
+</ul>
+</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/auth.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_auth_button</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render the authentication interface for the application.**</span>
+
+<span class="sd">    Displays a login button for *unauthenticated users* and user information </span>
+<span class="sd">    along with a logout button for *authenticated users*. The UI elements are </span>
+<span class="sd">    intended to be placed in the sidebar or header for easy access.</span>
+
+<span class="sd">    - If the user is logged in:</span>
+<span class="sd">        - Shows a section with the user&#39;s **name** and **email**.</span>
+<span class="sd">        - Provides a **logout button** that clears the session and refreshes the page.</span>
+
+<span class="sd">    - If the user is not logged in:</span>
+<span class="sd">        - Displays a **login prompt** with a button directing to the login page.</span>
+<span class="sd">        - Encourages users to authenticate to access features like **rating** and **reviewing books**.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_authenticated</span><span class="p">():</span>
+        <span class="c1"># User is logged in - show user info and logout button</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">get_user_info</span><span class="p">()</span>
+
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;### 👤 Logged In&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**</span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📧 </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;🚪 Logout&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">):</span>
+            <span class="n">logout</span><span class="p">()</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">&quot;✅ Logged out successfully!&quot;</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># User is not logged in - show login button</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;### 🔐 Authentication&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;Login to rate and review books!&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;🔑 Go to Login&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">utils.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">go_to_login</span>
+            <span class="n">go_to_login</span><span class="p">()</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.auth.render_inline_auth_message" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_inline_auth_message</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Display an inline authentication notice for protected features.</strong></p>
+<p>This function is meant for areas where authentication is required, 
+such as <strong>rating</strong> or <strong>review forms</strong>. It informs <em>unauthenticated users</em> 
+that login is necessary to proceed and provides a direct <strong>login link</strong>.</p>
+<ul>
+<li>
+<p>If the user is not logged in:</p>
+<ul>
+<li>Shows a <strong>warning message</strong> prompting login.</li>
+<li>Renders a clickable <strong>login link</strong> using the backend authentication URL.</li>
+<li>Returns <em>False</em> to indicate the user is not authenticated.</li>
+</ul>
+</li>
+<li>
+<p>If the user is logged in:</p>
+<ul>
+<li>Returns <em>True</em>, allowing access to the protected feature.</li>
+</ul>
+</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/auth.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_inline_auth_message</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Display an inline authentication notice for protected features.**</span>
+
+<span class="sd">    This function is meant for areas where authentication is required, </span>
+<span class="sd">    such as **rating** or **review forms**. It informs *unauthenticated users* </span>
+<span class="sd">    that login is necessary to proceed and provides a direct **login link**.</span>
+
+<span class="sd">    - If the user is not logged in:</span>
+<span class="sd">        - Shows a **warning message** prompting login.</span>
+<span class="sd">        - Renders a clickable **login link** using the backend authentication URL.</span>
+<span class="sd">        - Returns *False* to indicate the user is not authenticated.</span>
+
+<span class="sd">    - If the user is logged in:</span>
+<span class="sd">        - Returns *True*, allowing access to the protected feature.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authenticated</span><span class="p">():</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;🔒 Please login to rate books&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Create login URL</span>
+        <span class="n">login_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BACKEND_URL</span><span class="si">}{</span><span class="n">API_ENDPOINTS</span><span class="p">[</span><span class="s1">&#39;auth_google&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;&lt;a href=&quot;</span><span class="si">{</span><span class="n">login_url</span><span class="si">}</span><span class="s1">&quot; target=&quot;_self&quot;&gt;🔑 Login with Google&lt;/a&gt;&#39;</span><span class="p">,</span>
+            <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="BookFinder.frontend.components.book_card"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.book_card.get_book_image" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_book_image</span><span class="p">(</span><span class="n">book_title</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Get a consistent book image based on the book title.</strong></p>
+<p>Uses a hash function to select an image in a <em>pseudo-random but repeatable</em> way 
+from the available set of book cover images. This ensures that the same book 
+always gets the same image.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>book_title</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The title of the book</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the image file</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/book_card.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_book_image</span><span class="p">(</span><span class="n">book_title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Get a consistent book image based on the book title.**</span>
+
+<span class="sd">    Uses a hash function to select an image in a *pseudo-random but repeatable* way </span>
+<span class="sd">    from the available set of book cover images. This ensures that the same book </span>
+<span class="sd">    always gets the same image.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        book_title: The title of the book</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Path to the image file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># We have 7 images: book_2, book_3, book_4, book_5, book_6, book_7, book_13</span>
+    <span class="n">available_images</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+
+    <span class="c1"># Use hash of title to get consistent but random-looking selection</span>
+    <span class="n">title_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">book_title</span><span class="p">)</span> <span class="k">if</span> <span class="n">book_title</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">image_num</span> <span class="o">=</span> <span class="n">available_images</span><span class="p">[</span><span class="n">title_hash</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">available_images</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;img/book_</span><span class="si">{</span><span class="n">image_num</span><span class="si">}</span><span class="s2">.jpg&quot;</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.book_card.render_book_card" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_book_card</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">book_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render a book card UI in Streamlit with cover, metadata, description, and store info.</strong></p>
+<p>The card can be fully <em>clickable</em> when a <code>book_id</code> is provided. Displays information 
+such as title, author, language, description, and pricing from the store. Highlights 
+the match type using colored badges (<em>Exact Match</em>, <em>Close Match</em>, <em>Similar Book</em>).</p>
+<ul>
+<li>Clickable behavior:<ul>
+<li>If <code>book_id</code> is given, the card contains a hidden button that triggers 
+  navigation to the book detail page.</li>
+</ul>
+</li>
+<li>Non-clickable behavior:<ul>
+<li>Shows the same visual layout without interaction.</li>
+</ul>
+</li>
+</ul>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>book</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A dictionary containing book fields such as:
+- title (str)
+- author (str)
+- description (str)
+- language (str)
+- store (dict with keys "name", "price", "currency")
+- match_type (str): "exact", "fuzzy", or "semantic"</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>book_id</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If provided, makes the card clickable and
+opens the detailed view when clicked.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>index</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Unique index used internally to generate Streamlit
+button keys and avoid collisions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>None</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>This function renders UI components directly in Streamlit</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>and does not return a value.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/book_card.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_book_card</span><span class="p">(</span><span class="n">book</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">book_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render a book card UI in Streamlit with cover, metadata, description, and store info.**</span>
+
+<span class="sd">    The card can be fully *clickable* when a `book_id` is provided. Displays information </span>
+<span class="sd">    such as title, author, language, description, and pricing from the store. Highlights </span>
+<span class="sd">    the match type using colored badges (*Exact Match*, *Close Match*, *Similar Book*).</span>
+
+<span class="sd">    - Clickable behavior:</span>
+<span class="sd">        - If `book_id` is given, the card contains a hidden button that triggers </span>
+<span class="sd">          navigation to the book detail page.</span>
+<span class="sd">    - Non-clickable behavior:</span>
+<span class="sd">        - Shows the same visual layout without interaction.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        book (dict): A dictionary containing book fields such as:</span>
+<span class="sd">            - title (str)</span>
+<span class="sd">            - author (str)</span>
+<span class="sd">            - description (str)</span>
+<span class="sd">            - language (str)</span>
+<span class="sd">            - store (dict with keys &quot;name&quot;, &quot;price&quot;, &quot;currency&quot;)</span>
+<span class="sd">            - match_type (str): &quot;exact&quot;, &quot;fuzzy&quot;, or &quot;semantic&quot;</span>
+<span class="sd">        book_id (int | None): If provided, makes the card clickable and</span>
+<span class="sd">            opens the detailed view when clicked.</span>
+<span class="sd">        index (int): Unique index used internally to generate Streamlit</span>
+<span class="sd">            button keys and avoid collisions.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None: This function renders UI components directly in Streamlit</span>
+<span class="sd">        and does not return a value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">store</span> <span class="o">=</span> <span class="n">book</span><span class="p">[</span><span class="s2">&quot;store&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Get book image based on title (consistent but random-looking)</span>
+    <span class="n">book_image</span> <span class="o">=</span> <span class="n">get_book_image</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Get language display - use as-is from database</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;language&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Handle language display</span>
+    <span class="k">if</span> <span class="n">language</span> <span class="ow">and</span> <span class="n">language</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+        <span class="c1"># Remove &quot;Unknown&quot; and empty values</span>
+        <span class="k">if</span> <span class="n">language</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]:</span>
+            <span class="c1"># Take only the first language if multiple are listed</span>
+            <span class="n">language_display</span> <span class="o">=</span> <span class="n">language</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">language_display</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">language_display</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># Determine badge text and color based on match type</span>
+    <span class="n">badge_html</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">match_type</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;match_type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">match_type</span> <span class="o">==</span> <span class="s2">&quot;exact&quot;</span><span class="p">:</span>
+        <span class="n">badge_html</span> <span class="o">=</span> <span class="s1">&#39;&lt;span style=&quot;font-size: 0.7rem; color: #28a745; margin-left: 8px;&quot;&gt;• Exact Match&lt;/span&gt;&#39;</span>
+    <span class="k">elif</span> <span class="n">match_type</span> <span class="o">==</span> <span class="s2">&quot;fuzzy&quot;</span><span class="p">:</span>
+        <span class="n">badge_html</span> <span class="o">=</span> <span class="s1">&#39;&lt;span style=&quot;font-size: 0.7rem; color: #ffc107; margin-left: 8px;&quot;&gt;• Close Match&lt;/span&gt;&#39;</span>
+    <span class="k">elif</span> <span class="n">match_type</span> <span class="o">==</span> <span class="s2">&quot;semantic&quot;</span><span class="p">:</span>
+        <span class="n">badge_html</span> <span class="o">=</span> <span class="s1">&#39;&lt;span style=&quot;font-size: 0.7rem; color: #17a2b8; margin-left: 8px;&quot;&gt;• Similar Book&lt;/span&gt;&#39;</span>
+
+    <span class="c1"># Clickable card</span>
+    <span class="k">if</span> <span class="n">book_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Wrap everything in a container for relative positioning</span>
+        <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">container</span><span class="p">():</span>
+            <span class="c1"># Create columns for layout</span>
+            <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+            <span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">book_image</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+                <span class="c1"># Build author line with language if available</span>
+                <span class="n">author_line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;by </span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="n">language_display</span><span class="p">:</span>
+                    <span class="n">author_line</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; • </span><span class="si">{</span><span class="n">language_display</span><span class="si">}</span><span class="s2">&quot;</span>
+
+                <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                &lt;div class=&quot;book-card-content&quot;&gt;</span>
+<span class="s2">                    &lt;div class=&quot;book-title&quot;&gt;</span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}{</span><span class="n">badge_html</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">                    &lt;div class=&quot;book-author&quot;&gt;</span><span class="si">{</span><span class="n">author_line</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">                    &lt;div class=&quot;book-desc&quot;&gt;</span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">                    &lt;div class=&quot;book-bottom-row&quot;&gt;</span>
+<span class="s2">                      &lt;div class=&quot;book-store-pill&quot;&gt;</span>
+<span class="s2">                        &lt;span class=&quot;book-store-icon&quot;&gt;&lt;/span&gt;</span>
+<span class="s2">                        &lt;span&gt;</span>
+<span class="s2">                          &lt;span class=&quot;book-store-name&quot;&gt;</span><span class="si">{</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/span&gt;</span>
+<span class="s2">                          &lt;span class=&quot;book-price&quot;&gt;</span><span class="si">{</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;currency&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/span&gt;</span>
+<span class="s2">                        &lt;/span&gt;</span>
+<span class="s2">                      &lt;/div&gt;</span>
+<span class="s2">                    &lt;/div&gt;</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">                &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                <span class="c1"># Hidden button inside the content column to make card clickable</span>
+                <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;​&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;card_btn_</span><span class="si">{</span><span class="n">book_id</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;secondary&quot;</span><span class="p">):</span>
+                    <span class="n">go_to_detail</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Non-clickable card</span>
+        <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">book_image</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+            <span class="c1"># Build author line with language if available</span>
+            <span class="n">author_line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;by </span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="n">language_display</span><span class="p">:</span>
+                <span class="n">author_line</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; • </span><span class="si">{</span><span class="n">language_display</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div class=&quot;book-card-content&quot;&gt;</span>
+<span class="s2">                &lt;div class=&quot;book-title&quot;&gt;</span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}{</span><span class="n">badge_html</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">                &lt;div class=&quot;book-author&quot;&gt;</span><span class="si">{</span><span class="n">author_line</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">                &lt;div class=&quot;book-desc&quot;&gt;</span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">                &lt;div class=&quot;book-bottom-row&quot;&gt;</span>
+<span class="s2">                  &lt;div class=&quot;book-store-pill&quot;&gt;</span>
+<span class="s2">                    &lt;span class=&quot;book-store-icon&quot;&gt;&lt;/span&gt;</span>
+<span class="s2">                    &lt;span&gt;</span>
+<span class="s2">                      &lt;span class=&quot;book-store-name&quot;&gt;</span><span class="si">{</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/span&gt;</span>
+<span class="s2">                      &lt;span class=&quot;book-price&quot;&gt;</span><span class="si">{</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;currency&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/span&gt;</span>
+<span class="s2">                    &lt;/span&gt;</span>
+<span class="s2">                  &lt;/div&gt;</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="BookFinder.frontend.components.detail"></a>
+    <div class="doc doc-contents first">
+
+        <p>Book detail page component for FindMyRead application.
+Displays comprehensive information about a selected book.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.detail.get_book_image" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_book_image</span><span class="p">(</span><span class="n">book_title</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Get a consistent book image based on the book title.</strong></p>
+<p>Uses a hash function to select an image in a <em>pseudo-random but repeatable</em> way 
+from the available set of book cover images. Ensures that the same book always 
+receives the same image, providing visual consistency across the app.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>book_title</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The title of the book</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the image file</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/detail.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_book_image</span><span class="p">(</span><span class="n">book_title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Get a consistent book image based on the book title.**</span>
+
+<span class="sd">    Uses a hash function to select an image in a *pseudo-random but repeatable* way </span>
+<span class="sd">    from the available set of book cover images. Ensures that the same book always </span>
+<span class="sd">    receives the same image, providing visual consistency across the app.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        book_title: The title of the book</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Path to the image file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># We have 7 images: book_2, book_3, book_4, book_5, book_6, book_7, book_13</span>
+    <span class="n">available_images</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+
+    <span class="c1"># Use hash of title to get consistent but random-looking selection</span>
+    <span class="n">title_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">book_title</span><span class="p">)</span> <span class="k">if</span> <span class="n">book_title</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">image_num</span> <span class="o">=</span> <span class="n">available_images</span><span class="p">[</span><span class="n">title_hash</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">available_images</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;img/book_</span><span class="si">{</span><span class="n">image_num</span><span class="si">}</span><span class="s2">.jpg&quot;</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.detail.render_detail" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_detail</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render the book detail page in Streamlit.</strong></p>
+<p>Displays comprehensive information for a selected book, including:</p>
+<ul>
+<li>Header with <strong>title</strong>, <strong>author</strong>, and <em>primary language</em>.</li>
+<li>Main section with book <strong>cover image</strong> and <strong>pricing info</strong> from the store.</li>
+<li>Long <strong>description</strong> or plot summary.</li>
+<li>Ratings section showing user reviews and interactive rating widgets.</li>
+</ul>
+<p>Provides a <strong>back button</strong> to navigate to previous results or home, 
+depending on the user's navigation history.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/detail.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_detail</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render the book detail page in Streamlit.**</span>
+
+<span class="sd">    Displays comprehensive information for a selected book, including:</span>
+
+<span class="sd">    - Header with **title**, **author**, and *primary language*.</span>
+<span class="sd">    - Main section with book **cover image** and **pricing info** from the store.</span>
+<span class="sd">    - Long **description** or plot summary.</span>
+<span class="sd">    - Ratings section showing user reviews and interactive rating widgets.</span>
+
+<span class="sd">    Provides a **back button** to navigate to previous results or home, </span>
+<span class="sd">    depending on the user&#39;s navigation history.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">selected_id</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;selected_book_id&quot;</span><span class="p">)</span>
+    <span class="n">book</span> <span class="o">=</span> <span class="n">get_book_by_id</span><span class="p">(</span><span class="n">selected_id</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">book</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Book not found.&quot;</span><span class="p">)</span>
+        <span class="n">go_back_to_home</span><span class="p">()</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Back button - go to results if we have a search query, otherwise home</span>
+    <span class="n">last_query</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;last_query&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">has_results</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exact&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;suggestions&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">last_query</span> <span class="ow">and</span> <span class="n">has_results</span><span class="p">:</span>
+        <span class="n">back_label</span> <span class="o">=</span> <span class="s2">&quot;← Back to Results&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">back_label</span> <span class="o">=</span> <span class="s2">&quot;← Back to Home&quot;</span>
+
+    <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">back_label</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;detail_back&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">last_query</span> <span class="ow">and</span> <span class="n">has_results</span><span class="p">:</span>
+            <span class="c1"># Go back to results</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;view&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;results&quot;</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;view&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;results&quot;</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_query</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Go back to home</span>
+            <span class="n">go_home</span><span class="p">()</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+
+    <span class="c1"># Header with title and author</span>
+    <span class="c1"># Get language for display</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;language&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">language</span> <span class="ow">and</span> <span class="n">language</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">and</span> <span class="n">language</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]:</span>
+        <span class="n">language_display</span> <span class="o">=</span> <span class="n">language</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">author_info</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;by </span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> • </span><span class="si">{</span><span class="n">language_display</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">author_info</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;by </span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        &lt;div class=&quot;detail-header&quot;&gt;</span>
+<span class="s2">            &lt;div class=&quot;detail-title&quot;&gt;</span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">            &lt;div class=&quot;detail-author&quot;&gt;</span><span class="si">{</span><span class="n">author_info</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Main content: cover and metadata at left, long description at right</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+    <span class="k">with</span> <span class="n">left</span><span class="p">:</span>
+        <span class="c1"># Book cover with actual image</span>
+        <span class="n">book_image</span> <span class="o">=</span> <span class="n">get_book_image</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">book_image</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">)</span>
+
+        <span class="c1"># # Rating with stars - show &quot;No reviews yet&quot; if rating is 4.0 (default)</span>
+        <span class="c1"># rating = book.get(&quot;rating&quot;, 4.0)</span>
+        <span class="c1"># if rating == 4.0:  # Default rating means no real reviews</span>
+        <span class="c1">#     stars = &quot;☆&quot; * 5</span>
+        <span class="c1">#     st.markdown(f&quot;&quot;&quot;</span>
+        <span class="c1">#         &lt;div class=&quot;detail-meta&quot;&gt;</span>
+        <span class="c1">#             &lt;span class=&quot;detail-stars&quot;&gt;{stars}&lt;/span&gt;</span>
+        <span class="c1">#             &lt;span style=&quot;color: #999;&quot;&gt;No reviews yet&lt;/span&gt;</span>
+        <span class="c1">#         &lt;/div&gt;</span>
+        <span class="c1">#     &quot;&quot;&quot;, unsafe_allow_html=True)</span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     # Show actual rating</span>
+        <span class="c1">#     full_stars = int(round(rating))</span>
+        <span class="c1">#     stars = &quot;★&quot; * full_stars + &quot;☆&quot; * (5 - full_stars)</span>
+        <span class="c1">#     st.markdown(f&quot;&quot;&quot;</span>
+        <span class="c1">#         &lt;div class=&quot;detail-meta&quot;&gt;</span>
+        <span class="c1">#             &lt;span class=&quot;detail-stars&quot;&gt;{stars}&lt;/span&gt;</span>
+        <span class="c1">#             &lt;span&gt;{rating} / 5&lt;/span&gt;</span>
+        <span class="c1">#         &lt;/div&gt;</span>
+        <span class="c1">#     &quot;&quot;&quot;, unsafe_allow_html=True)</span>
+
+        <span class="c1"># Store price info (without &quot;Available at&quot; text)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div class=&quot;detail-meta&quot; style=&quot;margin-top: 1.5rem;&quot;&gt;</span>
+<span class="s2">                &lt;div style=&quot;font-size: 1.125rem; margin-top: 0.5rem;&quot;&gt;</span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;store&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">                &lt;div style=&quot;font-size: 1.25rem; font-weight: 600; color: var(--book-price, #2c1810); margin-top: 0.25rem;&quot;&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;store&#39;</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;store&#39;</span><span class="p">][</span><span class="s1">&#39;currency&#39;</span><span class="p">]</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div class=&quot;detail-description&quot;&gt;</span>
+<span class="s2">                </span><span class="si">{</span><span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;long_description&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span><span class="si">}</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Ratings section</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
+    <span class="n">render_ratings_section</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="BookFinder.frontend.components.home"></a>
+    <div class="doc doc-contents first">
+
+        <p>Home page component for FindMyRead application.
+Displays hero section with search bar and bookstore strip.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.home.render_home" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_home</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render the home page view for FindMyRead.</strong></p>
+<p>Displays the main landing page, including:</p>
+<ul>
+<li><strong>Hero section</strong> with app title and subtitle encouraging users to explore books.</li>
+<li><strong>Search bar</strong> where users can input queries to find books.</li>
+<li>Handles <strong>search submission</strong> by updating the session state and navigating to results.</li>
+<li><strong>Bookstore strip</strong> at the bottom, showing trusted bookstores from which books can be searched.</li>
+</ul>
+<p>Provides a visually engaging and functional starting point for users.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/home.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_home</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render the home page view for FindMyRead.**</span>
+
+<span class="sd">    Displays the main landing page, including:</span>
+
+<span class="sd">    - **Hero section** with app title and subtitle encouraging users to explore books.</span>
+<span class="sd">    - **Search bar** where users can input queries to find books.</span>
+<span class="sd">    - Handles **search submission** by updating the session state and navigating to results.</span>
+<span class="sd">    - **Bookstore strip** at the bottom, showing trusted bookstores from which books can be searched.</span>
+
+<span class="sd">    Provides a visually engaging and functional starting point for users.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Hero section</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &lt;div class=&quot;hero-wrapper&quot;&gt;</span>
+<span class="sd">            &lt;div class=&quot;hero-title&quot;&gt;Discover Your Next&lt;br/&gt;Literary Journey&lt;/div&gt;</span>
+<span class="sd">            &lt;div class=&quot;hero-subtitle&quot;&gt;</span>
+<span class="sd">                Find your next read — or the closest one.</span>
+<span class="sd">            &lt;/div&gt;</span>
+<span class="sd">        &lt;/div&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Search form</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">with</span> <span class="n">center</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">form</span><span class="p">(</span><span class="s2">&quot;hero_search&quot;</span><span class="p">,</span> <span class="n">clear_on_submit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+            <span class="k">with</span> <span class="n">c1</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span>
+                    <span class="s2">&quot;Search for books&quot;</span><span class="p">,</span>
+                    <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Search for any book…&quot;</span><span class="p">,</span>
+                    <span class="n">label_visibility</span><span class="o">=</span><span class="s2">&quot;collapsed&quot;</span><span class="p">,</span>
+                    <span class="n">key</span><span class="o">=</span><span class="s2">&quot;hero_query&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">with</span> <span class="n">c2</span><span class="p">:</span>
+                <span class="n">submit</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">form_submit_button</span><span class="p">(</span><span class="s2">&quot;Search&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Handle search submission</span>
+    <span class="k">if</span> <span class="n">submit</span> <span class="ow">and</span> <span class="n">query</span><span class="p">:</span>
+        <span class="n">exact</span><span class="p">,</span> <span class="n">suggestions</span> <span class="o">=</span> <span class="n">simple_search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;view&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;results&quot;</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;last_query&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">query</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;exact&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exact</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;suggestions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">suggestions</span>
+        <span class="c1"># Update URL</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;view&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;results&quot;</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">query</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+
+    <span class="c1"># Bookstore strip at bottom</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;&lt;div class=&quot;store-strip-item&quot;&gt;&lt;span class=&quot;store-strip-icon&quot;&gt;&lt;/span&gt;&lt;span&gt;</span><span class="si">{</span><span class="n">store</span><span class="si">}</span><span class="s1">&lt;/span&gt;&lt;/div&gt;&#39;</span>
+        <span class="k">for</span> <span class="n">store</span> <span class="ow">in</span> <span class="n">BOOKSTORES</span>
+    <span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        &lt;div class=&quot;store-strip-container&quot;&gt;</span>
+<span class="s1">            &lt;div class=&quot;store-strip-label&quot;&gt;Searching across trusted bookstores&lt;/div&gt;</span>
+<span class="s1">            &lt;div class=&quot;store-strip-badges&quot;&gt;</span><span class="si">{</span><span class="n">items</span><span class="si">}</span><span class="s1">&lt;/div&gt;</span>
+<span class="s1">        &lt;/div&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">,</span>
+        <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="BookFinder.frontend.components.login"></a>
+    <div class="doc doc-contents first">
+
+        <p>Login page component for BookFinder
+Dedicated page for user authentication.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.login.render_login" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_login</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render the login page for FindMyRead.</strong></p>
+<p>Provides a dedicated view for user authentication:</p>
+<ul>
+<li>Shows a <strong>welcome message</strong> if the user is already logged in, including their name and email.</li>
+<li>Displays <strong>navigation buttons</strong> for Home and Logout when authenticated.</li>
+<li>For unauthenticated users, renders a <strong>Google OAuth login card</strong> with styled button.</li>
+<li>Includes a <strong>privacy notice</strong> to inform users about data security.</li>
+<li>Centers content and provides a visually clear layout for easy login interaction.</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/login.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_login</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render the login page for FindMyRead.**</span>
+
+<span class="sd">    Provides a dedicated view for user authentication:</span>
+
+<span class="sd">    - Shows a **welcome message** if the user is already logged in, including their name and email.</span>
+<span class="sd">    - Displays **navigation buttons** for Home and Logout when authenticated.</span>
+<span class="sd">    - For unauthenticated users, renders a **Google OAuth login card** with styled button.</span>
+<span class="sd">    - Includes a **privacy notice** to inform users about data security.</span>
+<span class="sd">    - Centers content and provides a visually clear layout for easy login interaction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># If already authenticated, show welcome message</span>
+    <span class="k">if</span> <span class="n">is_authenticated</span><span class="p">():</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">get_user_info</span><span class="p">()</span>
+
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            &lt;div style=&quot;text-align: center; padding: 3rem 0;&quot;&gt;</span>
+<span class="sd">                &lt;h1&gt;✅ You&#39;re Already Logged In!&lt;/h1&gt;</span>
+<span class="sd">            &lt;/div&gt;</span>
+<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Welcome back, **</span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">**!&quot;</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📧 </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Navigation buttons</span>
+            <span class="n">col_a</span><span class="p">,</span> <span class="n">col_b</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">col_a</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;🏠 Go to Home&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="p">):</span>
+                    <span class="kn">from</span><span class="w"> </span><span class="nn">utils.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">go_home</span>
+                    <span class="n">go_home</span><span class="p">()</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+
+            <span class="k">with</span> <span class="n">col_b</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;🚪 Logout&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">):</span>
+                    <span class="kn">from</span><span class="w"> </span><span class="nn">utils.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">logout</span>
+                    <span class="n">logout</span><span class="p">()</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">&quot;✅ Logged out successfully!&quot;</span><span class="p">)</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+
+        <span class="k">return</span>
+
+    <span class="c1"># Not authenticated - show login page</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &lt;div class=&quot;hero-wrapper fade-in&quot;&gt;</span>
+<span class="sd">            &lt;div class=&quot;hero-title&quot;&gt;Login to&lt;br/&gt;FindMyRead&lt;/div&gt;</span>
+<span class="sd">            &lt;div class=&quot;hero-subtitle&quot;&gt;</span>
+<span class="sd">                Sign in to rate books, write reviews, and save your favorites</span>
+<span class="sd">            &lt;/div&gt;</span>
+<span class="sd">        &lt;/div&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Center the login card</span>
+    <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;🔒 We use Google OAuth for secure authentication. We only access your email and name.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Create login URL (use BACKEND_BROWSER_URL for browser redirects)</span>
+        <span class="n">login_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BACKEND_BROWSER_URL</span><span class="si">}{</span><span class="n">API_ENDPOINTS</span><span class="p">[</span><span class="s1">&#39;auth_google&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Google Sign In Button (styled)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;a href=&quot;</span><span class="si">{</span><span class="n">login_url</span><span class="si">}</span><span class="s2">&quot; target=&quot;_self&quot; style=&quot;</span>
+<span class="s2">                display: block;</span>
+<span class="s2">                padding: 1rem;</span>
+<span class="s2">                background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);</span>
+<span class="s2">                color: white;</span>
+<span class="s2">                text-decoration: none;</span>
+<span class="s2">                border-radius: 0.5rem;</span>
+<span class="s2">                font-weight: 600;</span>
+<span class="s2">                text-align: center;</span>
+<span class="s2">                font-size: 1.1rem;</span>
+<span class="s2">                box-shadow: 0 2px 4px rgba(0,0,0,0.2);</span>
+<span class="s2">                transition: transform 0.2s;</span>
+<span class="s2">            &quot; onmouseover=&quot;this.style.transform=&#39;scale(1.05)&#39;&quot; </span>
+<span class="s2">               onmouseout=&quot;this.style.transform=&#39;scale(1)&#39;&quot;&gt;</span>
+<span class="s2">                🔑 Continue with Google</span>
+<span class="s2">            &lt;/a&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Back to home button</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;← Back to Home&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">utils.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">go_home</span>
+            <span class="n">go_home</span><span class="p">()</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+
+        <span class="c1"># Privacy notice</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            &lt;div style=&quot;text-align: center; margin-top: 2rem; color: #7f6a4d; font-size: 0.9rem;&quot;&gt;</span>
+<span class="sd">                By signing in, you agree to our Terms of Service and Privacy Policy.&lt;br/&gt;</span>
+<span class="sd">                Your data is secure and we never share your information.</span>
+<span class="sd">            &lt;/div&gt;</span>
+<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="BookFinder.frontend.components.rating_widget"></a>
+    <div class="doc doc-contents first">
+
+        <p>Rating Widget Component for BookFinder
+Handles displaying ratings and submitting new ratings.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.rating_widget.render_rating_submission" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_rating_submission</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render the rating submission form for a specific book.</strong></p>
+<ul>
+<li>Checks if the user is authenticated; prompts login if not.</li>
+<li>Shows logged-in user's email.</li>
+<li>Provides a <strong>star selector</strong> (1-5 stars) and optional <strong>comment textarea</strong>.</li>
+<li>Submits the rating via API and displays success/error messages.</li>
+<li>Ensures seamless <strong>rerun behavior</strong> for Streamlit forms.</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/rating_widget.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_rating_submission</span><span class="p">(</span><span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render the rating submission form for a specific book.**</span>
+
+<span class="sd">    - Checks if the user is authenticated; prompts login if not.</span>
+<span class="sd">    - Shows logged-in user&#39;s email.</span>
+<span class="sd">    - Provides a **star selector** (1-5 stars) and optional **comment textarea**.</span>
+<span class="sd">    - Submits the rating via API and displays success/error messages.</span>
+<span class="sd">    - Ensures seamless **rerun behavior** for Streamlit forms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;### 📝 Rate This Book&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check if user is authenticated</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authenticated</span><span class="p">():</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;🔒 Please login to rate books&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;🔑 Go to Login Page&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">utils.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">go_to_login</span>
+            <span class="n">go_to_login</span><span class="p">()</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Show logged in user info</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">get_user_info</span><span class="p">()</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📧 Posting as: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Show success message if rating was just submitted</span>
+    <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rating_submitted&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">&quot;✅ Thank you for your rating!&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s1">&#39;rating_submitted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">form</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;rating_form_</span><span class="si">{</span><span class="n">book_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+        <span class="c1"># Star rating selector - discrete options</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;**Your Rating**&quot;</span><span class="p">)</span>
+        <span class="n">rating</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span>
+            <span class="s2">&quot;Select your rating&quot;</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+            <span class="n">format_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;⭐&#39;</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> star</span><span class="si">{</span><span class="s2">&quot;s&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+            <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># No default selection</span>
+            <span class="n">label_visibility</span><span class="o">=</span><span class="s2">&quot;collapsed&quot;</span><span class="p">,</span>
+            <span class="n">horizontal</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Comment text area</span>
+        <span class="n">comment</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_area</span><span class="p">(</span>
+            <span class="s2">&quot;Your Review (optional)&quot;</span><span class="p">,</span>
+            <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Share your thoughts about this book...&quot;</span><span class="p">,</span>
+            <span class="n">max_chars</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">100</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Submit button</span>
+        <span class="n">submitted</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">form_submit_button</span><span class="p">(</span><span class="s2">&quot;Submit Rating&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">submitted</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rating</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;⚠️ Please select a rating (1-5 stars)&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Submit the rating with authentication token</span>
+                <span class="n">api_client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">(</span><span class="n">auth_token</span><span class="o">=</span><span class="n">get_auth_token</span><span class="p">())</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">api_client</span><span class="o">.</span><span class="n">rate_book</span><span class="p">(</span>
+                    <span class="n">book_id</span><span class="o">=</span><span class="n">book_id</span><span class="p">,</span>
+                    <span class="n">rating</span><span class="o">=</span><span class="n">rating</span><span class="p">,</span>
+                    <span class="n">comment</span><span class="o">=</span><span class="n">comment</span> <span class="k">if</span> <span class="n">comment</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                    <span class="c1"># Store success state to show message after rerun</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s1">&#39;rating_submitted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;❌ Failed to submit rating. Please try again.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.rating_widget.render_ratings_list" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_ratings_list</span><span class="p">(</span><span class="n">ratings</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Display a list of existing ratings for a book.</strong></p>
+<ul>
+<li>Shows average rating at the top with stars.</li>
+<li>Lists individual reviews with <strong>anonymized user emails</strong>, star ratings, and comments.</li>
+<li>Handles the case of <strong>no ratings</strong> gracefully.</li>
+<li>Provides visual separation between reviews.</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/rating_widget.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_ratings_list</span><span class="p">(</span><span class="n">ratings</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Display a list of existing ratings for a book.**</span>
+
+<span class="sd">    - Shows average rating at the top with stars.</span>
+<span class="sd">    - Lists individual reviews with **anonymized user emails**, star ratings, and comments.</span>
+<span class="sd">    - Handles the case of **no ratings** gracefully.</span>
+<span class="sd">    - Provides visual separation between reviews.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ratings</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;🔍 No ratings yet. Be the first to rate this book!&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 💬 User Reviews (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ratings</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Calculate average rating</span>
+    <span class="n">avg_rating</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ratings</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ratings</span><span class="p">)</span>
+
+    <span class="c1"># Display average</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;#### Average Rating&quot;</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">render_star_rating</span><span class="p">(</span><span class="n">avg_rating</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">24</span><span class="p">),</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Display individual ratings</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">rating</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ratings</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">container</span><span class="p">():</span>
+            <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+            <span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+                <span class="c1"># User email (anonymized)</span>
+                <span class="n">email</span> <span class="o">=</span> <span class="n">rating</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;Anonymous&quot;</span><span class="p">)</span>
+                <span class="c1"># Show only first part of email for privacy</span>
+                <span class="n">display_email</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;@***&quot;</span> <span class="k">if</span> <span class="s1">&#39;@&#39;</span> <span class="ow">in</span> <span class="n">email</span> <span class="k">else</span> <span class="s2">&quot;Anonymous&quot;</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**</span><span class="si">{</span><span class="n">display_email</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+                <span class="c1"># Star rating</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+                    <span class="n">render_star_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span> 
+                    <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Comment</span>
+            <span class="k">if</span> <span class="n">rating</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;comment&quot;</span><span class="p">):</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&gt; </span><span class="si">{</span><span class="n">rating</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Divider between reviews (except last one)</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ratings</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.rating_widget.render_ratings_section" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_ratings_section</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render the complete ratings section for a book.</strong></p>
+<ul>
+<li>Combines <strong>viewing existing ratings</strong> and <strong>submitting a new rating</strong>.</li>
+<li>Uses tabs to switch between the <strong>ratings list</strong> and the <strong>submission form</strong>.</li>
+<li>Fetches ratings from API and handles failures.</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/rating_widget.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_ratings_section</span><span class="p">(</span><span class="n">book_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render the complete ratings section for a book.**</span>
+
+<span class="sd">    - Combines **viewing existing ratings** and **submitting a new rating**.</span>
+<span class="sd">    - Uses tabs to switch between the **ratings list** and the **submission form**.</span>
+<span class="sd">    - Fetches ratings from API and handles failures.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Fetch existing ratings</span>
+    <span class="n">api_client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
+    <span class="n">ratings</span> <span class="o">=</span> <span class="n">api_client</span><span class="o">.</span><span class="n">get_book_ratings</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span>
+
+    <span class="c1"># Create tabs for viewing and submitting</span>
+    <span class="n">tab1</span><span class="p">,</span> <span class="n">tab2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tabs</span><span class="p">([</span><span class="s2">&quot;📚 View Ratings&quot;</span><span class="p">,</span> <span class="s2">&quot;✍️ Rate This Book&quot;</span><span class="p">])</span>
+
+    <span class="k">with</span> <span class="n">tab1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ratings</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">render_ratings_list</span><span class="p">(</span><span class="n">ratings</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;❌ Failed to load ratings. Please try again later.&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">tab2</span><span class="p">:</span>
+        <span class="n">render_rating_submission</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.rating_widget.render_star_rating" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_star_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">,</span> <span class="n">max_stars</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Generate HTML to visually display a star rating.</strong></p>
+<ul>
+<li>Converts a numeric rating (0-5) into <strong>full, partial, and empty stars</strong>.</li>
+<li>Includes a numeric rating in parentheses next to the stars.</li>
+<li>Customizable <strong>maximum stars</strong> and <strong>star size</strong> in pixels.</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/rating_widget.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_star_rating</span><span class="p">(</span><span class="n">rating</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_stars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Generate HTML to visually display a star rating.**</span>
+
+<span class="sd">    - Converts a numeric rating (0-5) into **full, partial, and empty stars**.</span>
+<span class="sd">    - Includes a numeric rating in parentheses next to the stars.</span>
+<span class="sd">    - Customizable **maximum stars** and **star size** in pixels.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">full_stars</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span>
+    <span class="n">partial_star</span> <span class="o">=</span> <span class="n">rating</span> <span class="o">-</span> <span class="n">full_stars</span>
+    <span class="n">empty_stars</span> <span class="o">=</span> <span class="n">max_stars</span> <span class="o">-</span> <span class="n">full_stars</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">partial_star</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">html</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;div style=&quot;color: #FFD700; font-size: </span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s1">px; line-height: 1;&quot;&gt;&#39;</span>
+
+    <span class="c1"># Full stars</span>
+    <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;★&#39;</span> <span class="o">*</span> <span class="n">full_stars</span>
+
+    <span class="c1"># Partial star</span>
+    <span class="k">if</span> <span class="n">partial_star</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;★&#39;</span>  <span class="c1"># For now, show full star if there&#39;s any partial</span>
+
+    <span class="c1"># Empty stars</span>
+    <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;☆&#39;</span> <span class="o">*</span> <span class="n">empty_stars</span>
+
+    <span class="n">html</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39; &lt;span style=&quot;color: #666; font-size: </span><span class="si">{</span><span class="n">size</span><span class="o">-</span><span class="mi">2</span><span class="si">}</span><span class="s1">px;&quot;&gt;(</span><span class="si">{</span><span class="n">rating</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">)&lt;/span&gt;&#39;</span>
+    <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/div&gt;&#39;</span>
+
+    <span class="k">return</span> <span class="n">html</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="BookFinder.frontend.components.results"></a>
+    <div class="doc doc-contents first">
+
+        <p>Search results page component for FindMyRead application.
+Displays search results with book cards.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="BookFinder.frontend.components.results.render_results" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">render_results</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><strong>Render the search results page for FindMyRead.</strong></p>
+<ul>
+<li>Displays a search bar with <strong>back button</strong> to navigate home.</li>
+<li>Separates results into sections:<ul>
+<li><strong>Found in Bookstores</strong>: Exact and fuzzy matches.</li>
+<li><strong>You Might Also Like</strong>: Semantic matches or recommendations.</li>
+<li><strong>No Results</strong>: Shows fallback suggestions if nothing matches.</li>
+</ul>
+</li>
+<li>Arranges books in <strong>rows of two columns</strong> with clickable book cards.</li>
+<li>Updates session state and URL parameters to maintain navigation and query context.</li>
+<li>Handles cases of empty results gracefully with informative messages.</li>
+</ul>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>BookFinder/frontend/components/results.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render_results</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    **Render the search results page for FindMyRead.**</span>
+
+<span class="sd">    - Displays a search bar with **back button** to navigate home.</span>
+<span class="sd">    - Separates results into sections:</span>
+<span class="sd">        - **Found in Bookstores**: Exact and fuzzy matches.</span>
+<span class="sd">        - **You Might Also Like**: Semantic matches or recommendations.</span>
+<span class="sd">        - **No Results**: Shows fallback suggestions if nothing matches.</span>
+<span class="sd">    - Arranges books in **rows of two columns** with clickable book cards.</span>
+<span class="sd">    - Updates session state and URL parameters to maintain navigation and query context.</span>
+<span class="sd">    - Handles cases of empty results gracefully with informative messages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Search bar with back button</span>
+    <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">form</span><span class="p">(</span><span class="s2">&quot;results_search&quot;</span><span class="p">):</span>
+        <span class="n">col_back</span><span class="p">,</span> <span class="n">col_input</span><span class="p">,</span> <span class="n">col_btn</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">col_back</span><span class="p">:</span>
+            <span class="n">back_clicked</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">form_submit_button</span><span class="p">(</span><span class="s2">&quot;←&quot;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">col_input</span><span class="p">:</span>
+            <span class="n">query2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span>
+                <span class="s2">&quot;Search query&quot;</span><span class="p">,</span>
+                <span class="n">value</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;last_query&quot;</span><span class="p">],</span>
+                <span class="n">label_visibility</span><span class="o">=</span><span class="s2">&quot;collapsed&quot;</span><span class="p">,</span>
+                <span class="n">key</span><span class="o">=</span><span class="s2">&quot;results_query&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">col_btn</span><span class="p">:</span>
+            <span class="n">search_again</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">form_submit_button</span><span class="p">(</span><span class="s2">&quot;Search&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Handle navigation</span>
+    <span class="k">if</span> <span class="n">back_clicked</span><span class="p">:</span>
+        <span class="n">go_home</span><span class="p">()</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">search_again</span> <span class="ow">and</span> <span class="n">query2</span><span class="p">:</span>
+        <span class="n">exact</span><span class="p">,</span> <span class="n">suggestions</span> <span class="o">=</span> <span class="n">simple_search</span><span class="p">(</span><span class="n">query2</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;last_query&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">query2</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;exact&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exact</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;suggestions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">suggestions</span>
+        <span class="c1"># Update URL</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;view&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;results&quot;</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">query_params</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">query2</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
+
+    <span class="c1"># Get current results from session state</span>
+    <span class="n">exact</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;exact&quot;</span><span class="p">]</span>
+    <span class="n">suggestions</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;suggestions&quot;</span><span class="p">]</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">[</span><span class="s2">&quot;last_query&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Separate based on match_type:</span>
+    <span class="c1"># - Exact and Fuzzy matches go to &quot;Found in Bookstores&quot;</span>
+    <span class="c1"># - Semantic matches (including recommendations) go to &quot;You Might Also Like&quot;</span>
+    <span class="n">found_in_stores</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">book</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">exact</span> 
+        <span class="k">if</span> <span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;match_type&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;exact&quot;</span><span class="p">,</span> <span class="s2">&quot;fuzzy&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+
+    <span class="n">similar_books</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">book</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">exact</span> 
+        <span class="k">if</span> <span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;match_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;semantic&quot;</span> <span class="ow">or</span> <span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;is_recommendation&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Display &quot;Found in Bookstores&quot; section if we have exact or fuzzy matches</span>
+    <span class="k">if</span> <span class="n">found_in_stores</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;results-header&quot;&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;result-title&quot;&gt;Found in Bookstores&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">count_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">found_in_stores</span><span class="p">)</span><span class="si">}</span><span class="s2"> result&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;s&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">found_in_stores</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;&lt;div class=&quot;result-subtitle&quot;&gt;</span><span class="si">{</span><span class="n">count_text</span><span class="si">}</span><span class="s1"> for &quot;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">&quot;&lt;/div&gt;&#39;</span><span class="p">,</span>
+            <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Display books in rows of 2 columns</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">found_in_stores</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">render_book_card</span><span class="p">(</span><span class="n">found_in_stores</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">found_in_stores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">found_in_stores</span><span class="p">):</span>
+                <span class="k">with</span> <span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">render_book_card</span><span class="p">(</span><span class="n">found_in_stores</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">found_in_stores</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Display &quot;You Might Also Like&quot; section for semantic matches</span>
+    <span class="k">if</span> <span class="n">similar_books</span><span class="p">:</span>
+        <span class="c1"># Add spacing if we already showed &quot;Found in Bookstores&quot;</span>
+        <span class="k">if</span> <span class="n">found_in_stores</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div style=&quot;height: 2rem;&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;results-header&quot;&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Different title/subtitle based on whether we found exact/fuzzy matches</span>
+        <span class="k">if</span> <span class="n">found_in_stores</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;result-title&quot;&gt;You Might Also Like&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;result-subtitle&quot;&gt;Similar books based on your search&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Only semantic matches, no exact/fuzzy found</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;result-title&quot;&gt;Not Found in Bookstores&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;&lt;div class=&quot;result-subtitle&quot;&gt;We couldn</span><span class="se">\&#39;</span><span class="s1">t find &quot;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">&quot; in our bookstores, but here are similar books&lt;/div&gt;&#39;</span><span class="p">,</span>
+                <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Display semantic books in rows of 2 columns</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">similar_books</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">render_book_card</span><span class="p">(</span><span class="n">similar_books</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">similar_books</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">similar_books</span><span class="p">):</span>
+                <span class="k">with</span> <span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">render_book_card</span><span class="p">(</span><span class="n">similar_books</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">similar_books</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1001</span><span class="p">)</span>
+
+    <span class="c1"># If no results at all, show fallback suggestions</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found_in_stores</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">similar_books</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;results-header&quot;&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;result-title&quot;&gt;No Results Found&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;&lt;div class=&quot;result-subtitle&quot;&gt;We couldn</span><span class="se">\&#39;</span><span class="s1">t find any books matching &quot;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">&quot;&lt;/div&gt;&#39;</span><span class="p">,</span>
+            <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Show fallback suggestions if available</span>
+        <span class="k">if</span> <span class="n">suggestions</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div style=&quot;height: 1rem;&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;result-subtitle&quot;&gt;You might like these books:&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">suggestions</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="n">cols</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+                <span class="k">with</span> <span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">render_book_card</span><span class="p">(</span><span class="n">suggestions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">suggestions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2000</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">suggestions</span><span class="p">):</span>
+                    <span class="k">with</span> <span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">render_book_card</span><span class="p">(</span><span class="n">suggestions</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">suggestions</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2001</span><span class="p">)</span>
+
+    <span class="c1"># Add bottom padding</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s1">&#39;&lt;div style=&quot;height: 3rem;&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">unsafe_allow_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
