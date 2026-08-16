@@ -177,4 +177,4 @@ To Open the web app visit: [here](http://localhost:8501/)
 
 **Frontend Developer** - Ani Harutyunyan
 
-**Data Scientist** - Zhora Poghosyan
+**Data Scientist** - Ani Harutyunyan
